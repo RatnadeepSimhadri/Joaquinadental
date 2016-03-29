@@ -1,0 +1,4 @@
+URL: mysql://us-cdbr-iron-east-03.cleardb.net:3306
+Schema Name:heroku_012e9bf5c5bf6e6	
+User:bc0e2f97ace092
+Password:02272043
