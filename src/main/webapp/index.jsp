@@ -16,15 +16,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
 </button>
-
 <div class="collapse navbar-collapse" id="jdNavBar">
 <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="#">HOME</a></li>
       <li><a href="#">ABOUT US</a></li>
       <li><a href="#">SERVICES</a></li> 
       <li><a href="#">FORMS</a></li>
-      <li><a href="#">CONTACT US</a></li> 
+      <li><a href="#popup">LOGIN</a></li> 
   </ul>
+</div>
+<div id="popup" class="overlay">
+	<div class="popup">
+		<h3>Login</h3>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			<form role="form">
+  				<div class="form-group">
+    				  <input placeholder="Email" type="email" class="form-control" id="email">
+  				</div>
+  				<div class="form-group">
+    				<input placeholder="Password" type="password" class="form-control" id="pwd">
+  				</div>
+  					<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
 </div>
 </div>
 <div class="container main-content" >
