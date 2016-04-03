@@ -27,4 +27,12 @@
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
+	
+	<jsp-config>
+	<taglib>
+	<taglib-uri>http://www.springframework.org/tags/form</taglib-uri>
+	<taglib-location>spring-form.tld</taglib-location>
+	</taglib>
+	
+</jsp-config>
 </web-app>
