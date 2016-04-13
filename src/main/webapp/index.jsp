@@ -30,7 +30,7 @@
 		<h3>Login</h3>
 		<a class="close" href="#">&times;</a>
 		<div class="content">
-			<form role="form" action="siteapp/login" method="post">
+			<form role="form" action="siteapp/DoctorLogin" method="post">
   				<div class="form-group">
     				  <input placeholder="Email" name="email" type="email" class="form-control" id="email">
   				</div>
