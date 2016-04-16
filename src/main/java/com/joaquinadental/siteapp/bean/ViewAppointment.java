@@ -11,7 +11,7 @@ public class ViewAppointment {
 	}
 	public Time getAppointment_time() {
 		return appointment_time;
-	}
+	}	
 	public void setAppointment_time(Time appointment_time) {
 		this.appointment_time = appointment_time;
 	}

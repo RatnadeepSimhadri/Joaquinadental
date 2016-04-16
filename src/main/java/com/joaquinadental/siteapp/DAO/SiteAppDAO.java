@@ -1,4 +1,7 @@
 package com.joaquinadental.siteapp.DAO;
+import static com.joaquinadental.siteapp.util.DBConstants._GET_USERS;
+import static com.joaquinadental.siteapp.util.DBConstants._VIEW_APPOINTMENTS;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,8 +10,8 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import static com.joaquinadental.siteapp.util.DBConstants.*;
 
+import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 public class SiteAppDAO {
 
@@ -45,6 +48,59 @@ public class SiteAppDAO {
 			
 				
 				list.add(app);
+				
+			
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	
+	public static List<User> getUsers() {
+
+		Connection conn = null;
+		Statement stmt = null;
+		List<User>list = new ArrayList<User>();
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			String sql;
+			sql = _GET_USERS;
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				
+				String email  = rs.getString(1);
+				String password = rs.getString(2);
+				String role = rs.getString(3);
+			
+				
+				User user = new User();
+				user.setEmail(email);
+				user.setPassword(password);
+				user.setRole(role);
+			
+				
+				list.add(user);
 				
 			
 			}
