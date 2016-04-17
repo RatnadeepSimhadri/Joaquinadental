@@ -4,6 +4,7 @@ import static com.joaquinadental.siteapp.util.DBConstants._VIEW_APPOINTMENTS;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,27 +77,27 @@ public class SiteAppDAO {
 	}
 	
 	
-	public static List<User> getUsers() {
+	public static List<User> getUsers(String email, String password) {
 
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement stmt = null;
 		List<User>list = new ArrayList<User>();
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
-			stmt = conn.createStatement();
-			String sql;
-			sql = _GET_USERS;
-			ResultSet rs = stmt.executeQuery(sql);
+			stmt = conn.prepareStatement(_GET_USERS);
+			stmt.setString(1, email);
+			stmt.setString(2, password);
+			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				
-				String email  = rs.getString(1);
-				String password = rs.getString(2);
+				String u_email  = rs.getString(1);
+				String u_password = rs.getString(2);
 				String role = rs.getString(3);
 			
 				
 				User user = new User();
-				user.setEmail(email);
-				user.setPassword(password);
+				user.setEmail(u_email);
+				user.setPassword(u_password);
 				user.setRole(role);
 			
 				
