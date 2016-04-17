@@ -1,8 +1,15 @@
 package com.joaquinadental.siteapp.bean;
 
-import java.sql.Time;
+import java.sql.*;
 
 public class ViewAppointment {
+	private String patientFirstName;
+	private String patientLastName;
+	private Time appointment_time;
+	// added by jd
+	private String dentistFirstName;
+	private String dentistLastName;
+	private Date appointment_Date;
 	public String getPatientFirstName() {
 		return patientFirstName;
 	}
@@ -21,7 +28,27 @@ public class ViewAppointment {
 	public void setPatientLastName(String patientLastName) {
 		this.patientLastName = patientLastName;
 	}
-	private String patientFirstName;
-	private String patientLastName;
-	private Time appointment_time;
+	
+	// added by jd
+	public String getDentistFirstName() {
+		return dentistFirstName;
+	}
+	public void setDentistFirstName(String dentistFirstName) {
+		this.dentistFirstName = dentistFirstName;
+	}
+	
+	public String getDentistLastName() {
+		return dentistLastName;
+	}
+	public void setDentistLastName(String dentistLastName) {
+		this.dentistLastName = dentistLastName;
+	}
+	
+	public Date getAppointmentDate() {
+		return appointment_Date;
+	}
+	public void setAppointmentDate(Date appointment_Date) {
+		this.appointment_Date = appointment_Date;
+	}
+	
 }

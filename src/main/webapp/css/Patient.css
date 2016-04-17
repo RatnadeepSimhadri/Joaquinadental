@@ -8,6 +8,7 @@ text-align: justify;
 
 #jdNavBar{
 	position: relative;
+	top:3em;
 } 
 
 
@@ -115,13 +116,11 @@ h4{
 .popup button:hover{
 	background-color: #06D85F;
 }
-@media screen{
+@media screen and (max-width: 700px){
   .box{
-    width: 100%;
+    width: 80%;
   }
   .popup{
-    width: 100%;
+    width: 80%;
   }
-  
-  
 }
