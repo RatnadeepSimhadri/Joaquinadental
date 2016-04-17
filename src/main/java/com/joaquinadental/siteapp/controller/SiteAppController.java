@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.joaquinadental.siteapp.Exception.UnAuthorisedUserException;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
+import com.joaquinadental.siteapp.service.NotificationService;
 import com.joaquinadental.siteapp.service.SiteAppService;
 
 @Controller
@@ -27,8 +28,10 @@ public class SiteAppController {
 			throw new UnAuthorisedUserException();
 		}
 		List<String> list = SiteAppService.viewAppointments();
+		List<String> notifications = NotificationService.getGeneralNotifications();
 		ModelAndView mv = new ModelAndView("viewAppointments");
 		mv.addObject("lists", list);
+		mv.addObject("notifications",notifications);
 		return mv;
 		} catch (UnAuthorisedUserException e) {
 			
