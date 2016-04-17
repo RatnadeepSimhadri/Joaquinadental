@@ -3,6 +3,7 @@ import static com.joaquinadental.siteapp.util.DBConstants._GET_USERS;
 import static com.joaquinadental.siteapp.util.DBConstants._VIEW_APPOINTMENTS;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -128,5 +129,70 @@ public class SiteAppDAO {
 		return list;
 	}
 
+// JD method to get appointment for a patient 
+	public static List<ViewAppointment> viewPatientComingAppointment (String useremail)
+	{
+		Connection conn = null;
+		Statement stmt = null;
+		List<ViewAppointment>list = new ArrayList<ViewAppointment>();
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			String sql;
+			System.out.println("executing the query");
+			sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and PATIENT_EMAIL = '"+ useremail+"' and Appointment_Date >= curdate();";
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("executed the query");
+			while(rs.next()){
+				System.out.println("inside rs");
+		
+				String patient_first_name  = rs.getString(1);
+				String patient_last_name = rs.getString(2);
+				Time appointment_time = rs.getTime(3);
+				Date appointment_date = rs.getDate(4);
+				String dentist_first_name = rs.getString(5);
+				String dentist_last_name = rs.getString(6);
+				System.out.println("appointment details "+patient_first_name +" "+patient_last_name
+						+" " +appointment_time + " " +dentist_first_name + " "+ dentist_last_name+
+						" " + appointment_date);
+				
+				
+				ViewAppointment app = new ViewAppointment();
+				app.setPatientFirstName(patient_first_name);
+				app.setPatientLastName(patient_last_name);
+				app.setAppointment_time(appointment_time);
+				app.setAppointmentDate(appointment_date);
+				app.setDentistFirstName(dentist_first_name);
+				app.setDentistLastName(dentist_last_name);
+			
+				
+				list.add(app);
+				
+			
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return list;
+	}
+	}
+	
 
-}

@@ -23,13 +23,31 @@ public class SiteAppController {
 		try {
 		SiteAppService service = new SiteAppService();
 		User user=service.validateLoginCredentials(email,password);
+		ModelAndView mv = null;
+		
 		if(user==null){
 			throw new UnAuthorisedUserException();
 		}
-		List<String> list = SiteAppService.viewAppointments();
-		ModelAndView mv = new ModelAndView("viewAppointments");
-		mv.addObject("lists", list);
+		System.out.println("The user role is "+user.getRole());
+		if (user.getRole().equals("D"))
+		{
+			List<String> list = SiteAppService.viewAppointments();
+			mv = new ModelAndView("viewAppointments");
+			mv.addObject("lists", list);
+			
+		}
+		else if (user.getRole().equals("P"))
+		{
+			List<String> list = SiteAppService.viewPatientComingAppointment(user.getEmail());
+			mv = new ModelAndView("PatientLanding");
+			mv.addObject("lists", list);
+		}
+		else 
+		{
+			mv = new ModelAndView("AdminDash");
+		}
 		return mv;
+		
 		} catch (UnAuthorisedUserException e) {
 			
 			ModelAndView mv = new ModelAndView("invalidUser");

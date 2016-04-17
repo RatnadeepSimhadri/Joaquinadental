@@ -38,7 +38,44 @@ public class SiteAppService {
 			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time : "+va.getAppointment_time().toString();
 			formattedAppointments.add(formattedAppointment);
 		}
+		System.out.println("Formatted String" + formattedAppointments.get(0));
 		return formattedAppointments;
+	}
+	
+	// Jd method to get todays appointment details
+	
+	private static List<String> formatAppointmentDetailsPatient(List<ViewAppointment> list){
+		List<String> formattedAppointments = new ArrayList<String>();
+		if (list.isEmpty())
+		{
+			String formattedAppointment = "<b> You dont have any upcoming appointments.</b>";
+		}
+		else 
+		{
+		for (Iterator iterator = list.iterator(); iterator
+				.hasNext();) {
+			ViewAppointment va = (ViewAppointment) iterator.next();
+			String formattedAppointment = "<b>"+va.getDentistFirstName()+" "+va.getDentistLastName()+"</b><br>"+
+		     "Date "+va.getAppointmentDate()+" Time : "+va.getAppointment_time().toString();
+			formattedAppointments.add(formattedAppointment);
+		}
+		System.out.println("Formatted String" + formattedAppointments.get(0));
+		}
+		return formattedAppointments;
+	}
+	
+	public static List<String> viewPatientComingAppointment(String useremail) {
+		List<ViewAppointment> list = SiteAppDAO.viewPatientComingAppointment(useremail);
+		System.out.println("back to service method");
+		System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
+		System.out.println("Appointment in service method"+list.get(0).getPatientLastName());
+		System.out.println("Appointment in service method"+list.get(0).getAppointment_time());
+	/*System.out.println("Appointment in service method"+list.get(0).get`);
+		System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
+		System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
+		System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
+		*/
+		return formatAppointmentDetailsPatient(list);
 	}
 
 }
