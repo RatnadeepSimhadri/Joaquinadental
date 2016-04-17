@@ -5,10 +5,12 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
   <link rel="stylesheet" type="text/css" href="../css/Patient.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>Joaquina Dental </title>
 </head>
 <body>
@@ -31,7 +33,7 @@
 <div class="container main-content" >
 <div class="row">
     <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
-    <div class="col-sm-8"><h4>Following Appointments</h4></div>
+    <div class="col-sm-8"><h4 align="center">Upcoming Appointments</h4></div>
   </div>
   <c:if test="${not empty lists}">
   <c:forEach var="listValue" items="${lists}">
@@ -42,6 +44,20 @@
   <br>
   </c:forEach>
   </c:if>
+   <div class="row">
+   <div class="col-md-4 col-sm-4 hidden-xs">
+  </div>
+  <div class="col-md-8 col-sm-8 col-xs-6" >
+   <div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-6">
+  <button type="button" class="btn btn-primary btn-lg" >Make Appointment</button>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-6">
+   <button type="button" class="btn btn-primary btn-lg" >View Account Details</button>
+   </div>
+  </div> 
+   </div>
+ </div>
 </div>
 <div class="container footer-image" >
 </div>

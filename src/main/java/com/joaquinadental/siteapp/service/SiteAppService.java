@@ -49,14 +49,15 @@ public class SiteAppService {
 		if (list.isEmpty())
 		{
 			String formattedAppointment = "<b> You dont have any upcoming appointments.</b>";
+			formattedAppointments.add(formattedAppointment);
 		}
 		else 
 		{
 		for (Iterator iterator = list.iterator(); iterator
 				.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
-			String formattedAppointment = "<b>"+va.getDentistFirstName()+" "+va.getDentistLastName()+"</b><br>"+
-		     "Date "+va.getAppointmentDate()+" Time : "+va.getAppointment_time().toString();
+			String formattedAppointment = "<b> Appointment Date: </b>"+va.getAppointmentDate()+" <b> Time</b>"+va.getAppointment_time().toString()+"<br>"+
+				     "<b>Doctor </b>"+va.getDentistFirstName()+" "+va.getDentistLastName();
 			formattedAppointments.add(formattedAppointment);
 		}
 		System.out.println("Formatted String" + formattedAppointments.get(0));
@@ -67,7 +68,7 @@ public class SiteAppService {
 	public static List<String> viewPatientComingAppointment(String useremail) {
 		List<ViewAppointment> list = SiteAppDAO.viewPatientComingAppointment(useremail);
 		System.out.println("back to service method");
-		System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
+		/*System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
 		System.out.println("Appointment in service method"+list.get(0).getPatientLastName());
 		System.out.println("Appointment in service method"+list.get(0).getAppointment_time());
 	/*System.out.println("Appointment in service method"+list.get(0).get`);
