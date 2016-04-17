@@ -20,7 +20,7 @@ public class SiteAppService {
 		User user = null;
 		/*if(email==null ||"".equals(email)||password==null ||"".equals(password))
 			return false;*/
-		List<User>users = SiteAppDAO.getUsers();
+		List<User>users = SiteAppDAO.getUsers(email,password);
 		for (Iterator iterator = users.iterator(); iterator.hasNext();) {
 			 user = (User) iterator.next();
 			if(user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)){

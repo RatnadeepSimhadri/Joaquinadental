@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.joaquinadental.siteapp.Exception.UnAuthorisedUserException;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
+import com.joaquinadental.siteapp.service.NotificationService;
 import com.joaquinadental.siteapp.service.SiteAppService;
 
 @Controller
@@ -28,12 +29,15 @@ public class SiteAppController {
 		if(user==null){
 			throw new UnAuthorisedUserException();
 		}
+
 		System.out.println("The user role is "+user.getRole());
 		if (user.getRole().equals("D"))
 		{
 			List<String> list = SiteAppService.viewAppointments();
+			List<String> notifications = NotificationService.getGeneralNotifications();
 			mv = new ModelAndView("viewAppointments");
 			mv.addObject("lists", list);
+			mv.addObject("notifications",notifications);
 			
 		}
 		else if (user.getRole().equals("P"))
