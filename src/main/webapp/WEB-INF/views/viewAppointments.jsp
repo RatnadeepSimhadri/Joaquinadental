@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -6,7 +8,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Joaquina Dental </title>
 </head>
 <body>
@@ -25,25 +27,21 @@
       <li><a href="#popup">LOGIN</a></li> 
   </ul>
 </div>
-<div id="popup" class="overlay">
-	<div class="popup">
-		<h3>Login</h3>
-		<a class="close" href="#">&times;</a>
-		<div class="content">
-			<form role="form" action="siteapp/Login" method="post">
-  				<div class="form-group">
-    				  <input placeholder="Email" name="email" type="email" class="form-control" id="email">
-  				</div>
-  				<div class="form-group">
-    				<input placeholder="Password" name="password" type="password" class="form-control" id="pwd">
-  				</div>
-  					<button type="submit" class="btn btn-default">Submit</button>
-			</form>
-		</div>
-	</div>
-</div>
 </div>
 <div class="container main-content" >
+<div class="row">
+    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
+    <div class="col-sm-8"><h4>Scheduled Appointments</h4></div>
+  </div>
+  <c:if test="${not empty lists}">
+  <c:forEach var="listValue" items="${lists}">
+  <div class="row">
+    <div class="col-sm-4 hidden-xs" style= "font-family: Tahoma, 'Times New Roman', sans-serif;">Your appointment time has changed <br><a>Click Here</a> to view the details</div>
+    <div class="col-sm-8" style="background-color:#EEE;">${listValue}</div>
+  </div>
+  <br>
+  </c:forEach>
+  </c:if>
 </div>
 <div class="container footer-image" >
 </div>

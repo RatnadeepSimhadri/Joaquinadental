@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Joaquina Dental </title>
 </head>
-<body>
+<body onload="myFunction()">
 <div class="container banner-image" >
 <button id="navbutton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jdNavBar">
         <span class="icon-bar"></span>
@@ -24,41 +24,39 @@
       <li><a href="#">ABOUT US</a></li>
       <li><a href="#">SERVICES</a></li> 
       <li><a href="#">FORMS</a></li>
-      <li><a href="#popup">LOGIN</a></li> 
+      <li><a id="loginLink" href="#popup">LOGIN</a></li> 
   </ul>
 </div>
 <div id="popup" class="overlay">
 	<div class="popup">
 		<h3>Login</h3>
 		<a class="close" href="#">&times;</a>
+		<c:if test="${not empty error}">
+		<h5 class="alert alert-danger fade in">Invalid Login Credentials</h5>
+		</c:if>
 		<div class="content">
-			<form:form action="next" method="post">
+			<form role="form" action="Login" method="post">
   				<div class="form-group">
-    				  <form:input placeholder="Email" path="email" type="email" class="form-control" id="email" ></form:input>
+    				  <input placeholder="Email" name="email" type="email" class="form-control" id="email">
   				</div>
   				<div class="form-group">
-    				<form:input placeholder="Password" path="password" type="password" class="form-control" id="pwd"></form:input>
+    				<input placeholder="Password" name="password" type="password" class="form-control" id="pwd">
   				</div>
   					<button type="submit" class="btn btn-default">Submit</button>
-			</form:form>
+			</form>
 		</div>
 	</div>
 </div>
 </div>
 <div class="container main-content" >
-<h2>@Himanshu Displayed List Using JSTL: Check siteAppController and home.jsp</h2>
-
-	<c:if test="${not empty lists}">
-
-		<ul>
-			<c:forEach var="listValue" items="${lists}">
-				<li>${listValue}</li>
-			</c:forEach>
-		</ul>
-
-	</c:if>
 </div>
 <div class="container footer-image" >
 </div>
 </body>
+<script>
+function myFunction(){
+	document.getElementById("loginLink").click();
+}
+
+</script>
 </html>
