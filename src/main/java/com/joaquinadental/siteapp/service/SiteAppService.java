@@ -16,19 +16,18 @@ public class SiteAppService {
 		return formatAppointmentDetails(list);
 	}
 	
-	public boolean validateLoginCredentials(String email, String password){
-		boolean isvalidUser = false;
+	public User validateLoginCredentials(String email, String password){
+		User user = null;
 		/*if(email==null ||"".equals(email)||password==null ||"".equals(password))
 			return false;*/
 		List<User>users = SiteAppDAO.getUsers();
 		for (Iterator iterator = users.iterator(); iterator.hasNext();) {
-			User user = (User) iterator.next();
+			 user = (User) iterator.next();
 			if(user.getEmail().equalsIgnoreCase(email) && user.getPassword().equalsIgnoreCase(password)){
-				isvalidUser=true;
 				break;
 			}
 		}
-		return isvalidUser;
+		return user;
 	}
 	
 	private static List<String> formatAppointmentDetails(List<ViewAppointment> list){

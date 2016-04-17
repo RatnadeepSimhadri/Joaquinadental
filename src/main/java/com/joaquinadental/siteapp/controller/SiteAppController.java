@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.joaquinadental.siteapp.Exception.UnAuthorisedUserException;
+import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 import com.joaquinadental.siteapp.service.SiteAppService;
 
@@ -21,8 +22,8 @@ public class SiteAppController {
 		System.out.println("In Controller");
 		try {
 		SiteAppService service = new SiteAppService();
-		boolean isvalidUser=service.validateLoginCredentials(email,password);
-		if(!isvalidUser){
+		User user=service.validateLoginCredentials(email,password);
+		if(user==null){
 			throw new UnAuthorisedUserException();
 		}
 		List<String> list = SiteAppService.viewAppointments();
