@@ -66,13 +66,13 @@
     <div class="form-group">
      
           <input type="text" value="Appointment ID: ${Editlist.appointment_id}" name="appt_id" class="form-control" readonly>
-      <input type="text" value=" Patient Name: ${Editlist.patientName}" name="patientname" class="form-control" id="patid" readonly>
+      <input type="text" value=" Patient Name: ${Editlist.patientName}" name="patientname" class="form-control" id="patientname" readonly>
     </div>
     
        
     <div class="form-group">
-        <select name="doctor_name" class="form-control" id="docname" >
-        <option value="" disabled selected>${Editlist.dentistName}</option>
+        <select name="doctor_name" class="form-control" id="doctor_name" >
+        <option value="${Editlist.dentistName}" disabled selected>${Editlist.dentistName}</option>
         <option>Jeffrey Hill</option>
         <option>Alton Watson</option>
         <option>Clinton Reid</option>

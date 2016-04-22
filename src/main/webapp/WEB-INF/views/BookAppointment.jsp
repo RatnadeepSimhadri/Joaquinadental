@@ -78,7 +78,7 @@
         <option>Jeffrey Hill</option>
         <option>Alton Watson</option>
         <option>Clinton Reid</option>
-        <option>Micheal Chandler</option>
+        <option>Michael Chandler</option>
         <option>Lori LoVette</option>
         </select>
     </div>

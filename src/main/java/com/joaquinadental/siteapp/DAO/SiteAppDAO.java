@@ -406,13 +406,16 @@ public class SiteAppDAO {
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
 			String dentist_id="";
-			String sql="select dentist_id from dentist where Dentist_First_Name='" +firstname+ "' and Dentist_Last_Name='" + lastname+"'";
+			System.out.println(lastname);
+			System.out.println(firstname);
+			String sql="select dentist_id from dentist where Dentist_First_Name='"+firstname+"' and Dentist_Last_Name='"+lastname+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				System.out.println("get dentist id");
 				dentist_id  = rs.getString(1);
+				System.out.println(dentist_id);
 			}
-			sql = "INSERT INTO Appointment (Dentist_ID,Patient_ID,Appointment_Date,Appointment_Time) VALUES ("+ dentist_id + "," + patientid +"," + "'" + appoint_date + "','" + appoint_time+"')";
+			sql = "INSERT INTO Appointment(Dentist_ID,Patient_ID,Appointment_Date,Appointment_Time) VALUES ("+dentist_id+","+patientid+","+"'"+appoint_date+"','"+appoint_time+"')";
 			stmt.executeUpdate(sql);		
 			rs.close();
 			stmt.close();

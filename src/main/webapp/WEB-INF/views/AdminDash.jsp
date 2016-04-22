@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -193,6 +194,24 @@
 </div>
 </div>
 <div class="container main-content" >
+<div class="row">
+    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
+    <div class="col-sm-8"><h4>Appointments</h4></div>
+ </div>
+ 
+ <div class="row">
+ <div class="col-sm-4 hidden-xs" style= "font-family: Tahoma, 'Times New Roman', sans-serif;">
+ <c:if test="${not empty notifications }">
+ <c:forEach var="notification" items="${notifications}">
+ <div style="margin-left: 0px;" class="row">
+ ${notification}
+ </div>
+ <br>
+ </c:forEach>
+ </c:if>
+ </div>
+ 
+ <div class="col-sm-8">
 <form name="admappt" action="/siteapp/admappt" method="post">
 <div class="form-group" style="margin-top:2%">
     
@@ -239,23 +258,23 @@
   <br>
 <form name="crud" action="/siteapp/CancelAppointment">
 
-<input type="hidden" id="h_appt_id" name="h_appt_id" >
+<input type="hidden" id="h_appt_id" name="h_appt_id">
 <input type="hidden" id="h_pat_name" name="h_pat_name" >
 <input type="hidden" id="h_doc_name" name="h_doc_name" >
 <input type="hidden" id="h_appt_date" name="h_appt_date" >
 <input type="hidden" id="h_appt_hrs" name="h_appt_hrs" >
 <input type="hidden" id="h_appt_mins" name="h_appt_mins" >
-       <button type="submit" name="addbutton" id="addbutton" class="btn btn-info" role="button" formmethod="post" formaction="/siteapp/BookAppointment.jsp">Add Appointment</button>
-           <button type="submit" name="editbutton" id="editbutton" class="btn btn-warning" role="button" formmethod="post" formaction="/siteapp/EditAppointment.jsp">EditAppointment</button> 
-          <button id="cancelbutton" class="btn btn-danger" role="button">Cancel Appointment</button>
-            <div id="dialog" title="Confirmation Required">
-  			Are you sure about this?
-			</div>​
-           <button id="checkinbutton" class="btn btn-success" role="button">Appointment Check-In</button>
-           </form>
+       <button type="submit" name="addbutton" id="addbutton" class="btn btn-info" formmethod="post" formaction="/siteapp/BookAppointment">Add Appointment</button>
+       <button type="submit" name="editbutton" id="editbutton" class="btn btn-warning"  formmethod="post" formaction="/siteapp/EditAppointment">EditAppointment</button> 
+       <!-- <button id="cancelbutton" class="btn btn-danger">Cancel Appointment</button> -->
+       <!-- <div id="dialog" title="Confirmation Required">
+  			<span>Are you sure about this</span>
+		</div> -->​
+           <!-- <button id="checkinbutton" class="btn btn-success">Appointment Check In</button>  -->
+</form>
         </div>
 
-<div id="tablediv">
+<div id="tablediv" style="width:66.6666666%;float:right">
 
 
 <table id="table" class="table table-striped table-hover"
@@ -276,11 +295,10 @@
            
     
 </div>
-
-
-
-
 </div>
+</div>
+
+
 
 <div class="container footer-image" >
 </div>

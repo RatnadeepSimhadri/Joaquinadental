@@ -68,9 +68,12 @@ public class SiteAppController {
 		ModelAndView mv = null;
 		System.out.println("In Admin Dash");
 		String AdminAppt = SiteAppService.admindashappointment();
+		List<String> notifications = NotificationService.getGeneralNotifications();
 		mv = new ModelAndView("AdminDash");
 		System.out.println("Hello");
 		mv.addObject("jsondata", AdminAppt);
+		mv.addObject("notifications",notifications);
+		
 			return mv;
 		
 	}
@@ -158,4 +161,20 @@ public class SiteAppController {
 				return mv;
 				
 	   			}
+	    
+	    @RequestMapping("/Checkin")
+	    public ModelAndView checin1()
+	   			{
+				ModelAndView mv = null;
+				System.out.println("In delete appt ");
+				
+				mv = new ModelAndView("Checkin");
+				System.out.println("Going to display message in cancel appointment");
+				
+				
+				return mv;
+				
+	   			}
+	    
+	    
 }
