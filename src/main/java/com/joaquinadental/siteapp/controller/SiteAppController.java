@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,8 +48,12 @@ public class SiteAppController {
 		else if (user.getRole().equals("P"))
 		{
 			List<String> list = SiteAppService.viewPatientComingAppointment(user.getEmail());
-			mv = new ModelAndView("PatientLanding");
+			List<String> notifications = NotificationService.getGeneralNotifications();
+			 mv = new ModelAndView("PatientLanding");
+			System.out.println("notification"+notifications.get(0));
+			//mv = new ModelAndView("PL");
 			mv.addObject("lists", list);
+			mv.addObject("notifications",notifications);
 		}
 		else 
 		{
@@ -79,7 +84,6 @@ public class SiteAppController {
 	}
 
 	
-	
 
 	    @RequestMapping("/admappt")
 	    public ModelAndView filterappointment(@RequestParam String docdropdown,@RequestParam String patientid, @RequestParam String val_date_picker ) throws Exception 
@@ -95,7 +99,7 @@ public class SiteAppController {
 	
 		}
 	    
-	    @RequestMapping("/BookAppointment")
+	    @RequestMapping("/BookAppointmentAdmin")
 	    public ModelAndView addappt( ) {
 			ModelAndView mv = null;
 			System.out.println("First time add");
@@ -176,5 +180,25 @@ public class SiteAppController {
 				
 	   			}
 	    
-	    
+	@RequestMapping("/BookAppointment")
+	public ModelAndView bookAppointment ()
+	{
+		System.out.println("Inside Book Appointment");
+		SiteAppService service = new SiteAppService();
+		String button_value ;
+		ModelAndView mv = null;
+		return mv;
+	}
+	
+	@RequestMapping("/AccountDetails")
+	public ModelAndView accountDetails ()
+	{
+		System.out.println("Inside Account Details");
+		SiteAppService service = new SiteAppService();
+		String button_value ;
+		ModelAndView mv = null;
+		return mv;
+	}
+	
+
 }

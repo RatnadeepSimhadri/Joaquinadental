@@ -33,7 +33,7 @@ public class NotificationDAO {
 			while(rs.next()){
 				
 				String notificationText  = rs.getString(1);
-
+				System.out.println("notifcation string"+notificationText);
 				list.add(notificationText);
 				
 			

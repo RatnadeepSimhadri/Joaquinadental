@@ -264,7 +264,7 @@
 <input type="hidden" id="h_appt_date" name="h_appt_date" >
 <input type="hidden" id="h_appt_hrs" name="h_appt_hrs" >
 <input type="hidden" id="h_appt_mins" name="h_appt_mins" >
-       <button type="submit" name="addbutton" id="addbutton" class="btn btn-info" formmethod="post" formaction="/siteapp/BookAppointment">Add Appointment</button>
+       <button type="submit" name="addbutton" id="addbutton" class="btn btn-info" formmethod="post" formaction="/siteapp/BookAppointmentAdmin">Add Appointment</button>
        <button type="submit" name="editbutton" id="editbutton" class="btn btn-warning"  formmethod="post" formaction="/siteapp/EditAppointment">EditAppointment</button> 
        <!-- <button id="cancelbutton" class="btn btn-danger">Cancel Appointment</button> -->
        <!-- <div id="dialog" title="Confirmation Required">
