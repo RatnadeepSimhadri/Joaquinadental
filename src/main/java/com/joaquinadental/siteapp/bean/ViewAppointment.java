@@ -10,6 +10,8 @@ public class ViewAppointment {
 	private String dentistFirstName;
 	private String dentistLastName;
 	private Date appointment_Date;
+	//added by sairam
+	private int appointment_id;
 	public String getPatientFirstName() {
 		return patientFirstName;
 	}
@@ -49,6 +51,12 @@ public class ViewAppointment {
 	}
 	public void setAppointmentDate(Date appointment_Date) {
 		this.appointment_Date = appointment_Date;
+	}
+	public int getAppointment_id() {
+		return appointment_id;
+	}
+	public void setAppointment_id(int appointment_id) {
+		this.appointment_id = appointment_id;
 	}
 	
 }
