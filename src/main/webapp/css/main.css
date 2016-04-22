@@ -112,15 +112,17 @@ h4{
 	color: rgba(53, 144, 180, 0.64);
     font-family: Tahoma, "Times New Roman", sans-serif;
 }
+
+
 .popup button:hover{
 	background-color: #06D85F;
 }
-@media screen{
+@media screen and (max-width: 700px){
   .box{
-    width: 100%;
+    width: 80%;
   }
   .popup{
-    width: 100%;
+    width: 80%;
   }
   
   

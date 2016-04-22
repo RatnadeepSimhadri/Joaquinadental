@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,12 +38,15 @@
     				<input placeholder="Password" name="password" type="password" class="form-control" id="pwd">
   				</div>
   					<button type="submit" class="btn btn-default">Submit</button>
+  					<h5>Not registered? <a href="siteapp/createAccount" style="color:#33B749">Create an account</a></h5>
 			</form>
 		</div>
 	</div>
 </div>
 </div>
-<div class="container main-content" >
+<div align="center" class="container main-content" >
+
+<img align="middle" alt="Website Under Construction" src="images/UnderConstruction.jpg">
 </div>
 <div class="container footer-image" >
 </div>
