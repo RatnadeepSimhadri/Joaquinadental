@@ -31,7 +31,7 @@ function openLoginDetails(){
 	
 	document.getElementById("cdlink").parentNode.classList.remove("active");
 	
-
+	
 	
 	return true;
 	
@@ -43,7 +43,7 @@ function openPersonalDetails(){
 	
 	document.getElementById("cdlink").parentNode.classList.remove("active");
 	
-	
+
 	
 	return true;
 	
@@ -54,7 +54,7 @@ $(function() {
   });
 </script>
 </head>
-<body onload="openPersonalDetails()">
+<body onload="openContactDetails()">
 <div class="container banner-image" >
 <button id="navbutton" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jdNavBar">
         <span class="icon-bar"></span>
@@ -105,50 +105,39 @@ $(function() {
 
 		<div class="row">
   				
-  				<div class="form-group col-sm-3">
-    				<input required="required" placeholder="First Name*" value="${patient.firstName}" name="firstName" type="text" class="form-control" id="firstName">
+  				<div class="form-group col-sm-6">
+    				<input required="required" placeholder="Street *" value="${patient.street}" name="street" type="text" class="form-control" id="street">
 				</div>
   				<div class="form-group col-sm-3">
-    				<input required="required" placeholder="Family Name*" value="${patient.lastName}" name="lastName" type="text" class="form-control" id="lastName">
+    				<input required="required" placeholder="City *" value="${patient.city}" name="city" type="text" class="form-control" id="city">
 				</div>
   				<div class="form-group col-sm-3">
-  				<input placeholder="Middle Name" value="${patient.middleName}" name="middleName" type="text" class="form-control" id="middleName">
+  				<input required="required" placeholder="State *" value="${patient.state}" name="state" type="text" class="form-control" id="state">
   				</div>
   			
 			</div>
 			
 			<div class="row">
-			<div class="form-group col-sm-3">
-    				<input required="required" placeholder="Date of Birth *" value="${patient.dob}" name="dob" type="text" class="form-control" id="dob">
+			<div class="form-group col-sm-4">
+    				<input required="required" placeholder="Zip Code *" value="${patient.zip}" name="zip" type="text" class="form-control" id="zip">
+			</div>
+			<div class="form-group col-sm-4">
+    				<input required="required" placeholder="Primary Phone *" value="${patient.phonePrimary}" name="phonePrimary" type="text" class="form-control" id="phonePrimary">
+			</div>
+			<div class="form-group col-sm-4">
+    				<input  placeholder="Secondary Phone" value="${patient.phoneSecondary}" name=phoneSecondary type="text" class="form-control" id="phoneSecondary">
 			</div>
 			
-  			
-			<div class="form-group col-sm-3">
-  				<select id="minor" name="minor" required="required" class="form-control" >
-  				<option value="na">Are you a Major? </option>
-    			<option value="0">Yes</option>
-    			<option value="1">No</option>
-    			</select>
-  			</div>
-  			
-			<div class="form-group col-sm-3">
-    				<input required="required" placeholder="SSN*" value="${patient.ssn}" name="ssn" type="text" class="form-control" id="ssn">
 			</div>
-			</div>
+			
+			
 			
 			<div class="row">
 				<div class="form-group col-sm-6">
-    				<input placeholder="Alergies" value="${patient.alergies}" name="alergies" type="text" class="form-control" id="alergies">
-			</div>
-			<div class="form-group col-sm-6">
-    				<input  placeholder="Head of Household" value="${patient.headOfHouse}" name="headOfHouse" type="text" class="form-control" id="headOfHouse">
-			</div>
-
-		   </div>
-			
-			<div class="row">
-				<div class="form-group col-sm-12">
-				<button type="button"  onclick=getContactForm() class="btn btn-info">Continue</button>
+				<button type="submit"  formaction="createAccount" class="btn btn-info">Back</button>
+				</div>
+				<div class="form-group col-sm-6">
+				<button type="submit" formaction="getLoginForm" class="btn btn-info">Continue</button>
 				</div>
 		   </div>
 				
@@ -159,20 +148,22 @@ $(function() {
 </div>
 </div>
 </div>
-<script type="text/javascript">
-function getContactForm(){
-	if(document.getElementById("minor").value=="na"){
-		alert("Please choose if you are a major");
-		return;
-	}
-	var form = document.getElementById("personalForm");
-	form.submit();
-}
-
-</script>
 </div>
 <div class="container footer-image" >
 </div>
 </body>
+<script>
+function getPersonalDetails(){
+	var form = document.getElementById("personalForm");
+	form.action="createAccount";
+	form.submit();
+}
 
+function getLoginDetails(){
+	var form = document.getElementById("personalForm");
+	form.action="getLoginForm";
+	form.submit();
+	
+}
+</script>
 </html>

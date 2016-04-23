@@ -89,87 +89,28 @@ $(function() {
  </c:if>
  </div>
  <div class="col-sm-8">
- <div class="row" style="margin-left: 0px;">
- <div class="row">
- <ul class="nav nav-pills">
+ Your Account has been created <a id="loginLink" href="#popup">Click Here</a> to login.
  
-  <li class="col-xs-3" ><a id="pdlink"  onClick="openPersonalDetails()" >Personal Details</a></li>
-  <li class="col-xs-3" ><a id="cdlink"  onclick="openContactDetails()" >Contact Details</a></li>
-  <li class="col-xs-3" ><a id="lilink"  onclick="openLoginDetails()" >Login Information</a></li>
-
-</ul>
-  </div>
-<br>
-<div >
-<form:form id="personalForm" class="form-horizontal" action="getContactForm" method="post">
-
-		<div class="row">
-  				
-  				<div class="form-group col-sm-3">
-    				<input required="required" placeholder="First Name*" value="${patient.firstName}" name="firstName" type="text" class="form-control" id="firstName">
-				</div>
-  				<div class="form-group col-sm-3">
-    				<input required="required" placeholder="Family Name*" value="${patient.lastName}" name="lastName" type="text" class="form-control" id="lastName">
-				</div>
-  				<div class="form-group col-sm-3">
-  				<input placeholder="Middle Name" value="${patient.middleName}" name="middleName" type="text" class="form-control" id="middleName">
+ <div id="popup" class="overlay">
+	<div class="popup">
+		<h3>Login</h3>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			<form role="form" action="Login" method="post">
+  				<div class="form-group">
+    				  <input placeholder="Email" name="email" type="email" class="form-control" id="email">
   				</div>
-  			
-			</div>
-			
-			<div class="row">
-			<div class="form-group col-sm-3">
-    				<input required="required" placeholder="Date of Birth *" value="${patient.dob}" name="dob" type="text" class="form-control" id="dob">
-			</div>
-			
-  			
-			<div class="form-group col-sm-3">
-  				<select id="minor" name="minor" required="required" class="form-control" >
-  				<option value="na">Are you a Major? </option>
-    			<option value="0">Yes</option>
-    			<option value="1">No</option>
-    			</select>
-  			</div>
-  			
-			<div class="form-group col-sm-3">
-    				<input required="required" placeholder="SSN*" value="${patient.ssn}" name="ssn" type="text" class="form-control" id="ssn">
-			</div>
-			</div>
-			
-			<div class="row">
-				<div class="form-group col-sm-6">
-    				<input placeholder="Alergies" value="${patient.alergies}" name="alergies" type="text" class="form-control" id="alergies">
-			</div>
-			<div class="form-group col-sm-6">
-    				<input  placeholder="Head of Household" value="${patient.headOfHouse}" name="headOfHouse" type="text" class="form-control" id="headOfHouse">
-			</div>
-
-		   </div>
-			
-			<div class="row">
-				<div class="form-group col-sm-12">
-				<button type="button"  onclick=getContactForm() class="btn btn-info">Continue</button>
-				</div>
-		   </div>
-				
-</form:form>
-</div>
-	
-
+  				<div class="form-group">
+    				<input placeholder="Password" name="password" type="password" class="form-control" id="pwd">
+  				</div>
+  					<button type="submit" class="btn btn-default">Submit</button>
+  				<h4>Not registered? <a href="siteapp/createAccount">Create an account</a></h4>
+			</form>
+		</div>
+	</div>
 </div>
 </div>
 </div>
-<script type="text/javascript">
-function getContactForm(){
-	if(document.getElementById("minor").value=="na"){
-		alert("Please choose if you are a major");
-		return;
-	}
-	var form = document.getElementById("personalForm");
-	form.submit();
-}
-
-</script>
 </div>
 <div class="container footer-image" >
 </div>

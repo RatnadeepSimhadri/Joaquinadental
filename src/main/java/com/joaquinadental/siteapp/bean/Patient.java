@@ -16,10 +16,12 @@ public class Patient {
 	private String phoneSecondary;
 	private String ssn;
 	private Date dob;
-	private boolean minor;
+	private String alergies;
+	private String minor;
 	private String headOfHouse;
 	private String email;
 	private String password;
+	private String gender;
 	
 	public int getPatientID() {
 		return patientID;
@@ -99,12 +101,7 @@ public class Patient {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	public boolean isMinor() {
-		return minor;
-	}
-	public void setMinor(boolean minor) {
-		this.minor = minor;
-	}
+	
 	public String getHeadOfHouse() {
 		return headOfHouse;
 	}
@@ -122,6 +119,24 @@ public class Patient {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getAlergies() {
+		return alergies;
+	}
+	public void setAlergies(String alergies) {
+		this.alergies = alergies;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getMinor() {
+		return minor;
+	}
+	public void setMinor(String minor) {
+		this.minor = minor;
 	}
 	
 }
