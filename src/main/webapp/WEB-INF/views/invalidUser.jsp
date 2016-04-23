@@ -32,7 +32,10 @@
 		<h3>Login</h3>
 		<a class="close" href="#">&times;</a>
 		<c:if test="${not empty error}">
-		<h5 class="alert alert-danger fade in">Invalid Login Credentials</h5>
+		<h5 class="alert alert-danger fade in"><c:out value="${error}"></c:out></h5>
+		</c:if>
+		<c:if test="${not empty message}">
+		<h5 class="alert alert-danger fade in"><c:out value="${message}"></c:out></h5>
 		</c:if>
 		<div class="content">
 			<form role="form" action="Login" method="post">
