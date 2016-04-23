@@ -9,7 +9,7 @@ public class EditAppointment {
 	private String dentistName;
 	private String appointment_Date;
 	private String hours;
-	private String mins;
+	
 	
 	
 	public String getPatientName() {
@@ -43,13 +43,7 @@ public class EditAppointment {
 	public void setHours(String hours) {
 		this.hours = hours;
 	}
-	public String getMins() {
-		return mins;
-	}
-	public void setMins(String mins) {
-		this.mins = mins;
-	}
-	
+
 }
 	
 	

@@ -30,8 +30,8 @@
 </div>
 <div class="container main-content" >
 <div class="row">
-    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
-    <div class="col-sm-8"><h4>Scheduled Appointments</h4></div>
+    <div class="col-sm-4 hidden-xs"><h4 align="center">Notifications</h4></div>
+    <div class="col-sm-8"><h4 align="center">Scheduled Appointments</h4></div>
  </div>
  <!-- Main content Div -->
  <div class="row">

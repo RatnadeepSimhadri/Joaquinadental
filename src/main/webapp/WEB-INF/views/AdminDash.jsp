@@ -89,15 +89,20 @@
           $('#editbutton').click(function () {
           		
         	   
-        	  var hrs=(getSelectedRow().appointment_time).substring(0,2);
-        	  var mins=(getSelectedRow().appointment_time).substring(3,5);
+        	  var shrs=(getSelectedRow().appointment_time).substring(0,2);
+        	  var ihrs= parseInt(shrs);
+        	  if(ihrs <6){
+        		  ihrs=ihrs+12;
+        		       	  }
+        	  var hrs= ihrs.toString();
+        	  
         	  
         	   $("#h_appt_id").val(getSelectedRow().appointment_id);
         	   $("#h_pat_name").val(getSelectedRow().patientName);
         	   $("#h_doc_name").val(getSelectedRow().dentistName);
         	   $("#h_appt_date").val(getSelectedRow().appointment_Date);
         	   $("#h_appt_hrs").val(hrs);
-        	   $("#h_appt_mins").val(mins);
+        	  
         	   
           });
          
@@ -106,6 +111,7 @@
         	   modal: true,
         	   buttons : {
         	        "Confirm" : function() {
+        	        	$("#h_appt_id").val(getSelectedRow().appointment_id);
         	        	document.getElementById("crud").submit();
         	        },
         	        "Cancel" : function() {
@@ -214,7 +220,10 @@
  <div class="col-sm-8">
 <form name="admappt" action="/siteapp/admappt" method="post">
 <div class="form-group" style="margin-top:2%">
-    
+   <div>
+   ${statusmsg} 
+   </div>
+   <br>
    
   <input type="text" name="patientid" id="patientid" placeholder="Enter Patient ID" style="float:left;height:34px" >
     
@@ -256,21 +265,20 @@
   
   <br>
   <br>
-<form name="crud" action="/siteapp/CancelAppointment">
+<form id="crud" action="/siteapp/CancelAppointment" method="post">
 
 <input type="hidden" id="h_appt_id" name="h_appt_id">
 <input type="hidden" id="h_pat_name" name="h_pat_name" >
 <input type="hidden" id="h_doc_name" name="h_doc_name" >
 <input type="hidden" id="h_appt_date" name="h_appt_date" >
 <input type="hidden" id="h_appt_hrs" name="h_appt_hrs" >
-<input type="hidden" id="h_appt_mins" name="h_appt_mins" >
+
        <button type="submit" name="addbutton" id="addbutton" class="btn btn-info" formmethod="post" formaction="/siteapp/BookAppointmentAdmin">Add Appointment</button>
        <button type="submit" name="editbutton" id="editbutton" class="btn btn-warning"  formmethod="post" formaction="/siteapp/EditAppointment">EditAppointment</button> 
-       <!-- <button id="cancelbutton" class="btn btn-danger">Cancel Appointment</button> -->
-       <!-- <div id="dialog" title="Confirmation Required">
+       <button id="cancelbutton" class="btn btn-danger">Cancel Appointment</button>
+       <div id="dialog" title="Confirmation Required">
   			<span>Are you sure about this</span>
-		</div> -->​
-           <!-- <button id="checkinbutton" class="btn btn-success">Appointment Check In</button>  -->
+		</div><button id="checkinbutton" class="btn btn-success">Appointment Check In</button>
 </form>
         </div>
 
