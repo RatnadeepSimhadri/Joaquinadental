@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
@@ -18,10 +22,21 @@
 .form-group {
                 width:80%;
             }
-          
+
+        
             
 </style>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
+
+ <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Joaquina Dental </title>
 </head>
 <body>
@@ -60,17 +75,36 @@
 </div>
 <div class="container main-content" >
 
+<div class="row">
+    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
+    <div class="col-sm-8"><h4>Book Appointment</h4></div>
+ </div>
+ 
+ <div class="row">
+ <div class="col-sm-4 hidden-xs"  style= "font-family: Tahoma, 'Times New Roman', sans-serif;">
+ <c:if test="${not empty notifications }">
+ <c:forEach var="notification" items="${notifications}">
+ <div style="margin-left: 0px;" class="row">
+${notification} 
+ </div>
+ <br>
+ </c:forEach>
+ </c:if>
+ </div>
+ 
+ 
+  <div class="col-sm-8">
 <div class="Appointment form">
-  <h2>Book Appointment</h2>
+ 
   <form name="bookappt" action="/siteapp/bookappt" method="post" role="form">
     <div class="form-group">
-      <input type="text" name="patientid" class="form-control" id="patid" placeholder="Patient ID">
+      <input type="text" name="patientid" class="form-control" id="patid" placeholder="Patient ID" required>
     </div>
     <div class="form-group">
-      <input type="text" name="patfirst_name" class="form-control" id="patfname" placeholder="Patient First Name">
+      <input type="text" name="patfirst_name" class="form-control" id="patfname" placeholder="Patient First Name" required>
     </div>
     <div class="form-group">
-      <input type="text" name="patlast_name" class="form-control" id="patlname" placeholder="Patient Last Name">
+      <input type="text" name="patlast_name" class="form-control" id="patlname" placeholder="Patient Last Name" required>
     </div>
     <div class="form-group">
         <select name="doctor_name" class="form-control" id="docname" >
@@ -83,41 +117,42 @@
         </select>
     </div>
     <div class="form-group">
-         <div class="input-group input-append date" id="dateRangePicker"  style="width:40%">
-                <input type="text" class="form-control" name="appoint_date" >
+         <div class="input-group input-append date" id="dateRangePicker"  style="width:80%">
+                <input type="text" class="form-control" placeholder="Appointment Date" name="appoint_date" required>
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
-        <div class="form-group" style="width:40%;float:left">
+        <div class="form-group" style="width:80%;float:left">
         <select name="hours" class="form-control" id="hours" >
-        <option value="" disabled selected>Hours</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
-        <option>13</option>
-        <option>14</option>
-        <option>15</option>
-        <option>16</option>
-        <option>17</option>
+        <option value="" disabled selected>Appointment Time</option>
+        <option>08:00</option>
+        <option>09:00</option>
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
                </select>
-        <select name="mins" class="form-control" id="mins" >
-        <option value="" disabled selected>Minutes</option>
-        <option>00</option>
-        <option>15</option>
-        <option>30</option>
-        <option>45</option>
-               </select>
+       
     </div>
     
     <div class="form-group">
         <div class="col-xs-5 col-xs-offset-3" style="margin-left:10%">
-            <button type="submit" class="btn btn-info">Submit</button>
+           <button class="btn btn-info" onclick="goBack()">Go Back</button>
+
+
+            <button type="submit" class="btn btn-info" style="margin-left:35%">Submit</button>
         </div>
         <label>${statusmsg}</label>
     </div>
   </form>
 </div>
 
+</div>
+</div>
 
 </div>
 <div class="container footer-image" >

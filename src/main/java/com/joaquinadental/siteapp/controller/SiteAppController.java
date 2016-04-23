@@ -4,7 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.catalina.connector.Request;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,7 +60,14 @@ public class SiteAppController {
 		}
 		else 
 		{
+			String AdminAppt = SiteAppService.admindashappointment();
+			List<String> notifications = NotificationService.getGeneralNotifications();
 			mv = new ModelAndView("AdminDash");
+			System.out.println("Hello");
+			mv.addObject("jsondata", AdminAppt);
+			mv.addObject("notifications",notifications);
+			
+				
 		}
 		return mv;
 		
@@ -91,10 +101,11 @@ public class SiteAppController {
 				ModelAndView mv = null;
 				System.out.println("In Admin Dash through admappt");
 				String AdminAppt = SiteAppService.searchappointment(patientid,docdropdown,val_date_picker);
-			
+				List<String> notifications = NotificationService.getGeneralNotifications();
 				mv = new ModelAndView("AdminDash");
 				System.out.println("Going to call admin dash with new json");
 				mv.addObject("jsondata", AdminAppt);
+				mv.addObject("notifications",notifications);
 				return mv;
 	
 		}
@@ -104,64 +115,83 @@ public class SiteAppController {
 			ModelAndView mv = null;
 			System.out.println("First time add");
 			String status="";
+			List<String> notifications = NotificationService.getGeneralNotifications();
 			mv = new ModelAndView("BookAppointment");
 			System.out.println("Ready for add for first time");
 			mv.addObject("statusmsg", status);
+			mv.addObject("notifications",notifications);
 				return mv;
 			
 		}
 	    @RequestMapping("/bookappt")
-	    public ModelAndView filterappointment(@RequestParam String patientid,@RequestParam String patfirst_name, @RequestParam String patlast_name , @RequestParam String doctor_name, @RequestParam String appoint_date,@RequestParam String hours,@RequestParam String mins ) throws Exception 
+	    public ModelAndView filterappointment(@RequestParam String patientid,@RequestParam String patfirst_name, @RequestParam String patlast_name , @RequestParam String doctor_name, @RequestParam String appoint_date,@RequestParam String hours) throws Exception 
 	   			{
 				ModelAndView mv = null;
 				System.out.println("In bookappt add");
-				String status = SiteAppService.addappointment(patientid,patfirst_name,patlast_name, doctor_name, appoint_date, hours,mins);
+				String status = SiteAppService.addappointment(patientid,patfirst_name,patlast_name, doctor_name, appoint_date, hours);
+				List<String> notifications = NotificationService.getGeneralNotifications();
 				mv = new ModelAndView("BookAppointment");
 				System.out.println("Going to display message in add appointment");
 				System.out.println(status);
 				mv.addObject("statusmsg", status);
+				mv.addObject("notifications",notifications);
 				return mv;
 	
 		}
 	 
 	    @RequestMapping("/EditAppointment")
-		   public ModelAndView editappt(@RequestParam String h_appt_id,@RequestParam String h_pat_name, @RequestParam String h_doc_name , @RequestParam String h_appt_date, @RequestParam String h_appt_hrs,@RequestParam String h_appt_mins)
+		   public ModelAndView editappt(@RequestParam String h_appt_id,@RequestParam String h_pat_name, @RequestParam String h_doc_name , @RequestParam String h_appt_date, @RequestParam String h_appt_hrs)
 		   {
 			ModelAndView mv = null;
 				System.out.println("First time edit");
-				EditAppointment ea=SiteAppService.editappointment(h_appt_id,h_pat_name, h_doc_name , h_appt_date, h_appt_hrs,h_appt_mins);
+				EditAppointment ea=SiteAppService.editappointment(h_appt_id,h_pat_name, h_doc_name , h_appt_date, h_appt_hrs);
+				List<String> notifications = NotificationService.getGeneralNotifications();
 				mv = new ModelAndView("EditAppointment");
-			System.out.println("Ready for edit for first time");
+				System.out.println("Ready for edit for first time");
 				System.out.println(h_doc_name);
 				mv.addObject("Editlist",ea );
+				mv.addObject("notifications",notifications);
 					return mv;
 				
 			}
 	    
 	    @RequestMapping("/updappt")
-	    public ModelAndView updateappointment(@RequestParam String appt_id, @RequestParam String patientname,@RequestParam String doctor_name, @RequestParam String appoint_date,@RequestParam String hours,@RequestParam String mins ) throws Exception 
+	    public ModelAndView update(HttpServletRequest request)
 	   			{
 				ModelAndView mv = null;
+				//String name = (String)request.getAttribute("doctor_name");
+				String doctor_name= request.getParameter("doctor_name");
+				String appoint_date= request.getParameter("appoint_date");
+				String hours=request.getParameter("hours");
+				String appt_id=request.getParameter("appt_id");
+				
 				System.out.println("In upd appt ");
-				String status = SiteAppService.updappointment(appt_id, doctor_name, appoint_date, hours,mins);
+				String status = SiteAppService.updappointment(appt_id, doctor_name, appoint_date, hours);
+				List<String> notifications = NotificationService.getGeneralNotifications();
 				mv = new ModelAndView("EditAppointment");
 				System.out.println("Going to display message in edit appointment");
 				System.out.println(status);
 				mv.addObject("statusmsg", status);
+				mv.addObject("notifications",notifications);
 				return mv;
 	
 		}
 	 
 	    @RequestMapping("/CancelAppointment")
-	    public ModelAndView cancelappointment(@RequestParam String h_appt_id) throws Exception 
+	    public ModelAndView cancelappointment(HttpServletRequest request) throws Exception 
 	   			{
 				ModelAndView mv = null;
 				System.out.println("In delete appt ");
+				String h_appt_id= request.getParameter("h_appt_id");
+				System.out.println(h_appt_id);
 				String status = SiteAppDAO.cancelappointment(h_appt_id);
+				String AdminAppt = SiteAppService.admindashappointment();
+				List<String> notifications = NotificationService.getGeneralNotifications();
 				mv = new ModelAndView("AdminDash");
-				System.out.println("Going to display message in cancel appointment");
-				System.out.println(status);
-				mv.addObject("statusmsg", status);
+				System.out.println("Cancelled Hello");
+				mv.addObject("jsondata", AdminAppt);
+				mv.addObject("notifications",notifications);
+				mv.addObject("statusmsg",status);
 				return mv;
 				
 	   			}

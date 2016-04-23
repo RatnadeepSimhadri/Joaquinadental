@@ -13,6 +13,8 @@ import com.joaquinadental.siteapp.bean.EditAppointment;
 
 public class SiteAppService {
 	
+	private static final String NULL = null;
+
 	public static List<String> viewAppointments() {
 		List<ViewAppointment> list = SiteAppDAO.viewAppointments();
 		return formatAppointmentDetails(list);
@@ -159,7 +161,8 @@ public class SiteAppService {
 
 	public static String addappointment(String patientid, String patfirst_name,
 			String patlast_name, String doctor_name, String appoint_date,
-			String hours, String mins) throws Exception{
+			String hours) throws Exception{
+		
 		String firstname="";
 		String lastname="";
 		if(doctor_name!="")
@@ -171,7 +174,8 @@ public class SiteAppService {
 		else{
 			return " Hey there , please mention the dentist name";
 		}
-		String appoint_time= hours + ":" + mins + ":" + "00";
+		
+		String appoint_time= hours + ":" + "00" + ":" + "00";
 		SimpleDateFormat fromUser = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         String reformattedStr="";
@@ -194,7 +198,7 @@ public class SiteAppService {
 
 	public static EditAppointment editappointment(String h_appt_id,
 			String h_pat_name, String h_doc_name, String h_appt_date,
-			String h_appt_hrs, String h_appt_mins) {
+			String h_appt_hrs) {
 		
 		EditAppointment list = new EditAppointment();
 		list.setAppointment_id(h_appt_id);
@@ -202,28 +206,16 @@ public class SiteAppService {
 		list.setDentistName(h_doc_name);
 		
 		list.setAppointment_Date(h_appt_date);
+		h_appt_hrs= h_appt_hrs+ ":" + "00" + ":" + "00";
 		list.setHours(h_appt_hrs);
-		list.setMins(h_appt_mins);
 		return list;
 		
 	}
 
 	public static String updappointment(String appt_id, String doctor_name,
-			String appoint_date, String hours, String mins) {
+			String appoint_date, String hours) {
 
 
-		String firstname="";
-		String lastname="";
-		if(doctor_name!="")
-		{
-		String[] docnames = doctor_name.split(" ");
-		firstname=docnames[0];
-		lastname=docnames[1];
-		}	
-		else{
-			return " Hey there , please mention the dentist name";
-		}
-		String appoint_time= hours + ":" + mins + ":" + "00";
 		SimpleDateFormat fromUser = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         String reformattedStr="";
@@ -233,11 +225,11 @@ public class SiteAppService {
         
         reformattedStr = myFormat.format(fromUser.parse(appoint_date));
         
-		String status = SiteAppDAO.updappointment(appt_id,firstname,lastname, reformattedStr, appoint_time);
+		String status = SiteAppDAO.updappointment(appt_id,doctor_name, reformattedStr, hours);
 		System.out.println(status);
 		return status;
         }catch(Exception e){
-        	String status = SiteAppDAO.updappointment(appt_id,firstname,lastname, reformattedStr, appoint_time);
+        	String status = SiteAppDAO.updappointment(appt_id,doctor_name, reformattedStr, hours);
         	System.out.println(status);
         	return status;
         }

@@ -26,6 +26,7 @@ public class SiteAppDAO {
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
 	//private static final String "" = null;
+	private static final String NULL = null;
 
 	public static List<ViewAppointment> viewAppointments() {
 
@@ -441,27 +442,67 @@ public class SiteAppDAO {
 	}
 
 
-	public static String updappointment(String appt_id, String firstname,
-			String lastname, String reformattedStr, String appoint_time) {
+	public static String updappointment(String appt_id, String doctor_name,
+			 String reformattedStr,String hours) {
 		
 		
+		
+		String sql;
 		String status=" <B> Appointment Changed - We're looking forward to serving you </B>";
 		Connection conn = null;
 		Statement stmt = null;
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
-			String dentist_id="";
-			String sql="select dentist_id from dentist where Dentist_First_Name='" +firstname+ "' and Dentist_Last_Name='" + lastname+"'";
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-				System.out.println("get dentist id");
-				dentist_id  = rs.getString(1);
+			if(doctor_name!=NULL)
+			{
+				String firstname="";
+				String lastname="";
+				String[] docnames = doctor_name.split(" ");
+				firstname=docnames[0];
+				lastname=docnames[1];
+				String dentist_id="";
+				sql="select dentist_id from dentist where Dentist_First_Name='"+firstname+"' and Dentist_Last_Name='"+lastname+"'";
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					System.out.println("get dentist id");
+					dentist_id  = rs.getString(1);
+				}
+				rs.close();
+				System.out.println(dentist_id);
+				if(hours==NULL)
+				{
+					System.out.println("t1");
+					sql = "UPDATE Appointment SET dentist_id="+dentist_id+",appointment_date='"+reformattedStr+"' where appointment_id="+appt_id;
+				}
+				else
+				{
+					System.out.println("t2");
+					String appoint_time= hours + ":" + "00" + ":" + "00";
+					sql = "UPDATE Appointment SET dentist_id="+dentist_id+", appointment_date='"+reformattedStr+"', appointment_time='"+appoint_time+"' where appointment_id="+appt_id;
+				}
 			}
+			else
+			{
+				if(hours==NULL)
+				{
+					System.out.println("test3");
+					sql = "UPDATE Appointment SET appointment_date='"+reformattedStr+"' where appointment_id="+appt_id;
+				}
+				else
+				{
+					System.out.println("test 4");
+					String appoint_time= hours + ":" + "00" + ":" + "00";
+					System.out.println(appt_id);
+					System.out.println(appoint_time);
+					System.out.println(reformattedStr);
+					sql = "UPDATE Appointment SET appointment_date='"+reformattedStr+"', appointment_time='"+appoint_time+"' where appointment_id="+appt_id;
+				}
+			}
+			
 		
-			sql = "UPDATE Appointment SET dentist_id=" + dentist_id + ", appointment_date='" +reformattedStr + "', appointment_time='"+ appoint_time + "' where appointment_id= " + appt_id;
 			stmt.executeUpdate(sql);		
-			rs.close();
+			
 			stmt.close();
 			conn.close();
 		}catch(SQLException se){
@@ -487,19 +528,19 @@ public class SiteAppDAO {
 
 	public static String cancelappointment(String h_appt_id) {
 
-		String status="Appointment Deleted";
+		String status="<B> Appointment Deleted Successfully </B>";
 		Connection conn = null;
 		Statement stmt = null;
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
-			
-			String sql="delete from appointment where appointment_id=" + h_appt_id + "";
-			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("Almost there");
+			System.out.println(h_appt_id);
+			String sql="delete from appointment where appointment_id="+h_appt_id+"";
+			stmt.executeUpdate(sql);
 			
 		
 			
-			rs.close();
 			stmt.close();
 			conn.close();
 		}catch(SQLException se){
