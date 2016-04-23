@@ -4,10 +4,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.catalina.connector.Request;
 import org.springframework.http.HttpRequest;
+
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.connector.Request;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +35,7 @@ public class SiteAppController {
 	
 	@RequestMapping("/Login")
 	public ModelAndView validateLogin(
-			@RequestParam(value = "email") String email,@RequestParam(value = "password") String password) {
+			@RequestParam(value = "email") String email,@RequestParam(value = "password") String password,HttpSession httpSession) {
 		System.out.println("In Controller");
 		try {
 		SiteAppService service = new SiteAppService();
@@ -37,7 +45,7 @@ public class SiteAppController {
 		if(user==null){
 			throw new UnAuthorisedUserException();
 		}
-
+		httpSession.setAttribute("user", user);
 		System.out.println("The user role is "+user.getRole());
 		if (user.getRole().equals("D"))
 		{

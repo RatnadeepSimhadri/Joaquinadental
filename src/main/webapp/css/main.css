@@ -113,6 +113,9 @@ h4{
     font-family: Tahoma, "Times New Roman", sans-serif;
 }
 
+.form-horizontal .form-group {
+	margin-left:0px;
+}
 
 .popup button:hover{
 	background-color: #06D85F;
