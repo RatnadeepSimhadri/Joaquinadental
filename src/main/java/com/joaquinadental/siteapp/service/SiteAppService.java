@@ -6,6 +6,7 @@ import java.text.*;
 import com.google.gson.Gson;
 import com.joaquinadental.siteapp.DAO.SiteAppDAO;
 import com.joaquinadental.siteapp.bean.AdminAppointment;
+import com.joaquinadental.siteapp.bean.PatientVisit;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 import com.joaquinadental.siteapp.bean.EditAppointment;
@@ -40,7 +41,7 @@ public class SiteAppService {
 			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time : "+va.getAppointment_time().toString();
 			formattedAppointments.add(formattedAppointment);
 		}
-		System.out.println("Formatted String" + formattedAppointments.get(0));
+		//System.out.println("Formatted String" + formattedAppointments.get(0));
 		return formattedAppointments;
 	}
 	
@@ -58,7 +59,7 @@ public class SiteAppService {
 		for (Iterator iterator = list.iterator(); iterator
 				.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
-			String formattedAppointment = "<b> Appointment Date: </b>"+va.getAppointmentDate()+" <b> Time</b>"+va.getAppointment_time().toString()+"<br>"+
+			String formattedAppointment = "<b> Appointment Date: </b>"+va.getAppointmentDate()+" <b> Time </b>"+va.getAppointment_time().toString()+"<br>"+
 				     "<b>Doctor </b>"+va.getDentistFirstName()+" "+va.getDentistLastName();
 			formattedAppointments.add(formattedAppointment);
 		}
@@ -241,9 +242,88 @@ public class SiteAppService {
         	System.out.println(status);
         	return status;
         }
+        
+       
+        
+        
+       
 		
 		
 	}
 
 	
+	 // jd method to add patient appointment
+    
+	 public static String addPatientAppointment(String email, String doctor,
+ 			String appointment_date, String hours) throws Exception{
+		 String status = null;
+		 System.out.println("Inside site app service");
+ 		String appoint_time= hours + ":" + "00";
+ 		SimpleDateFormat fromUser = new SimpleDateFormat("MM/dd/yyyy");
+         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+         String reformattedStr="";
+         try{
+         /*Date date = originalFormat.parse("04/17/2016");
+         String formattedDate = targetFormat.format(date);*/
+         
+         reformattedStr = myFormat.format(fromUser.parse(appointment_date));
+     	System.out.println(reformattedStr);
+ 		 status = SiteAppDAO.addAppointmentPatient(email,doctor,reformattedStr,appoint_time);
+ 	return status;
+ 		
+         }catch(Exception e){
+         	status = "false";
+         	System.out.println(status);
+         	
+         }
+         return status;
+ 		
+ 	}
+     
+	// jd method to get Account Details
+	 
+	 public static int getAccountBalance (String email)
+	 { 
+		 int balance =0;
+		balance = SiteAppDAO.getAccountBalance(email);
+		
+		  return balance;
+		 
+	 }
+	 
+	 public static List<String> formatPatientVisitDetails (List<PatientVisit> pv)
+	 {
+		 List<String> visitHistory = new ArrayList<String>();
+		 
+		 
+		 if (pv.isEmpty())
+			{
+				String formattedVisitHistory = "<b> You dont have any visit history</b>";
+				visitHistory.add(formattedVisitHistory);
+			}
+			else 
+			{
+			for (Iterator iterator = pv.iterator(); iterator
+					.hasNext();) {
+				PatientVisit p = (PatientVisit) iterator.next();
+				String formattedVisitHistory = "<b> Visit Date: </b>"+p.getVisitDate()+" <b> Time </b>"+p.getVisitTime().toString()+"<br>"+
+					     "<b>Doctor </b>"+p.getPatientDentist();
+				visitHistory.add(formattedVisitHistory);
+			}
+			//System.out.println("Formatted String" + visitHistory.get(0));
+			}
+		 
+		return visitHistory;
+	 }
+	 
+	 public static List<String> getPatientVisitDetails(String email)
+	 {
+		 List<PatientVisit> list = new ArrayList<PatientVisit>();
+			list = SiteAppDAO.getPatientVisitHistory(email);
+			
+			
+			return formatPatientVisitDetails(list);
+				
+			
+	 }
 }

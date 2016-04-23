@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.joaquinadental.siteapp.bean.AdminAppointment;
+import com.joaquinadental.siteapp.bean.PatientVisit;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 public class SiteAppDAO {
@@ -146,6 +147,7 @@ public class SiteAppDAO {
 			sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and PATIENT_EMAIL = '"+ useremail+"' and Appointment_Date >= curdate();";
 			ResultSet rs = stmt.executeQuery(sql);
 			System.out.println("executed the query");
+			System.out.println("executed the query"+sql);
 			while(rs.next()){
 				System.out.println("inside rs");
 		
@@ -196,6 +198,86 @@ public class SiteAppDAO {
 		}
 		return list;
 	}
+	
+	
+	
+	// view patient appointment booking history jd
+	
+	// JD method to get appointment for a patient 
+		public static List<PatientVisit> getPatientVisitHistory (String email)
+		{
+			Connection conn = null;
+			Statement stmt = null;
+			int visit_id  = 0;
+			Time visit_time = null;
+			Date visit_date = null;
+			String dentist = null ;
+			int patient_id = 0;
+						
+			List<PatientVisit>list = new ArrayList<PatientVisit>();
+			try{
+				conn = DriverManager.getConnection(DB_URL,USER,PASS);
+				stmt = conn.createStatement();
+				String sql = null;
+			//	System.out.println("executing the query");
+				sql = "select visit_id ,Visit_date,visit_time, Concat (dentist_first_name , ' ',dentist_last_Name ) , p.patient_id from visit v , dentist d , patient p where v.dentist_id = d.dentist_id and v.patient_id = p.patient_id and patient_email='"+email+"' order by visit_date desc limit 5";
+				System.out.println("Sql "+sql);
+				
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+			//		System.out.println("inside rs");
+			
+					 visit_id  = rs.getInt(1);
+					visit_date = rs.getDate(2);
+					visit_time = rs.getTime(3);
+					dentist = rs.getString(4);
+					patient_id = rs.getInt(5);
+					PatientVisit pv = new PatientVisit();
+					
+					System.out.println("Visit Values"+visit_id+"--"+visit_date+"--"+visit_time+"--"+dentist+"--"+patient_id+"--");
+					
+					pv.setPatient_id(patient_id);
+					pv.setVisitID(visit_id);
+					pv.setVisitDate(visit_date);
+					pv.setVisit_time(visit_time);
+					pv.setVisitDentist(dentist);
+					
+							
+					
+					list.add(pv);
+					
+				
+				}
+				
+				rs.close();
+				stmt.close();
+				conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(stmt!=null)
+						stmt.close();
+				}catch(SQLException se2){
+				}
+				try{
+					if(conn!=null)
+						conn.close();
+				}catch(SQLException se){
+					se.printStackTrace();
+				}
+			}
+			return list;
+		}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//Sairam's method to get all of today's appointments
@@ -523,7 +605,86 @@ public class SiteAppDAO {
 		
 		
 	}
+	
+	// jd method to add patient appointment 
+	public static String addAppointmentPatient(String email , String doctor , String appointment_date , 
+			String time 			)
+	{
+		String status = null;
+		String dentistID = null;
+		String patientID= null;
+		Connection conn = null;
+		Statement stmt = null;
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			ResultSet rs = null;
+			String sql1 = "select dentist_id from dentist where concat(Dentist_First_name,' ',Dentist_Last_Name)   ='"+ doctor+"'";
+			System.out.println(sql1);
+			String sql2 = "select patient_id from patient where patient_email   ='"+ email+"'";
+			System.out.println(sql2);
+			
+			 rs = stmt.executeQuery(sql1);
+			 rs.next();
+				dentistID = rs.getString(1);
+				System.out.println("dentist id "+dentistID);
+			
+			rs = stmt.executeQuery(sql2);
+			rs.next();
+				patientID= rs.getString(1);
+				System.out.println("patient id "+patientID);
+			
+			String sql3 = "INSERT INTO Appointment(Dentist_ID,Patient_ID,Appointment_Date,Appointment_Time) VALUES ("+dentistID+","+patientID+","+"'"+appointment_date+"','"+time+"')";
+						System.out.print(sql3);
+						
+						int check = stmt.executeUpdate(sql3);		
+						if (check > 0)
+						{
+							status = "true";
+						}
+						else
+						{
+							status="false";
+						}
+						rs.close();
+						stmt.close();
+						conn.close();
+		}
+		catch (SQLException se)
+		{
+			se.printStackTrace();
+			status ="false";
+		}
+		
+		return status;
+	}
 
+	public static int getAccountBalance (String email)
+	{
+		int balance =0;
+		Connection conn = null;
+		Statement stmt = null;
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			ResultSet rs = null;
+			String sql1 = "select account_balance from account join patient on account.account_id = patient.account_id where patient_email='"+email+"'";
+			System.out.println("Sql "+sql1);
+			rs = stmt.executeQuery(sql1);
+			
+			rs.next();
+			balance = rs.getInt(1);
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+			balance = -99;
+			}
+		return balance;
+		}
+		
+	
+	
 	}
 	
 	

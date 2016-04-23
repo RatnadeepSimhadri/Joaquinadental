@@ -122,10 +122,11 @@
 <div class="container main-content" >
 <div class="row">
     <div class="col-sm-4 hidden-xs"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4></div>
-    <div class="col-sm-8"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Upcoming Appointments</h4></div>
+    <div class="col-sm-8"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Account Details</h4></div>
   </div>
-	 <div class="row">
-  <label>${status}</label>
+	 <div class="row ">
+	 <div class="col-sm-4 hidden-xs"></div>
+	 <div class="col-sm-8"><h4 align="center">Your current account balance due is ${balance}$</h4></div>
   </div>
 
   <div class="col-sm-4 hidden-xs" style= "font-family: Tahoma, 'Times New Roman', sans-serif;">
@@ -139,10 +140,11 @@
  </c:if>
  </div>
   <div class="col-sm-8">
-  <c:if test="${not empty lists }">
- <c:forEach var="appointment" items="${lists}">
+  <c:if test="${not empty list }">
+  <label style="color: rgba(74, 145, 223, 0.8);">Your visit history is as follows</label>
+ <c:forEach var="visit" items="${list}">
  <div class="row" style="background-color:#EEE; margin-left: 0px;">
- ${appointment}
+ ${visit}
  </div>
  <br>
  </c:forEach>
@@ -158,13 +160,13 @@
   <div class="col-md-7 col-sm-8 col-xs-18" >
    <div class="row">
    <form role="form" action="siteapp/PatientLanding" id="form1" method="post">
-  <div class="col-md-4 col-md-offset-1 col-sm-3 col-xs-18">
-  <button type="button" id="bookAppointment" class="btn btn-primary btn-lg btn-block" onclick="redirectAppointment()" >Book Appointment</button>
+  <div class="col-md-5 col-sm-3 col-xs-18">
+  <button type="button" id="bookAppointment" class="btn btn-primary btn-lg btn-block" onclick="back()" >Back</button>
   </div>
-  <div class="col-md-2  col-sm-2 col-xs-18">
+  <div class="col-md-2 col-sm-2 col-xs-18">
   &nbsp; </div>
   <div class="col-md-5 col-sm-3 col-xs-18">
-   <button type="button" id="accountDetails" class="btn btn-primary btn-lg btn-block" onclick="redirectAccount()" >Account Details</button>
+   <button type="button" id="MakePayment" class="btn btn-primary btn-lg btn-block disabled" onclick="" >Make Payment</button>
    </div>
    </form>
   </div> 
@@ -172,21 +174,14 @@
  </div>
 </div>
 <script type="text/javascript">
-function redirectAccount()
+function back()
 {
 	
 	var myForm= document.getElementById("form1");
-	myForm.action="AccountDetails" ;
+	myForm.action="PatientLanding" ;
 	myForm.submit();
 	}
 	
-function redirectAppointment()
-{
-	
-	var myForm= document.getElementById("form1");
-	myForm.action="BookAppointment";
-	myForm.submit();
-	}
 </script>	
 </section>
 
