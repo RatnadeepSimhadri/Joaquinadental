@@ -13,6 +13,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.joaquinadental.siteapp.bean.AdminAppointment;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 public class SiteAppDAO {
@@ -24,6 +25,7 @@ public class SiteAppDAO {
 	/* Database Credentials */
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
+	//private static final String "" = null;
 
 	public static List<ViewAppointment> viewAppointments() {
 
@@ -194,6 +196,337 @@ public class SiteAppDAO {
 		}
 		return list;
 	}
+	
+	
+	//Sairam's method to get all of today's appointments
+	
+	public static List<ViewAppointment> todayappointment ()
+	{
+		Connection conn = null;
+		Statement stmt = null;
+		List<ViewAppointment>list = new ArrayList<ViewAppointment>();
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			String sql;
+			System.out.println("executing the today appointment query");
+			sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and Appointment_Date = '2006-01-02'";
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("executed the today appointment query");
+			while(rs.next()){
+				System.out.println("inside today appointment rs");
+		
+				String patient_first_name  = rs.getString(1);
+				String patient_last_name = rs.getString(2);
+				int appointment_id=rs.getInt(3);
+				Time appointment_time = rs.getTime(4);
+				Date appointment_date = rs.getDate(5);
+				String dentist_first_name = rs.getString(6);
+				String dentist_last_name = rs.getString(7);
+				//System.out.println("appointment details "+patient_first_name +" "+patient_last_name
+				//		+" " +appointment_time + " " +dentist_first_name + " "+ dentist_last_name+
+				//		" " + appointment_date);
+				
+				
+				ViewAppointment tapp = new ViewAppointment();
+				tapp.setAppointment_id(appointment_id);
+				tapp.setPatientFirstName(patient_first_name);
+				tapp.setPatientLastName(patient_last_name);
+				tapp.setAppointment_time(appointment_time);
+				tapp.setAppointmentDate(appointment_date);
+				tapp.setDentistFirstName(dentist_first_name);
+				tapp.setDentistLastName(dentist_last_name);
+			
+				
+				list.add(tapp);
+				
+			
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return list;
 	}
+
+
+	public static List<AdminAppointment> updatedappointment(String patientid, String docdropdown, String reformattedStr) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		Statement stmt = null;
+		List<AdminAppointment>list = new ArrayList<AdminAppointment>();
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			String sql;
+			String firstname="";
+			String lastname="";
+			System.out.println(docdropdown);
+			if(docdropdown!="")
+			{
+			String[] docnames = docdropdown.split(" ");
+			firstname=docnames[0];
+			lastname=docnames[1];
+			}	
+			
+			System.out.println("executing the updated appointment query");
+			if(patientid=="")
+			   {
+				 if(docdropdown=="")
+				   {
+					if(reformattedStr=="")
+					{
+						return null;
+					}
+					else
+					{
+						System.out.println("Testing testing testing 3");
+						sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and a.Appointment_Date= '" + reformattedStr + "'";
+				    }
+				   }
+				 else if(reformattedStr=="")
+				   {
+					 System.out.println("Testing testing testing 4");
+					 sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and d.dentist_first_name='" + firstname+ "'" + "and d.dentist_Last_name='" + lastname + "'";
+				   }
+				 else{
+					 System.out.println("Testing testing testing 5");
+					 sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and d.dentist_first_name='" + firstname+ "'" + "and d.dentist_Last_name='" + lastname + "'" + "and a.Appointment_Date= '" + reformattedStr + "'";
+				  }
+			   }
+			else if(docdropdown=="")
+			 {
+				if(reformattedStr=="")
+				 {
+					System.out.println("Testing testing testing 6");
+					sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and p.Patient_ID=" + patientid + "";
+				 }
+				else
+				{
+					System.out.println("Testing testing testing 9");
+					sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and p.Patient_ID=" + patientid + "and a.Appointment_Date= '" + reformattedStr + "'";
+				}
+			   }
+			else
+			{
+				if(reformattedStr=="")
+				{
+					System.out.println("Testing testing testing 7");
+					sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and p.Patient_ID=" + patientid + " and d.dentist_first_name='" + firstname+ "' and d.dentist_Last_name='" + lastname + "'";	
+				}
+				else
+				{
+					System.out.println("Testing testing testing 8");
+					sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and p.Patient_ID=" + patientid + "and d.dentist_first_name='" + firstname+ "'" + "and d.dentist_Last_name='" + lastname + "'" + "and a.Appointment_Date= '" + reformattedStr + "'";
+				}
+			}
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println("executed the updated appointment query");
+			while(rs.next()){
+				System.out.println("inside updated appointment rs");
+		
+				String patient_first_name  = rs.getString(1);
+				String patient_last_name = rs.getString(2);
+				int appointment_id=rs.getInt(3);
+				Time appointment_time = rs.getTime(4);
+				Date appointment_date = rs.getDate(5);
+				String dentist_first_name = rs.getString(6);
+				String dentist_last_name = rs.getString(7);
+				System.out.println("new appointment details "+patient_first_name +" "+patient_last_name
+						+" " +appointment_time + " " +dentist_first_name + " "+ dentist_last_name+
+						" " + appointment_date);
+				
+				
+				AdminAppointment Adapp = new AdminAppointment();
+				String patientName = patient_first_name + " " +patient_last_name;
+				System.out.println("Printing Name");
+				System.out.println(patientName);
+				String dentistName = dentist_first_name + " " +dentist_last_name;
+				Adapp.setAppointment_id(appointment_id);
+				Adapp.setPatientName(patientName);
+				Adapp.setAppointment_time(appointment_time);
+				Adapp.setAppointment_Date(appointment_date);
+				Adapp.setDentistName(dentistName);
+				
+			
+				list.add(Adapp);
+				
+			
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+
+	public static String addappointment(String patientid, String firstname,
+			String lastname, String appoint_date, String appoint_time) {
+		
+		String status=" <B> Appointment Booked - We're looking forward to serving you </B>";
+		Connection conn = null;
+		Statement stmt = null;
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			String dentist_id="";
+			System.out.println(lastname);
+			System.out.println(firstname);
+			String sql="select dentist_id from dentist where Dentist_First_Name='"+firstname+"' and Dentist_Last_Name='"+lastname+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				System.out.println("get dentist id");
+				dentist_id  = rs.getString(1);
+				System.out.println(dentist_id);
+			}
+			sql = "INSERT INTO Appointment(Dentist_ID,Patient_ID,Appointment_Date,Appointment_Time) VALUES ("+dentist_id+","+patientid+","+"'"+appoint_date+"','"+appoint_time+"')";
+			stmt.executeUpdate(sql);		
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return status;
+	}
+
+
+	public static String updappointment(String appt_id, String firstname,
+			String lastname, String reformattedStr, String appoint_time) {
+		
+		
+		String status=" <B> Appointment Changed - We're looking forward to serving you </B>";
+		Connection conn = null;
+		Statement stmt = null;
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			String dentist_id="";
+			String sql="select dentist_id from dentist where Dentist_First_Name='" +firstname+ "' and Dentist_Last_Name='" + lastname+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				System.out.println("get dentist id");
+				dentist_id  = rs.getString(1);
+			}
+		
+			sql = "UPDATE Appointment SET dentist_id=" + dentist_id + ", appointment_date='" +reformattedStr + "', appointment_time='"+ appoint_time + "' where appointment_id= " + appt_id;
+			stmt.executeUpdate(sql);		
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return status;
+	}
+
+
+	public static String cancelappointment(String h_appt_id) {
+
+		String status="Appointment Deleted";
+		Connection conn = null;
+		Statement stmt = null;
+		try{
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			stmt = conn.createStatement();
+			
+			String sql="delete from appointment where appointment_id=" + h_appt_id + "";
+			ResultSet rs = stmt.executeQuery(sql);
+			
+		
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		}catch(SQLException se){
+			se.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}
+		}
+		return status;
+		
+		
+	}
+
+	}
+	
+	
+	
 	
 
