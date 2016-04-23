@@ -124,8 +124,10 @@
     <div class="col-sm-4 hidden-xs"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4></div>
     <div class="col-sm-8"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Upcoming Appointments</h4></div>
   </div>
-	 <div class="row">
-  <label>${status}</label>
+  <div class="row">
+  <div class="col-sm-4 hidden-xs"></div>
+	 <div class="col-sm-8" align="center"><label >${status}</label>
+  </div>
   </div>
 
   <div class="col-sm-4 hidden-xs" style= "font-family: Tahoma, 'Times New Roman', sans-serif;">

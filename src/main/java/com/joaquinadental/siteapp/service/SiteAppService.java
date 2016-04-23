@@ -58,8 +58,7 @@ public class SiteAppService {
 		}
 		else 
 		{
-		for (Iterator iterator = list.iterator(); iterator
-				.hasNext();) {
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
 			String formattedAppointment = "<b> Appointment Date: </b>"+va.getAppointmentDate()+" <b> Time </b>"+va.getAppointment_time().toString()+"<br>"+
 				     "<b>Doctor </b>"+va.getDentistFirstName()+" "+va.getDentistLastName();
@@ -72,7 +71,7 @@ public class SiteAppService {
 	
 	public static List<String> viewPatientComingAppointment(String useremail) {
 		List<ViewAppointment> list = SiteAppDAO.viewPatientComingAppointment(useremail);
-		System.out.println("back to service method");
+		
 		/*System.out.println("Appointment in service method"+list.get(0).getPatientFirstName());
 		System.out.println("Appointment in service method"+list.get(0).getPatientLastName());
 		System.out.println("Appointment in service method"+list.get(0).getAppointment_time());

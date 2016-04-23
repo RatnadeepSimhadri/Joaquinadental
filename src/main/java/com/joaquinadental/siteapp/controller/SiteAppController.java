@@ -288,7 +288,7 @@ public class SiteAppController {
 		User user =  (User) session.getAttribute("user");
 		List<String> list = SiteAppService.viewPatientComingAppointment(user.getEmail());
 		List<String> notifications = NotificationService.getGeneralNotifications();
-		mv.addObject("list",list);
+		mv.addObject("lists",list);
 		mv.addObject("notifications",notifications);
 		mv.setViewName("PatientLanding");
 				return mv;
