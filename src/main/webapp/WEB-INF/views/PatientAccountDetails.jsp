@@ -77,7 +77,10 @@
 	});
 	</script>
 <style>
-
+#mainview()
+{
+padding-top:40%;
+}
 
 
 </style>
@@ -105,7 +108,7 @@
 		</div>
 	</header>
 
-	<section>
+	<section id="mainview">
 
 		<div class="container main-content">
 			<div class="row">

@@ -49,10 +49,10 @@ $(document).ready(function() {
 		
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
+				<li class="active"><a href="DocDash">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="#popup">Logout</a></li>
-				<li><a href="">CONTACT US</a></li>
+				<li><a href="#popup">LOGOUT</a></li>
+				<li><a href="#footer">CONTACT US</a></li>
 				
 			</ul>
 			
@@ -118,7 +118,7 @@ ${notification}
 
 <footer>
 			<div class="row">
-				<div class="col-xs-4 text-justified">
+				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,

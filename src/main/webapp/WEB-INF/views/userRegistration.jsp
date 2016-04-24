@@ -41,6 +41,10 @@
 	border: 1px solid black;
 }
 
+#mainview
+{
+padding-top:40%
+}
 </style>
 <script type="text/javascript">
 function openContactDetails(){
@@ -107,11 +111,11 @@ $(document).ready(function() {
 		
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
+				<li class="active"><a href="index.jsp">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
 				<li><a href="#popup">LOGIN</a></li>
-				<li><a href="">CONTACT US</a></li>
-				<li><a href="homeEsp.html"><i>Español</i></a></li>
+				<li><a href="#footer">CONTACT US</a></li>
+				
 			</ul>
 			
 
@@ -138,7 +142,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</header>
-<section>
+<section id="mainview">
 <div class="container main-content" >
 <div class="row">
     <div class="col-sm-4 hidden-xs"><h4 style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
@@ -268,7 +272,7 @@ function getContactForm(){
 </section>
 <footer>
 			<div class="row">
-				<div class="col-xs-4 text-justified">
+				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
