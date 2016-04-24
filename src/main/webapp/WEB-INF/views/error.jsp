@@ -84,7 +84,7 @@ $(document).ready(function() {
 <div class="container main-content" >
 <div class="row">
     <div class="col-sm-5"><h4 align="center"><img alt="Something Went Wrong" src="../images/oops-header.png"></h4></div>
-    <div class="col-sm-5"><h4 align="center"><iframe width="420" height="315" src="https://www.youtube.com/embed/EDmwojH5uRA"></iframe></h4></div>
+    <div class="col-sm-5"><h4 align="center"><iframe width="400" height="300" src="https://www.youtube.com/embed/EDmwojH5uRA"></iframe></h4></div>
  </div>
  <div class="row">
    
