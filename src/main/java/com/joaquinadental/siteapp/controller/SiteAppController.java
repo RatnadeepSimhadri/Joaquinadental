@@ -1,6 +1,7 @@
 package com.joaquinadental.siteapp.controller;
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +80,10 @@ public class SiteAppController {
 			ModelAndView mv = new ModelAndView("invalidUser");
 			mv.addObject("error","Invalid Login Credentials");
 			return mv;
+		} catch (Exception e){
+			ModelAndView mv = new ModelAndView("error");
+			//mv.addObject("error","Invalid Login Credentials");
+			return mv;
 		}
 	}
 	@RequestMapping("/AdminDash")
@@ -87,13 +92,20 @@ public class SiteAppController {
 		ModelAndView mv = null;
 		System.out.println("In Admin Dash");
 		String AdminAppt = SiteAppService.admindashappointment();
-		List<String> notifications = NotificationService.getGeneralNotifications();
+		List<String> notifications;
+		try {
+			notifications = NotificationService.getGeneralNotifications();
+		 
 		mv = new ModelAndView("AdminDash");
 		System.out.println("Hello");
 		mv.addObject("jsondata", AdminAppt);
 		mv.addObject("notifications",notifications);
 		
 			return mv;
+		}catch (Exception e){
+			mv = new ModelAndView("error");
+			return mv;
+		}
 		
 	}
 
@@ -118,6 +130,7 @@ public class SiteAppController {
 	    public ModelAndView addappt( ) {
 			ModelAndView mv = null;
 			System.out.println("First time add");
+			try{
 			String status="";
 			List<String> notifications = NotificationService.getGeneralNotifications();
 			mv = new ModelAndView("BookAppointment");
@@ -125,6 +138,11 @@ public class SiteAppController {
 			mv.addObject("statusmsg", status);
 			mv.addObject("notifications",notifications);
 				return mv;
+			}
+			catch(Exception e){
+				mv = new ModelAndView("error");
+				return mv;
+			}
 			
 		}
 	    @RequestMapping("/bookappt")
@@ -148,6 +166,7 @@ public class SiteAppController {
 		   {
 			ModelAndView mv = null;
 				System.out.println("First time edit");
+				try{
 				EditAppointment ea=SiteAppService.editappointment(h_appt_id,h_pat_name, h_doc_name , h_appt_date, h_appt_hrs);
 				List<String> notifications = NotificationService.getGeneralNotifications();
 				mv = new ModelAndView("EditAppointment");
@@ -156,6 +175,11 @@ public class SiteAppController {
 				mv.addObject("Editlist",ea );
 				mv.addObject("notifications",notifications);
 					return mv;
+				}
+				catch (Exception e){
+					mv = new ModelAndView("error");
+					return mv;
+				}
 				
 			}
 	    
@@ -168,7 +192,7 @@ public class SiteAppController {
 				String appoint_date= request.getParameter("appoint_date");
 				String hours=request.getParameter("hours");
 				String appt_id=request.getParameter("appt_id");
-				
+			try{	
 				System.out.println("In upd appt ");
 				String status = SiteAppService.updappointment(appt_id, doctor_name, appoint_date, hours);
 				List<String> notifications = NotificationService.getGeneralNotifications();
@@ -178,6 +202,10 @@ public class SiteAppController {
 				mv.addObject("statusmsg", status);
 				mv.addObject("notifications",notifications);
 				return mv;
+			}catch (Exception e){
+				mv = new ModelAndView("error");
+				return mv;
+			}
 	
 		}
 	 
@@ -220,17 +248,26 @@ public class SiteAppController {
 	{
 		System.out.println("Inside Book Appointment");
 		//SiteAppService service = new SiteAppService();
+		ModelAndView mv=null;
+		try{
 		List<String> notifications = NotificationService.getGeneralNotifications();
-		ModelAndView mv = new ModelAndView("BookAppointmentPatient");
+		mv = new ModelAndView("BookAppointmentPatient");
 			mv.addObject("notifications",notifications);
 				return mv;
+		}
+		catch (Exception e){
+			mv = new ModelAndView("error");
+			return mv;
+		}
 	}
 	
 
 	@RequestMapping("/PatientLanding")
 	public ModelAndView patientLanding(HttpSession session)
 	{
-		ModelAndView mv = new ModelAndView ("PatientLanding");
+		ModelAndView mv = null;
+		try{
+		mv=	new ModelAndView ("PatientLanding");
 		User user =  (User) session.getAttribute("user");
 			List<String> list = SiteAppService.viewPatientComingAppointment(user.getEmail());
 		List<String> notifications = NotificationService.getGeneralNotifications();
@@ -238,6 +275,11 @@ public class SiteAppController {
 		mv.addObject("notifications",notifications);
 		
 		return mv;
+		}
+		catch (Exception e){
+			mv = new ModelAndView("error");
+			return mv;
+		}
 	}
 
 	
@@ -278,6 +320,8 @@ public class SiteAppController {
 	@RequestMapping("/AccountDetails")
 	public static ModelAndView getAccountDetails(HttpSession session)
 	{ ModelAndView mv = new ModelAndView();
+	
+	try{
 	User user =  (User) session.getAttribute("user");
 	int balance = SiteAppService.getAccountBalance(user.getEmail());
 	System.out.println("Balance is "+balance);
@@ -291,6 +335,11 @@ public class SiteAppController {
 	mv.setViewName("PatientAccountDetails");
 	
 	return mv;
+	}
+	catch (Exception e){
+		mv = new ModelAndView("error");
+		return mv;
+	}
 		
 	}
 	@RequestMapping("/logout")
@@ -301,6 +350,25 @@ public class SiteAppController {
 			httpSession.invalidate();
 			ModelAndView mv = new ModelAndView("invalidUser");
 			mv.addObject("error","You have been logged out");
+			return mv;
+		} catch (Exception e) {
+			
+			ModelAndView mv = new ModelAndView("invalidUser");
+			mv.addObject("error","Invalid Login Credentials");
+			return mv;
+		}
+	}
+	
+	
+	@RequestMapping("/error")
+	public ModelAndView error(HttpSession httpSession) {
+
+		System.out.println("User logging out");
+		try {
+			if(httpSession!=null){
+			httpSession.invalidate();
+			}
+			ModelAndView mv = new ModelAndView("error");
 			return mv;
 		} catch (Exception e) {
 			
