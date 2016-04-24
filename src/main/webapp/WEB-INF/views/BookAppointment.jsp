@@ -8,7 +8,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!-- Fonts used -->
+
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Crimson+Text" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Fjord+One" />
+
+<!-- End of Fonts used -->
+
+  
+<!-- Jquery Libraries for ticker -->
+  
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>  
+<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
+<script src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+
+<!-- End of Jquery Libraries for ticker -->
+
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
@@ -23,12 +38,44 @@
                 width:80%;
             }
 
+/* Styling for ticker */
+
+.demo1{
+    /* border: 1px solid #ccc; */
+    margin-top: 10px;
+}
+.demo1 div div{
+    padding: 5px;
+   /*  border-bottom: 1px solid #ccc; */
+}
+
+.et-run{
+    background-color: #0cf;
+    color: white;
+    border: 1px solid black;
+}     
         
-            
+        
+        
 </style>
 
 
 <script>
+
+/* Script for ticker */
+
+$(document).ready(function(){
+
+	$('.demo1').easyTicker({
+		interval: 1500,
+	    speed: 'slow',
+		direction: 'up'
+	});
+
+	});
+
+/* Script for Back button */
+
 function goBack() {
     window.history.back();
 }
@@ -76,24 +123,31 @@ function goBack() {
 <div class="container main-content" >
 
 <div class="row">
-    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
-    <div class="col-sm-8"><h4>Book Appointment</h4></div>
+    <div class="col-sm-4 hidden-xs"><h2 style="font-family: 'Fjord One' , sans-serif;color:rgba(53, 144, 180, 0.64)" align="center">Notifications</h4></div>
+    <div class="col-sm-8" style="font-family: 'Fjord One' , sans-serif" align="center"><h2 style="font-family: 'Fjord One' , sans-serif;color:rgba(53, 144, 180, 0.64)">Book Appointment</h4></div>
  </div>
  
  <div class="row">
- <div class="col-sm-4 hidden-xs"  style= "font-family: Tahoma, 'Times New Roman', sans-serif;">
- <c:if test="${not empty notifications }">
- <c:forEach var="notification" items="${notifications}">
- <div style="margin-left: 0px;" class="row">
-${notification} 
- </div>
- <br>
- </c:forEach>
- </c:if>
+ <div class="col-sm-4 hidden-xs"  style= "font-family: 'Crimson text', sans-serif; margin-left: 0px;font-size:1.8em">
+ <div class="demo1">
+    <div>
+        <c:if test="${not empty notifications }">
+ 		<c:forEach var="notification" items="${notifications}">
+ 		<div style= "font-family: 'Crimson text', sans-serif;font-size:0.7em">
+		<p>${notification}<p>
+ 		</div>
+ 		</c:forEach>
+ 		</c:if> 
+ 
+        
+    </div>
+</div>
+ 
+
  </div>
  
  
-  <div class="col-sm-8">
+  <div class="col-sm-8" align="center">
 <div class="Appointment form">
  
   <form name="bookappt" action="/siteapp/bookappt" method="post" role="form">
@@ -122,7 +176,7 @@ ${notification}
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
-        <div class="form-group" style="width:80%;float:left">
+        <div class="form-group" align="center">
         <select name="hours" class="form-control" id="hours" >
         <option value="" disabled selected>Appointment Time</option>
         <option>08:00</option>
@@ -140,11 +194,13 @@ ${notification}
     </div>
     
     <div class="form-group">
-        <div class="col-xs-5 col-xs-offset-3" style="margin-left:10%">
-           <button class="btn btn-info" onclick="goBack()">Go Back</button>
-
-
-            <button type="submit" class="btn btn-info" style="margin-left:35%">Submit</button>
+        <div class="col-xs-18 col-sm-3 col-md-5" >
+           <button type="button" class="btn btn-primary btn-lg btn-block" onclick="goBack()">Go Back</button>
+            </div>
+            <div class="col-xs-18 col-sm-2 col-md-2" >
+            </div>
+            <div class="col-xs-18 col-sm-3 col-md-5" >
+            <button type="submit" class="btn btn-primary btn-lg btn-block" >Submit</button>
         </div>
         <label>${statusmsg}</label>
     </div>
@@ -155,6 +211,8 @@ ${notification}
 </div>
 
 </div>
+<br>
+
 <div class="container footer-image" >
 </div>
 </body>
