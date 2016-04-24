@@ -19,7 +19,7 @@ public class NotificationDAO {
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
 
-	public static List<String> getGeneralNotifications() {
+	public static List<String> getGeneralNotifications() throws Exception {
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -44,8 +44,10 @@ public class NotificationDAO {
 			conn.close();
 		}catch(SQLException se){
 			se.printStackTrace();
+			throw(se);
 		}catch(Exception e){
 			e.printStackTrace();
+			throw(e);
 		}finally{
 			try{
 				if(stmt!=null)

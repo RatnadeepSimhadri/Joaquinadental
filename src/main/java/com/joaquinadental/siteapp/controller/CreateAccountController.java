@@ -23,7 +23,7 @@ public class CreateAccountController {
 	public ModelAndView createAccount(Model model,HttpSession httpSession) {
 		System.out.println("In createAccount Controller");
 		
-		Patient patient=(Patient)httpSession.getAttribute("patientobj");
+		Patient patient=null;
 		try {
 			if(patient==null){
 			 patient =new Patient();
@@ -38,7 +38,7 @@ public class CreateAccountController {
 		
 		} catch (Exception e) {
 			ModelAndView mv =null;
-			mv = new ModelAndView("invalidUser");
+			mv = new ModelAndView("error");
 			mv.addObject("error","error");
 			return mv;
 		}
@@ -67,7 +67,7 @@ public class CreateAccountController {
 		
 		} catch (Exception e) {
 			
-			mv = new ModelAndView("invalidUser");
+			mv = new ModelAndView("error");
 			mv.addObject("error","error");
 			return mv;
 		}
@@ -92,7 +92,7 @@ public class CreateAccountController {
 		
 		} catch (Exception e) {
 			
-			mv = new ModelAndView("invalidUser");
+			mv = new ModelAndView("error");
 			mv.addObject("error","error");
 			return mv;
 		}
@@ -119,7 +119,7 @@ public class CreateAccountController {
 		
 		} catch (Exception e) {
 			
-			mv = new ModelAndView("invalidUser");
+			mv = new ModelAndView("error");
 			mv.addObject("error","error");
 			return mv;
 		}

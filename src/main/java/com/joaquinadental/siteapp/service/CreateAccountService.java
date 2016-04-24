@@ -1,5 +1,6 @@
 package com.joaquinadental.siteapp.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import com.joaquinadental.siteapp.bean.State;
 public class CreateAccountService {
 	private static List<State> states;
 	
-	public boolean savePatient(Patient patient){
+	public boolean savePatient(Patient patient) throws Exception{
 		return CreateAccountDAO.saveProfile(patient);
 	}
 	

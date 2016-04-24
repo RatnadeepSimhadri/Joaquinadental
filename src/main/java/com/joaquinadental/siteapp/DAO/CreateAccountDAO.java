@@ -23,7 +23,7 @@ public class CreateAccountDAO {
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
 
-	public static boolean saveProfile(Patient patient) {
+	public static boolean saveProfile(Patient patient) throws Exception {
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -90,8 +90,10 @@ public class CreateAccountDAO {
 			
 		}catch(SQLException se){
 			se.printStackTrace();
+			throw(se);
 		}catch(Exception e){
 			e.printStackTrace();
+			throw(e);
 		}finally{
 			try{
 				if(prestmt!=null)
@@ -101,6 +103,7 @@ public class CreateAccountDAO {
 				if(stmt!=null)
 					stmt.close();
 			}catch(SQLException se2){
+				throw (se2);
 			}
 			try{
 				if(conn!=null){
@@ -108,6 +111,7 @@ public class CreateAccountDAO {
 				}
 			}catch(SQLException se){
 				se.printStackTrace();
+				throw(se);
 			}
 		}
 		return result;
