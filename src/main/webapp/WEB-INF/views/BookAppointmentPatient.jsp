@@ -218,7 +218,7 @@ padding-top:40%;
 								id="patientemail" value="${user.email}">
 						</div>
 						<div class="form-group ">
-							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="docname">Doctor</label>
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="docname">Doctor:</label>
 							<div class="col-sm-10">
 								<select name="doctor_name" class="form-control" id="docname">
 									<option>Jeffrey Hill</option>
@@ -231,7 +231,7 @@ padding-top:40%;
 						</div>
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="dateRangePicker">Date</label>
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="dateRangePicker">Date:</label>
 							<div class="col-sm-10" style="width: 40% font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 								<input type="text"  style="font-family: 'Crimson text', sans-serif; font-size: .9em" id="datepicker" name="datepicker">
 							</div>
@@ -239,7 +239,7 @@ padding-top:40%;
 
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="hours">Time</label>
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="hours">Time:</label>
 							<div class="col-sm-10" style="width: 40% font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 								<select name="hours" class="form-control" id="hours">
 									<option>8:00</option>
@@ -323,7 +323,7 @@ padding-top:40%;
 				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
-						<i> Medical Care Group<br>1156 High Street<br>Englewood,
+						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
 					</h4>

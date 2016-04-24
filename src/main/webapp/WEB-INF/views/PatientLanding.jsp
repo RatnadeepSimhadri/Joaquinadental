@@ -149,7 +149,7 @@ padding-top:40%;
 					align="center">
 					<h2
 						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">
-						Coming Appointment</h2>
+						Upcoming Appointment</h2>
 				</div>
 			</div>
 
@@ -248,7 +248,7 @@ padding-top:40%;
 				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
-						<i> JoQuina Dental Group<br>1156 High Street<br>Englewood,
+						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
 					</h4>
