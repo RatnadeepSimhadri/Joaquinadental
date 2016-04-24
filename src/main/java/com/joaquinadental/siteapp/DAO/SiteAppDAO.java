@@ -30,22 +30,31 @@ public class SiteAppDAO {
 	//private static final String "" = null;
 	private static final String NULL = null;
 
-	public static List<ViewAppointment> viewAppointments() {
+	public static List<ViewAppointment> viewAppointments(String email) {
 
 		Connection conn = null;
 		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		List<ViewAppointment>list = new ArrayList<ViewAppointment>();
+		Integer docter_id=1;
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
-			String sql;
-			sql = _VIEW_APPOINTMENTS;
+			String Appointmetnssql = _VIEW_APPOINTMENTS;
+			String sql = "select dentist_id from dentist where upper(dentist_email)='"+email.toUpperCase()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
+			
 			while(rs.next()){
+				docter_id = rs.getInt(1);
+			}
+			pstmt = conn.prepareStatement(Appointmetnssql);
+			pstmt.setInt(1, docter_id);
+			ResultSet prs = pstmt.executeQuery();
+			while(prs.next()){
 				
-				String patient_first_name  = rs.getString(1);
-				String patient_last_name = rs.getString(2);
-				Time appointment_time = rs.getTime(3);
+				String patient_first_name  = prs.getString(1);
+				String patient_last_name = prs.getString(2);
+				Time appointment_time = prs.getTime(3);
 			
 				
 				ViewAppointment app = new ViewAppointment();
@@ -58,7 +67,7 @@ public class SiteAppDAO {
 				
 			
 			}
-			
+			prs.close();
 			rs.close();
 			stmt.close();
 			conn.close();

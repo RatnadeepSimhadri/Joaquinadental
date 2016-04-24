@@ -1,30 +1,11 @@
 package com.joaquinadental.siteapp.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import org.apache.catalina.connector.Request;
-import org.springframework.http.HttpRequest;
-
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.catalina.connector.Request;
-import org.springframework.http.HttpRequest;
-
-
-import javax.servlet.http.HttpSession;
-
-import org.apache.catalina.connector.Request;
-
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.joaquinadental.siteapp.DAO.SiteAppDAO;
 import com.joaquinadental.siteapp.Exception.UnAuthorisedUserException;
 import com.joaquinadental.siteapp.bean.EditAppointment;
-import com.joaquinadental.siteapp.bean.PatientVisit;
 import com.joaquinadental.siteapp.bean.User;
-import com.joaquinadental.siteapp.bean.ViewAppointment;
 import com.joaquinadental.siteapp.service.NotificationService;
 import com.joaquinadental.siteapp.service.SiteAppService;
 
@@ -64,7 +43,7 @@ public class SiteAppController {
 		System.out.println("The user role is "+user.getRole());
 		if (user.getRole().equals("D"))
 		{
-			List<String> list = SiteAppService.viewAppointments();
+			List<String> list = SiteAppService.viewAppointments(user.getEmail());
 			List<String> notifications = NotificationService.getGeneralNotifications();
 			mv = new ModelAndView("viewAppointments");
 			mv.addObject("lists", list);
@@ -98,7 +77,7 @@ public class SiteAppController {
 		} catch (UnAuthorisedUserException e) {
 			
 			ModelAndView mv = new ModelAndView("invalidUser");
-			mv.addObject("error","error");
+			mv.addObject("error","Invalid Login Credentials");
 			return mv;
 		}
 	}

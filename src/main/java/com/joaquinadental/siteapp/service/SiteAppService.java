@@ -15,10 +15,12 @@ import com.joaquinadental.siteapp.bean.EditAppointment;
 
 public class SiteAppService {
 	
+
+	
 	private static final String NULL = null;
 
-	public static List<String> viewAppointments() {
-		List<ViewAppointment> list = SiteAppDAO.viewAppointments();
+	public static List<String> viewAppointments(String email) {
+		List<ViewAppointment> list = SiteAppDAO.viewAppointments(email);
 		return formatAppointmentDetails(list);
 	}
 	
