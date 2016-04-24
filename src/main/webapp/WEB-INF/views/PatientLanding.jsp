@@ -126,40 +126,26 @@
 
 <body>
 
-	<div class="collapse navbar-collapse" id="jdNavBar">
-		<ul class="nav navbar-nav navbar-right">
-			<li class="active"><a href="#">HOME</a></li>
-			<li><a href="#">ABOUT US</a></li>
-			<li><a href="#">SERVICES</a></li>
-			<li><a href="#">FORMS</a></li>
-			<li><a href="#popup">LOGOUT</a></li>
-		</ul>
-	</div>
-	<!--  comment log in part	<div id="popup" class="overlay">
-					<div class="popup">
-						<h3>Login</h3>
-						<a class="close" href="#">&times;</a>
-						<div class="content">
-							<form role="form" action="siteapp/login" method="post">
-								<div class="form-group">
-									<input placeholder="Email" name="email" type="email"
-										class="form-control" id="email">
-								</div>
-								<div class="form-group">
-									<input placeholder="Password" name="password" type="password"
-										class="form-control" id="pwd">
-								</div>
-								<button type="submit" class="btn btn-default">Submit</button>
-							</form>
-						</div>
-					</div> -->
-	</div>
-
 	<!-- Header -->
 	<header id="top" class="header">
 		<div class="text-vertical-center"></div>
+		<button id="navbutton" type="button" class="navbar-toggle"
+			data-toggle="collapse" data-target="#jdNavBar">
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="jdNavBar">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="home.html">HOME</a></li>
+				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
+				<li><a href="">LOGOUT</a></li>
+				<li><a href="">CONTACT US</a></li>
+			</ul>
+		</div>
 	</header>
-	<section>
+
+	<section id="mainContent">
 		<div class="container main-content">
 			<%--  jd <div class="row">
 				<div class="col-sm-4 hidden-xs">
@@ -291,7 +277,7 @@
 				<div class="col-xs-4 text-justified">
 					<p>
 					<h4>
-						<i> Medical Care Group<br>1156 High Street<br>Englewood,
+						<i> JoQuina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
 					</h4>

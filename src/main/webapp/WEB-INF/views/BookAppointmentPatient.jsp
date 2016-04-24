@@ -17,12 +17,11 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
-
-  $(function() {
-    $( "#datepicker" ).datepicker();
-    $("#datepicker").datepicker('setDate', new Date());  
-  });
-  </script>
+	$(function() {
+		$("#datepicker").datepicker();
+		$("#datepicker").datepicker('setDate', new Date());
+	});
+</script>
 <style type="text/css">
 .form-control {
 	width: 80%;
@@ -106,18 +105,25 @@
 
 </head>
 <body>
-	<div class="collapse navbar-collapse" id="jdNavBar">
-		<ul class="nav navbar-nav navbar-right">
-			<li class="active"><a href="#">HOME</a></li>
-			<li><a href="#">ABOUT US</a></li>
-			<li><a href="#">SERVICES</a></li>
-			<li><a href="#">FORMS</a></li>
-			<li><a href="#popup">LOGOUT</a></li>
-		</ul>
-	</div>
+
 	<!-- Header -->
 	<header id="top" class="header">
 		<div class="text-vertical-center"></div>
+		<button id="navbutton" type="button" class="navbar-toggle"
+			data-toggle="collapse" data-target="#jdNavBar">
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="jdNavBar">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="home.html">HOME</a></li>
+				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
+				<li><a href="">LOGOUT</a></li>
+				<li><a href="">CONTACT US</a></li>
+			</ul>
+		</div>
+
 	</header>
 	<section>
 		<div class="container main-content">
@@ -169,7 +175,7 @@
 						<div class="form-group ">
 							<label class="control-label col-sm-2" for="dateRangePicker">Date</label>
 							<div class="col-sm-10" style="width: 40%">
-									<input type="text" id="datepicker" name="datepicker">																	
+								<input type="text" id="datepicker" name="datepicker">
 							</div>
 						</div>
 
@@ -192,63 +198,62 @@
 							</div>
 						</div>
 
-<div class="col-md-2 col-sm-2 hidden-xs">
-   </div>
-  <div class="col-md-10 col-sm-10 col-xs-18" >
-<div class="row">
-<div class="col-md-6 col-sm-3 col-xs-18">
-<div class="form-group ">
-	<button type="button" id="bookAppointment" class="btn btn-primary btn-lg btn-block" onclick="cancel()">Cancel</button>
-</div>
-</div>
-	
+						<div class="col-md-2 col-sm-2 hidden-xs"></div>
+						<div class="col-md-10 col-sm-10 col-xs-18">
+							<div class="row">
+								<div class="col-md-6 col-sm-3 col-xs-18">
+									<div class="form-group ">
+										<button type="button" id="bookAppointment"
+											class="btn btn-primary btn-lg btn-block" onclick="cancel()">Cancel</button>
+									</div>
+								</div>
 
 
-<div class="col-md-6 col-sm-3 col-xs-18">
-<div class="form-group ">
-<button type="button" id="bookAppointment" 	class="btn btn-primary btn-lg btn-block" onclick="submitAppointment()">Submit Appointment</button>
-</div>	
-</div>								
-						
-						
-</div>
-</div>
-</form>
-</div>
-					
+
+								<div class="col-md-6 col-sm-3 col-xs-18">
+									<div class="form-group ">
+										<button type="button" id="bookAppointment"
+											class="btn btn-primary btn-lg btn-block"
+											onclick="submitAppointment()">Submit Appointment</button>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</form>
 				</div>
+
 			</div>
+		</div>
 
 
 		<script type="text/javascript">
-function validateDate()
-{
-	
-	var date = document.getElementById("form1").elements.namedItem("datepicker").value;
-	var dateToday = new Date(); 
-	if (date < dateToday)
-		return "false"
-		else 
-			return "true"
-	}
-function submitAppointment()
-{
-	
-	
-	var myForm= document.getElementById("form1");
-	myForm.action="SubmitPatientAppointment" ;
-	myForm.submit();
+			function validateDate() {
 
-	}
-	
-function cancel()
-{
-	
-	var myForm= document.getElementById("form1");
-	myForm.action="PatientLanding";
-	myForm.submit();
-	}
-</script>
+				var date = document.getElementById("form1").elements
+						.namedItem("datepicker").value;
+				var dateToday = new Date();
+				if (date < dateToday)
+					return "false"
+				else
+					return "true"
+			}
+			function submitAppointment() {
+
+				var myForm = document.getElementById("form1");
+				myForm.action = "SubmitPatientAppointment";
+				myForm.submit();
+
+			}
+
+			function cancel() {
+
+				var myForm = document.getElementById("form1");
+				myForm.action = "PatientLanding";
+				myForm.submit();
+			}
+		</script>
 	</section>
 
 
@@ -307,47 +312,41 @@ function cancel()
 
 	<!-- Custom Theme JavaScript -->
 	<script>
-					// Closes the sidebar menu
-					$("#menu-close").click(function(e) {
-						e.preventDefault();
-						$("#sidebar-wrapper").toggleClass("active");
-					});
+		// Closes the sidebar menu
+		$("#menu-close").click(function(e) {
+			e.preventDefault();
+			$("#sidebar-wrapper").toggleClass("active");
+		});
 
-					// Opens the sidebar menu
-					$("#menu-toggle").click(function(e) {
-						e.preventDefault();
-						$("#sidebar-wrapper").toggleClass("active");
-					});
+		// Opens the sidebar menu
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#sidebar-wrapper").toggleClass("active");
+		});
 
-					// Scrolls to the selected menu item on the page
-					$(function() {
-						$('a[href*=#]:not([href=#])')
-								.click(
-										function() {
-											if (location.pathname.replace(
-													/^\//, '') == this.pathname
-													.replace(/^\//, '')
-													|| location.hostname == this.hostname) {
+		// Scrolls to the selected menu item on the page
+		$(function() {
+			$('a[href*=#]:not([href=#])')
+					.click(
+							function() {
+								if (location.pathname.replace(/^\//, '') == this.pathname
+										.replace(/^\//, '')
+										|| location.hostname == this.hostname) {
 
-												var target = $(this.hash);
-												target = target.length ? target
-														: $('[name='
-																+ this.hash
-																		.slice(1)
-																+ ']');
-												if (target.length) {
-													$('html,body')
-															.animate(
-																	{
-																		scrollTop : target
-																				.offset().top
-																	}, 1000);
-													return false;
-												}
-											}
-										});
-					});
-				</script>
+									var target = $(this.hash);
+									target = target.length ? target
+											: $('[name=' + this.hash.slice(1)
+													+ ']');
+									if (target.length) {
+										$('html,body').animate({
+											scrollTop : target.offset().top
+										}, 1000);
+										return false;
+									}
+								}
+							});
+		});
+	</script>
 
 </body>
 
