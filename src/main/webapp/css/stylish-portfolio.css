@@ -155,13 +155,39 @@ hr.small {
     display: table;
     position: relative;
     width: 100%;
-    height: 80%;
+    padding-bottom:35%;
     background: url(../images/banner.jpg) no-repeat top center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
     float:left
+}
+
+#bg {
+    display: table;
+    position: relative;
+    width: 100%;
+    padding-bottom: 35%;
+    background: url(../images/banner.jpg) no-repeat top center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    float:left
+}
+#paraDetails{
+	
+	
+}
+
+#esp{
+	position: right;
+}
+
+#nav1{
+	
+	margin-top:	5%;
 }
 
 /* About */
@@ -237,5 +263,5 @@ hr.small {
 /* Footer */
 
 footer {
-    padding: 100px 0;
+    padding: 2% 0 0 0;
 }
