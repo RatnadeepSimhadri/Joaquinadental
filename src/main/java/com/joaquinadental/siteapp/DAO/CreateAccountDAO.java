@@ -23,7 +23,7 @@ public class CreateAccountDAO {
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
 
-	public static boolean saveProfile(Patient patient) throws SQLException {
+	public static boolean saveProfile(Patient patient) throws Exception {
 
 		Connection conn = null;
 		Statement stmt = null;

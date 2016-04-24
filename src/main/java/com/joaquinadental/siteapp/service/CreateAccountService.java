@@ -11,7 +11,7 @@ import com.joaquinadental.siteapp.bean.State;
 public class CreateAccountService {
 	private static List<State> states;
 	
-	public boolean savePatient(Patient patient) throws SQLException{
+	public boolean savePatient(Patient patient) throws Exception{
 		return CreateAccountDAO.saveProfile(patient);
 	}
 	
