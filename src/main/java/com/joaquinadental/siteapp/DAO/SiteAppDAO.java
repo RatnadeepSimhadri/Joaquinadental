@@ -15,6 +15,7 @@ import java.util.List;
 
 import com.joaquinadental.siteapp.bean.AdminAppointment;
 import com.joaquinadental.siteapp.bean.PatientVisit;
+import com.joaquinadental.siteapp.bean.Service;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 public class SiteAppDAO {
@@ -29,22 +30,31 @@ public class SiteAppDAO {
 	//private static final String "" = null;
 	private static final String NULL = null;
 
-	public static List<ViewAppointment> viewAppointments() {
+	public static List<ViewAppointment> viewAppointments(String email) {
 
 		Connection conn = null;
 		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		List<ViewAppointment>list = new ArrayList<ViewAppointment>();
+		Integer docter_id=1;
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
-			String sql;
-			sql = _VIEW_APPOINTMENTS;
+			String Appointmetnssql = _VIEW_APPOINTMENTS;
+			String sql = "select dentist_id from dentist where upper(dentist_email)='"+email.toUpperCase()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
+			
 			while(rs.next()){
+				docter_id = rs.getInt(1);
+			}
+			pstmt = conn.prepareStatement(Appointmetnssql);
+			pstmt.setInt(1, docter_id);
+			ResultSet prs = pstmt.executeQuery();
+			while(prs.next()){
 				
-				String patient_first_name  = rs.getString(1);
-				String patient_last_name = rs.getString(2);
-				Time appointment_time = rs.getTime(3);
+				String patient_first_name  = prs.getString(1);
+				String patient_last_name = prs.getString(2);
+				Time appointment_time = prs.getTime(3);
 			
 				
 				ViewAppointment app = new ViewAppointment();
@@ -57,7 +67,7 @@ public class SiteAppDAO {
 				
 			
 			}
-			
+			prs.close();
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -228,12 +238,15 @@ public class SiteAppDAO {
 				while(rs.next()){
 			//		System.out.println("inside rs");
 			
+					List<Service> service_list;
+					
 					 visit_id  = rs.getInt(1);
 					visit_date = rs.getDate(2);
 					visit_time = rs.getTime(3);
 					dentist = rs.getString(4);
 					patient_id = rs.getInt(5);
 					PatientVisit pv = new PatientVisit();
+					service_list = getVisitService(visit_id);
 					
 					System.out.println("Visit Values"+visit_id+"--"+visit_date+"--"+visit_time+"--"+dentist+"--"+patient_id+"--");
 					
@@ -242,8 +255,7 @@ public class SiteAppDAO {
 					pv.setVisitDate(visit_date);
 					pv.setVisit_time(visit_time);
 					pv.setVisitDentist(dentist);
-					
-							
+					pv.setVisit_service(service_list);
 					
 					list.add(pv);
 					
@@ -275,7 +287,40 @@ public class SiteAppDAO {
 	
 	
 	
-	
+	// get service details for a visit
+		private static List<Service> getVisitService(int visit_id)
+		{
+			List<Service> service_list = new ArrayList<Service>();
+			Connection conn = null;
+			Statement stmt = null;
+			try{
+				conn = DriverManager.getConnection(DB_URL,USER,PASS);
+				stmt = conn.createStatement();
+				String sql ="select completed_service_id , s.service_id , visit_id , service_description , service_cost from completed_service c , service s where c.service_id = s.service_id and visit_id="+visit_id;
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next())
+				{
+					Service service = new Service();
+					service.setCompletedServiceId(rs.getInt(1));
+					service.setServiceId(rs.getInt(2));
+					service.setVisitId(rs.getInt(3));
+					service.setServiceDesc(rs.getString(4));
+					service.setServiceCost(rs.getInt(5));
+					service_list.add(service);
+					
+				}
+				rs.close();
+				conn.close();
+				stmt.close();
+			}
+			catch (SQLException se)
+			{
+				se.printStackTrace();
+				
+			}
+			
+			return service_list;
+		}
 	
 	
 	

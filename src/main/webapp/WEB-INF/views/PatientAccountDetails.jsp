@@ -23,108 +23,60 @@
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
     <link rel="stylesheet" type="text/css" href="css/main.css">
-	 <!-- Carousel related -->
-	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <style>
-  
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 26%;
-      height: 26%
-  }
+	
 
-  #imgtxt{
-	margin-left: 1em;
-	padding-top: 1em; 
-	font: italic bold 2em Georgia, serif;
-	align: center;
   
-  }
   
-  #imgtxt1{
-	margin-left: 2.3em;
-	font: italic 2em Georgia, serif;
-  	align: center;
-  }
-  
-  #abtus{
-  margin-top: 1em;
-  font: italic 2em serif;
-  background-color: #fff;
-  }
-  
-  #head1{
-  margin-left: 13%;
-  font: bold italic 2em Helvetica;
-  }
-  
-  #head2{
-  font: bold italic 2em Helvetica;
-  text-align: center;
-  }
-  
-   #head3{
-  font: bold italic 3em Helvetica;
-  text-align: center;
-  }
-  </style>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion({
+    	 heightStyle: "content"
+    		
+    });
+    $( "#accordion" ).accordion({
+    	collapsible: true
+   		
+   });
+    
+  });
+  </script>
   
 </head>
 
 <body>
 	
-	<div class="collapse navbar-collapse" id="jdNavBar">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="#">HOME</a></li>
-						<li><a href="#">ABOUT US</a></li>
-						<li><a href="#">SERVICES</a></li>
-						<li><a href="#">FORMS</a></li>
-						<li><a href="#popup">LOGOUT</a></li>
-					</ul>
-				</div>
-			<!--  comment log in part	<div id="popup" class="overlay">
-					<div class="popup">
-						<h3>Login</h3>
-						<a class="close" href="#">&times;</a>
-						<div class="content">
-							<form role="form" action="siteapp/login" method="post">
-								<div class="form-group">
-									<input placeholder="Email" name="email" type="email"
-										class="form-control" id="email">
-								</div>
-								<div class="form-group">
-									<input placeholder="Password" name="password" type="password"
-										class="form-control" id="pwd">
-								</div>
-								<button type="submit" class="btn btn-default">Submit</button>
-							</form>
-						</div>
-					</div> -->
-				</div>
-
-    <!-- Header -->
-    <header id="top" class="header">
-	        <div class="text-vertical-center">
+	<!-- Header -->
+	<header id="top" class="header">
+		<div class="text-vertical-center"></div>
+		<button id="navbutton" type="button" class="navbar-toggle"
+			data-toggle="collapse" data-target="#jdNavBar">
+			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="jdNavBar">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="home.html">HOME</a></li>
+				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
+				<li><a href="">LOGOUT</a></li>
+				<li><a href="">CONTACT US</a></li>
+			</ul>
+		</div>
+	</header>
 	
-			</div>
-    </header>
 <section>
+
 <div class="container main-content" >
 <div class="row">
     <div class="col-sm-4 hidden-xs"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4></div>
     <div class="col-sm-8"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Account Details</h4></div>
   </div>
-	 <div class="row ">
+	 <div class="row">
 	 <div class="col-sm-4 hidden-xs"></div>
 	 <div class="col-sm-8"><h4 align="center">Your current account balance due is ${balance}$</h4></div>
   </div>
@@ -142,17 +94,20 @@
   <div class="col-sm-8">
   <c:if test="${not empty list }">
   <label style="color: rgba(74, 145, 223, 0.8);">Your visit history is as follows</label>
+  <div id="accordion">
  <c:forEach var="visit" items="${list}">
- <div class="row" style="background-color:#EEE; margin-left: 0px;">
- ${visit}
- </div>
- <br>
+ <!-- <div class="row" style="background-color:#EEE; margin-left: 0px;"> jd -->
+  ${visit}
+  <!-- </div> -->
+
  </c:forEach>
+ </div>
  </c:if>
+ 
   </div>
  
   
-  
+  <section>
    <div class="row">
    <div class="col-md-5 col-sm-4 hidden-xs">
   <!-- <label>${status}</label> --> 
@@ -172,6 +127,7 @@
   </div> 
    </div>
  </div>
+ </section>
 </div>
 <script type="text/javascript">
 function back()
