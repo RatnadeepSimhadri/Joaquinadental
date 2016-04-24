@@ -293,5 +293,20 @@ public class SiteAppController {
 	return mv;
 		
 	}
-	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession httpSession) {
+
+		System.out.println("User logging out");
+		try {
+			httpSession.invalidate();
+			ModelAndView mv = new ModelAndView("invalidUser");
+			mv.addObject("error","You have been logged out");
+			return mv;
+		} catch (Exception e) {
+			
+			ModelAndView mv = new ModelAndView("invalidUser");
+			mv.addObject("error","Invalid Login Credentials");
+			return mv;
+		}
+	}
 }
