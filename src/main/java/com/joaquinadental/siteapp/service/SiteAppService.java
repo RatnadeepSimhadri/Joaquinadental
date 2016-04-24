@@ -295,14 +295,15 @@ public class SiteAppService {
 			}
 		 else
 		 {
-			 String serviceFormatted = "<b>Service Description&nbsp&nbsp&nbspService Cost($)</b>";
+			 String serviceFormatted = "Service Description<ul>";
 		 for(Iterator iterator = serviceList.iterator(); iterator
 					.hasNext();)
 		 {
 			 Service s = (Service) iterator.next();
-			 serviceFormatted=serviceFormatted+"</br>"+s.getServiceDesc()+"           $"+s.getServiceCost();
+			 serviceFormatted=serviceFormatted+"<li>"+s.getServiceDesc()+"- $"+s.getServiceCost()+"</li>";
 		 }
 		 System.out.println(serviceFormatted);
+	// serviceFormatted="</ul>";
 		 return serviceFormatted;
 		 }
 	 }
@@ -325,7 +326,7 @@ public class SiteAppService {
 			//	String formattedVisitHistory = "<b> Visit Date: </b>"+p.getVisitDate()+" <b> Time </b>"+p.getVisitTime().toString()+"<br>"+
 				//	     "<b>Doctor </b>"+p.getPatientDentist();
 				String serviceFormattedString = getServiceFormattedString(p.getVisit_service());
-				String formattedVisitHistory = "<h3 style=\"background-color:#EEE; margin-left: 0px;\"><b> Visit Date: </b>"+p.getVisitDate()+" <b>Time </b>"+p.getVisitTime().toString()+" "+"<b>Doctor </b>"+p.getPatientDentist()+"</h3><div><p>Your Visit Details are</br>"+serviceFormattedString+"</p></div>";
+				String formattedVisitHistory = "<h3 style=\"font-family: 'Fjord One', sans-serif; margin-left: 0px;\"><b> Visit Date: </b>"+p.getVisitDate()+" <b>Time </b>"+p.getVisitTime().toString()+" "+"<b>Doctor </b>"+p.getPatientDentist()+"</h3><div><p>Your Visit Details are</br>"+serviceFormattedString+"</ul></p></div>";
 				visitHistory.add(formattedVisitHistory);
 				System.out.println(formattedVisitHistory);
 			}

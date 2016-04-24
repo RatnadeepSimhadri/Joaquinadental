@@ -127,7 +127,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="PatientLanding">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="">LOGOUT</a></li>
+				<li><a href="../index.jsp">LOGOUT</a></li>
 				<li><a href="#footer">CONTACT US</a></li>
 			</ul>
 		</div>
@@ -177,7 +177,7 @@
 
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"></div>
-				<div class="col-sm-8" align="center">
+				<div class="col-sm-8" align="center" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 					<label>${status}</label>
 				</div>
 			</div>
@@ -210,7 +210,7 @@
 					<c:if test="${not empty lists }">
 						<c:forEach var="appointment" items="${lists}">
 							<div class="row"
-								style="background-color: #EEE; margin-left: 0px;">
+								style="background-color: #EEE; margin-left: 0px; font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 								${appointment}</div>
 							<br>
 						</c:forEach>
@@ -227,13 +227,13 @@
 						<div class="row">
 							<form role="form" action="siteapp/PatientLanding" id="form1"
 								method="post">
-								<div class="col-md-4 col-md-offset-1 col-sm-3 col-xs-18">
+								<div class="col-md-4  col-sm-3 col-xs-18">
 									<button type="button" id="bookAppointment"
 										class="btn btn-primary btn-lg btn-block"
 										onclick="redirectAppointment()">Book Appointment</button>
 								</div>
-								<div class="col-md-2  col-sm-2 col-xs-18">&nbsp;</div>
-								<div class="col-md-5 col-sm-3 col-xs-18">
+								<div class="col-md-2  col-sm-2 col-xs-18"></div>
+								<div class="col-md-4 col-sm-3 col-xs-18">
 									<button type="button" id="accountDetails"
 										class="btn btn-primary btn-lg btn-block"
 										onclick="redirectAccount()">Account Details</button>

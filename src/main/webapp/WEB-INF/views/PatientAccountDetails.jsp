@@ -4,7 +4,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,13 +17,7 @@
 	href="//fonts.googleapis.com/css?family=Fjord+One" />
 <!-- End of Fonts used -->
 <title>JoaQuinaDental</title>
-<!-- Jquery Libraries for ticker -->
 
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
-<script
-	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
-<!-- End of Jquery Libraries for ticker -->
 
 <!-- Bootstrap Core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -33,19 +26,43 @@
 <link href="../css/stylish-portfolio.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet"	type="text/css">
+<link	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!-- Jquery Libraries for ticker -->
+<!-- new  ticker js-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js "></script>
 
+
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
+<script
+	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+<!-- End of Jquery Libraries for ticker -->
+	<script>
+	function ticker() {
+	    $('#ticker li:first').slideUp(function() {
+	        $(this).appendTo($('#ticker')).slideDown();
+	    });
+	}
+	setInterval(ticker, 3000);
+	
+	
+	/* /* Script for ticker 
+	$(document).ready(function() {
+		$('.demo1').easyTicker({
+			interval : 1500,
+			speed : 'slow',
+			direction : 'up'
+		});
+	}); */
+</script>
+<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>  -->
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion({
@@ -58,33 +75,11 @@
 		});
 
 	});
-
-	/* Script for ticker */
-	$(document).ready(function() {
-		$('.demo1').easyTicker({
-			interval : 1500,
-			speed : 'slow',
-			direction : 'up'
-		});
-	});
-</script>
+	</script>
 <style>
-/* Styling for ticker */
-.demo1 {
-	/* border: 1px solid #ccc; */
-	margin-top: 10px;
-}
 
-.demo1 div div {
-	padding: 5px;
-	/*  border-bottom: 1px solid #ccc; */
-}
 
-.et-run {
-	background-color: #0cf;
-	color: white;
-	border: 1px solid black;
-}
+
 </style>
 
 </head>
@@ -114,25 +109,7 @@
 
 		<div class="container main-content">
 			<div class="row">
-				<%--  <div class="col-sm-4 hidden-xs"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4></div>
-    <div class="col-sm-8"><h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Account Details</h4></div>
-  </div>
-	 <div class="row">
-	 <div class="col-sm-4 hidden-xs"></div>
-	 <div class="col-sm-8"><h4 align="center">Your current account balance due is ${balance}$</h4></div>
-  </div>
-
-  <div class="col-sm-4 hidden-xs" style= "font-family: Tahoma, 'Times New Roman', sans-serif;">
- <c:if test="${not empty notifications }">
- <c:forEach var="notification" items="${notifications}">
- <div style="margin-left: 0px;" class="row">
- ${notification}
- </div>
- <br>
- </c:forEach>
- </c:if>
- </div> --%>
-
+				
 				<div class="col-sm-4 hidden-xs">
 					<h2
 						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
@@ -145,31 +122,41 @@
 						Appointment</h2>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-sm-4 hidden-xs"></div>
+				<div class="col-sm-8" align="center" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
+					<h4>Your account balance amount due is $ ${balance}</h4>
+				</div>
+			</div>
 
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"
 					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
-					<div class="demo1">
+				<!--  	<div class="demo1"> -->
 						<div>
 							<c:if test="${not empty notifications }">
+							<div class="ticker">
+							<ul id="ticker" style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
 								<c:forEach var="notification" items="${notifications}">
-									<div
-										style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
-										<p>${notification}
-										<p>
-									</div>
+																<li>	${notification}				</li>
+										
+									
 								</c:forEach>
+								</ul>
+								</div>
 							</c:if>
+							
 						</div>
-					</div>
+					<!-- </div> -->
 				</div>
 
 				<div class="col-sm-8">
 					<c:if test="${not empty list }">
 					<h4	style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
-						align="center">Your visit history is as follows</h4>
+						align="center"><b>Your visit history is as follows</b></h4>
 					
-						<div id="accordion">
+						<div id="accordion" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 							<c:forEach var="visit" items="${list}">
 								${visit}
  							</c:forEach>
@@ -185,12 +172,12 @@
 							<div class="row">
 								<form role="form" action="siteapp/PatientLanding" id="form1"
 									method="post">
-									<div class="col-md-5 col-sm-3 col-xs-18">
+									<div class="col-md-5 col-sm-4 col-xs-18">
 										<button type="button" id="bookAppointment"
 											class="btn btn-primary btn-lg btn-block" onclick="back()">Back</button>
 									</div>
 									<div class="col-md-1 col-sm-1 col-xs-18">&nbsp;</div>
-									<div class="col-md-5 col-sm-3 col-xs-18">
+									<div class="col-md-5 col-sm-7 col-xs-18">
 										<button type="button" id="MakePayment"
 											class="btn btn-primary btn-lg btn-block disabled" onclick="">Make
 											Payment</button>

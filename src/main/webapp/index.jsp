@@ -17,9 +17,13 @@
 
 <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
-<link
-	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
-	rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css"
+	href="//fonts.googleapis.com/css?family=Crimson+Text" />
+<link rel="stylesheet" type="text/css"
+	href="//fonts.googleapis.com/css?family=Fjord+One" />
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Source+Sans Pro:200italic,200,300italic,300,400italic,400,600italic,600,700italic,700,900italic,900"/>	
 
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
@@ -56,7 +60,7 @@
 }
 
 #head1 {
-	margin-left: 13%;
+padding-right: 30%;
 	font: bold italic 2em Helvetica;
 }
 
@@ -150,10 +154,10 @@
 									class="fa fa-circle fa-stack-2x"></i> <i
 									class="fa fa-cloud fa-stack-1x text-primary"></i>
 								</span>
-								<h4>
+								<h4 style="font-family: 'Fjord One', sans-serif;">
 									<strong>Trust</strong>
 								</h4>
-								<p>
+								<p style="font-family: 'Sans Pro', sans-serif; ">
 								<center>The preeminent dentists in Englewood are
 									available at your service and you can rely on them blindfolded.</center>
 								</p>
@@ -166,10 +170,10 @@
 									class="fa fa-circle fa-stack-2x"></i> <i
 									class="fa fa-compass fa-stack-1x text-primary"></i>
 								</span>
-								<h4>
+								<h4 style="font-family: 'Fjord One', sans-serif;">
 									<strong>Quality</strong>
 								</h4>
-								<p>
+								<p style="font-family: 'Sans Pro', sans-serif; ">
 								<center>Our exquisite quality of service and a penchant
 									for customer care will put that smile back on your face.</center>
 								</p>
@@ -182,33 +186,17 @@
 									class="fa fa-circle fa-stack-2x"></i> <i
 									class="fa fa-flask fa-stack-1x text-primary"></i>
 								</span>
-								<h4>
+								<h4 style="font-family: 'Fjord One', sans-serif;">
 									<strong>Professional</strong>
 								</h4>
-								<p>
+								<p style="font-family: 'Sans Pro', sans-serif; ">
 								<center>We care for you and your time and thus kept a
 									simple appointment scheduling and check-in process.</center>
 								</p>
 								<a href="#" class="btn btn-light">Learn More</a>
 							</div>
 						</div>
-						<!--  
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Service Name</strong>
-                                </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                        -->
-					</div>
-					<!-- /.row (nested) -->
+						
 				</div>
 				<!-- /.col-lg-10 -->
 			</div>
@@ -220,7 +208,7 @@
 	<!-- Callout -->
 	<aside class="callout">
 		<div class="text-vertical-center">
-			<p id="head3">
+			<p id="head3" style="font-family: 'Crimson Text', sans-serif; ">
 				"We are making the world a better place! <br>One smile at a
 				time..."
 			</p>
@@ -239,7 +227,7 @@
 					<hr class="small">
 					<div class="row">
 						<div class="col-md-6 col-sm-6">
-							<p id="head1">Our Doctors</p>
+							<a id="head1" style="font-family: 'Fjord One', sans-serif; color: black;" href="aboutUs.html#team" >Our Doctors</a>
 							<div class="portfolio-item">
 
 								<div class="container">
@@ -253,22 +241,22 @@
 											<div class="item active">
 												<img src="images/1.png" alt="Chania" width="230"
 													height="172">
-												<p id="imgtxt">Dr. Jeffery Hill</p>
-												<p id="imgtxt1">Dentist</p>
+												<p id="imgtxt" style="font-family: 'Crimson Text', sans-serif; ">Dr. Jeffery Hill</p>
+												<p id="imgtxt1" style="font-family: 'Crimson Text', sans-serif; ">Dentist</p>
 											</div>
 
 											<div class="item">
 												<img src="images/2.png" alt="Chania" width="230"
 													height="172">
-												<p id="imgtxt">Dr. Lori Lovette</p>
-												<p id="imgtxt1">Oral Surgeon</p>
+												<p id="imgtxt" style="font-family: 'Crimson Text', sans-serif; ">Dr. Lori Lovette</p>
+												<p id="imgtxt1" style="font-family: 'Crimson Text', sans-serif; ">Oral Surgeon</p>
 											</div>
 
 											<div class="item">
 												<img src="images/3.png" alt="Flower" width="230"
 													height="172">
-												<p id="imgtxt">Dr. Clinton Reid</p>
-												<p id="imgtxt1">Endodontist</p>
+												<p id="imgtxt" style="font-family: 'Crimson Text', sans-serif; ">Dr. Clinton Reid</p>
+												<p id="imgtxt1" style="font-family: 'Crimson Text', sans-serif; ">Endodontist</p>
 											</div>
 
 
@@ -280,9 +268,9 @@
 						</div>
 						<!--   <div class="col-md-4"></div>	 -->
 						<div class="col-md-6 col-sm-6">
-							<p id="head2">About Us</p>
+							<p id="head2" style="font-family: 'Fjord One', sans-serif;">About Us</p>
 							<div class="portfolio-item">
-								<p id="abtus">
+								<p id="abtus" style="font-family: 'Sans Pro', sans-serif; ">
 									Joaquina Dental is based in Engelwood, Colorado. Our practice
 									has developed a reputation for being professional, friendly and
 									caring for over 30 years. We strive to deliver a comfortable

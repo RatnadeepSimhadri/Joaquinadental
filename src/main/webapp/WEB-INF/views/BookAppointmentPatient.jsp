@@ -204,7 +204,7 @@
 						</div>
 						
 
-				<div class="col-sm-8 col-md-8  " style="background-color: #EEE;">
+				<div class="col-sm-8 col-md-8  " >
 					<!--  form for booking appointment starts -->
 
 					<form name="form1" id="form1" class="form-horizontal" action=""
@@ -214,7 +214,7 @@
 								id="patientemail" value="${user.email}">
 						</div>
 						<div class="form-group ">
-							<label class="control-label col-sm-2" for="docname">Doctor</label>
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="docname">Doctor</label>
 							<div class="col-sm-10">
 								<select name="doctor_name" class="form-control" id="docname">
 									<option>Jeffrey Hill</option>
@@ -227,16 +227,16 @@
 						</div>
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2" for="dateRangePicker">Date</label>
-							<div class="col-sm-10" style="width: 40%">
-								<input type="text" id="datepicker" name="datepicker">
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="dateRangePicker">Date</label>
+							<div class="col-sm-10" style="width: 40% font-family: 'Crimson text', sans-serif; font-size: 1.2em">
+								<input type="text"  style="font-family: 'Crimson text', sans-serif; font-size: .9em" id="datepicker" name="datepicker">
 							</div>
 						</div>
 
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2" for="hours">Time</label>
-							<div class="col-sm-10" style="width: 40%">
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="hours">Time</label>
+							<div class="col-sm-10" style="width: 40% font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 								<select name="hours" class="form-control" id="hours">
 									<option>8:00</option>
 									<option>9:00</option>
@@ -255,13 +255,14 @@
 						<div class="col-md-2 col-sm-2 hidden-xs"></div>
 						<div class="col-md-10 col-sm-10 col-xs-18">
 							<div class="row">
-								<div class="col-md-6 col-sm-3 col-xs-18">
+								<div class="col-md-5 col-sm-4 col-xs-18">
 									<div class="form-group ">
 										<button type="button" id="bookAppointment"
 											class="btn btn-primary btn-lg btn-block" onclick="cancel()">Cancel</button>
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-3 col-xs-18">
+								<div class="col-md-1 col-sm-1 col-xs-18"></div>
+								<div class="col-md-5 col-sm-7 col-xs-18">
 									<div class="form-group ">
 										<button type="button" id="bookAppointment"
 											class="btn btn-primary btn-lg btn-block"
@@ -276,7 +277,7 @@
 </div>
 			</div>
 		</div>
-		</div>
+		 
 
 
 		<script type="text/javascript">
