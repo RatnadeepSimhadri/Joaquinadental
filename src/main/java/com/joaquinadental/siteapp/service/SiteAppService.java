@@ -40,11 +40,18 @@ public class SiteAppService {
 	
 	private static List<String> formatAppointmentDetails(List<ViewAppointment> list){
 		List<String> formattedAppointments = new ArrayList<String>();
+		if (list.isEmpty())
+		{
+			String formattedAppointment = "<b> You dont have any scheduled appointments for today</b>";
+			formattedAppointments.add(formattedAppointment);
+		}
+		else{
 		for (Iterator iterator = list.iterator(); iterator
 				.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
 			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time : "+va.getAppointment_time().toString();
 			formattedAppointments.add(formattedAppointment);
+		}
 		}
 		//System.out.println("Formatted String" + formattedAppointments.get(0));
 		return formattedAppointments;
