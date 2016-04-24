@@ -208,12 +208,13 @@ padding-top:40%;
 				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
-						<i> Medical Care Group<br>1156 High Street<br>Englewood,
+						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
 					</h4>
 					</p>
 				</div>
+
 
 				<div class="col-xs-8 text-right">
 					<ul class="list-unstyled">
