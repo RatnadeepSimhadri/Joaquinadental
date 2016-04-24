@@ -19,7 +19,7 @@ public class NotificationDAO {
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
 
-	public static List<String> getGeneralNotifications() throws SQLException {
+	public static List<String> getGeneralNotifications() throws Exception {
 
 		Connection conn = null;
 		Statement stmt = null;
