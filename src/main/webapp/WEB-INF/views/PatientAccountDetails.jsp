@@ -79,6 +79,25 @@
   }
   </style>
   
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion({
+    	 heightStyle: "content"
+    		
+    });
+    $( "#accordion" ).accordion({
+    	collapsible: true
+   		
+   });
+    
+  });
+  </script>
+  
 </head>
 
 <body>
@@ -92,25 +111,8 @@
 						<li><a href="#popup">LOGOUT</a></li>
 					</ul>
 				</div>
-			<!--  comment log in part	<div id="popup" class="overlay">
-					<div class="popup">
-						<h3>Login</h3>
-						<a class="close" href="#">&times;</a>
-						<div class="content">
-							<form role="form" action="siteapp/login" method="post">
-								<div class="form-group">
-									<input placeholder="Email" name="email" type="email"
-										class="form-control" id="email">
-								</div>
-								<div class="form-group">
-									<input placeholder="Password" name="password" type="password"
-										class="form-control" id="pwd">
-								</div>
-								<button type="submit" class="btn btn-default">Submit</button>
-							</form>
-						</div>
-					</div> -->
-				</div>
+			
+		
 
     <!-- Header -->
     <header id="top" class="header">
@@ -142,13 +144,16 @@
   <div class="col-sm-8">
   <c:if test="${not empty list }">
   <label style="color: rgba(74, 145, 223, 0.8);">Your visit history is as follows</label>
+  <div id="accordion">
  <c:forEach var="visit" items="${list}">
- <div class="row" style="background-color:#EEE; margin-left: 0px;">
- ${visit}
- </div>
- <br>
+ <!-- <div class="row" style="background-color:#EEE; margin-left: 0px;"> jd -->
+  ${visit}
+  <!-- </div> -->
+
  </c:forEach>
+ </div>
  </c:if>
+ 
   </div>
  
   

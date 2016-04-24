@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.joaquinadental.siteapp.DAO.SiteAppDAO;
 import com.joaquinadental.siteapp.bean.AdminAppointment;
 import com.joaquinadental.siteapp.bean.PatientVisit;
+import com.joaquinadental.siteapp.bean.Service;
 import com.joaquinadental.siteapp.bean.User;
 import com.joaquinadental.siteapp.bean.ViewAppointment;
 import com.joaquinadental.siteapp.bean.EditAppointment;
@@ -282,6 +283,28 @@ public class SiteAppService {
 		 
 	 }
 	 
+	 private static String getServiceFormattedString(List<Service> serviceList)
+	 {
+		 
+		 if (serviceList.isEmpty())
+			{
+			 String serviceFormatted = "<b>Sorry not able get the service details.</b>";
+				return serviceFormatted;
+			}
+		 else
+		 {
+			 String serviceFormatted = "<b>Service Description&nbsp&nbsp&nbspService Cost($)</b>";
+		 for(Iterator iterator = serviceList.iterator(); iterator
+					.hasNext();)
+		 {
+			 Service s = (Service) iterator.next();
+			 serviceFormatted=serviceFormatted+"</br>"+s.getServiceDesc()+"           $"+s.getServiceCost();
+		 }
+		 System.out.println(serviceFormatted);
+		 return serviceFormatted;
+		 }
+	 }
+	 
 	 public static List<String> formatPatientVisitDetails (List<PatientVisit> pv)
 	 {
 		 List<String> visitHistory = new ArrayList<String>();
@@ -297,9 +320,12 @@ public class SiteAppService {
 			for (Iterator iterator = pv.iterator(); iterator
 					.hasNext();) {
 				PatientVisit p = (PatientVisit) iterator.next();
-				String formattedVisitHistory = "<b> Visit Date: </b>"+p.getVisitDate()+" <b> Time </b>"+p.getVisitTime().toString()+"<br>"+
-					     "<b>Doctor </b>"+p.getPatientDentist();
+			//	String formattedVisitHistory = "<b> Visit Date: </b>"+p.getVisitDate()+" <b> Time </b>"+p.getVisitTime().toString()+"<br>"+
+				//	     "<b>Doctor </b>"+p.getPatientDentist();
+				String serviceFormattedString = getServiceFormattedString(p.getVisit_service());
+				String formattedVisitHistory = "<h3 style=\"background-color:#EEE; margin-left: 0px;\"><b> Visit Date: </b>"+p.getVisitDate()+" <b>Time </b>"+p.getVisitTime().toString()+" "+"<b>Doctor </b>"+p.getPatientDentist()+"</h3><div><p>Your Visit Details are</br>"+serviceFormattedString+"</p></div>";
 				visitHistory.add(formattedVisitHistory);
+				System.out.println(formattedVisitHistory);
 			}
 			//System.out.println("Formatted String" + visitHistory.get(0));
 			}
