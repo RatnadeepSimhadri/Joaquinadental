@@ -18,10 +18,7 @@
 <!-- End of Fonts used -->
 
 <!-- Jquery Libraries for ticker -->
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
-<script
-	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+
 <!-- End of Jquery Libraries for ticker -->
 
 <script src="//code.jquery.com/jquery-1.10.2.js"></script> 
@@ -140,6 +137,13 @@
 	font: bold italic 3em Helvetica;
 	text-align: center;
 }
+
+#mainview
+{
+padding-top:40%;
+}
+
+
 </style>
 
 </head>
@@ -164,7 +168,7 @@
 		</div>
 
 	</header>
-	<section>
+	<section id="mainview">
 		<div class="container main-content">
 		<div class="row">
 				<div class="col-sm-4 hidden-xs">

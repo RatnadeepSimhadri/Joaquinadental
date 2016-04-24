@@ -13,19 +13,15 @@
 <meta name="author" content="">
 <!-- Fonts used -->
 
-<link rel="stylesheet" type="text/css"
-	href="//fonts.googleapis.com/css?family=Crimson+Text" />
-<link rel="stylesheet" type="text/css"
-	href="//fonts.googleapis.com/css?family=Fjord+One" />
+<link rel="stylesheet" type="text/css"	href="//fonts.googleapis.com/css?family=Crimson+Text" />
+<link rel="stylesheet" type="text/css"	href="//fonts.googleapis.com/css?family=Fjord+One" />
 
 <!-- End of Fonts used -->
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>  
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js "></script>
 <!-- Jquery Libraries for ticker -->
-<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
-<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
-<script
-	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+
 <!-- End of Jquery Libraries for ticker -->
 <title>JoaQuinaDental</title>
 
@@ -46,11 +42,10 @@
 
 <style>
 
-#maincontent
+#mainview
 {
 padding-top:40%;
 }
-
 /* Styling for ticker */
 .demo1 {
 	/* border: 1px solid #ccc; */
@@ -140,33 +135,9 @@ padding-top:40%;
 		</div>
 	</header>
 
-	<section id="mainContent">
+	<section id="mainview">
 		<div class="container main-content">
-			<%--  jd <div class="row">
-				<div class="col-sm-4 hidden-xs">
-					<h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4>
-				</div>
-				<div class="col-sm-8">
-					<h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Upcoming
-						Appointments</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 hidden-xs"></div>
-				<div class="col-sm-8" align="center">
-					<label>${status}</label>
-				</div>
-			</div>
-
-			<div class="col-sm-4 hidden-xs"
-				style="font-family: Tahoma, 'Times New Roman', sans-serif;">
-				<c:if test="${not empty notifications }">
-					<c:forEach var="notification" items="${notifications}">
-						<div style="margin-left: 0px;" class="row">${notification}</div>
-						<br>
-					</c:forEach>
-				</c:if>
-			jd </div> --%>
+		
 			<div class="row">
 				<div class="col-sm-4 hidden-xs">
 					<h2
@@ -267,7 +238,7 @@ padding-top:40%;
 			}
 		</script>
 	</section>
-
+&nbsp;
 
 
 	<!-- Footer -->

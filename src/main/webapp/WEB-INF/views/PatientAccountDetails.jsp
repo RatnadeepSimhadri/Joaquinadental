@@ -34,13 +34,12 @@
 
 <!-- Jquery Libraries for ticker -->
 <!-- new  ticker js-->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js "></script>
+<!--  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js "></script>-->
+<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>  
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
-<script
-	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
 <!-- End of Jquery Libraries for ticker -->
 	<script>
 	function ticker() {
@@ -60,9 +59,7 @@
 		});
 	}); */
 </script>
-<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>  -->
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <script>
 	$(function() {
 		$("#accordion").accordion({
@@ -77,7 +74,8 @@
 	});
 	</script>
 <style>
-#mainview()
+
+#mainview
 {
 padding-top:40%;
 }
@@ -121,8 +119,7 @@ padding-top:40%;
 				<div class="col-sm-8" style="font-family: 'Fjord One', sans-serif"
 					align="center">
 					<h2
-						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">Book
-						Appointment</h2>
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">Account Details</h2>
 				</div>
 			</div>
 			
