@@ -81,6 +81,21 @@ public class SiteAppController {
 			return mv;
 		}
 	}
+	@RequestMapping("/DocDash")
+	public ModelAndView docLanding(HttpSession session)
+	{ 
+		User user =  (User) session.getAttribute("user");
+		
+		List<String> list = SiteAppService.viewAppointments(user.getEmail());
+		List<String> notifications = NotificationService.getGeneralNotifications();
+		ModelAndView mv = new ModelAndView("viewAppointments");
+		mv.addObject("lists", list);
+		mv.addObject("notifications",notifications);
+		return mv;
+		
+	}
+	
+	
 	@RequestMapping("/AdminDash")
 	// merge this code with the login method sairam
 	public ModelAndView admindashboard( ) {

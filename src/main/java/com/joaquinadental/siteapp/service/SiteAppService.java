@@ -42,7 +42,8 @@ public class SiteAppService {
 		List<String> formattedAppointments = new ArrayList<String>();
 		if (list.isEmpty())
 		{
-			String formattedAppointment = "<b> You dont have any scheduled appointments for today</b>";
+			System.out.println("INside format appointment details");
+			String formattedAppointment = "<b>You dont have any scheduled appointments for today</b>";
 			formattedAppointments.add(formattedAppointment);
 		}
 		else{

@@ -19,8 +19,10 @@
 	href="//fonts.googleapis.com/css?family=Fjord+One" />
 
 <!-- End of Fonts used -->
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js "></script>
 <!-- Jquery Libraries for ticker -->
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
 <script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
 <script
 	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
@@ -43,6 +45,11 @@
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 
 <style>
+
+#maincontent
+{
+padding-top:40%;
+}
 
 /* Styling for ticker */
 .demo1 {
