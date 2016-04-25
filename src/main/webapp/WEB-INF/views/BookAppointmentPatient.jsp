@@ -36,14 +36,13 @@
 	});
 	
 	
-	/* Script for ticker */
-	$(document).ready(function() {
-		$('.demo1').easyTicker({
-			interval : 1500,
-			speed : 'slow',
-			direction : 'up'
-		});
-	});
+	function ticker() {
+	    $('#ticker li:first').slideUp(function() {
+	        $(this).appendTo($('#ticker')).slideDown();
+	    });
+	}
+	setInterval(ticker, 3000);
+	
 
 </script>
 <style type="text/css">
@@ -188,23 +187,17 @@ padding-top:40%;
 			
 
 			<div class="row">
-				<div class="col-sm-4 hidden-xs"
-					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
-					<div class="demo1">
-						<div>
+				<div class="col-sm-4 col-md-4 hidden-xs"
+					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">			
 							<c:if test="${not empty notifications }">
+							<div class="ticker">
+							<ul id="ticker" style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
 								<c:forEach var="notification" items="${notifications}">
-									<div
-										style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
-										<p>${notification}
-										<p>
-									</div>
+								<li>${notification}</li>										
 								</c:forEach>
-							</c:if>
-
-
-						</div>
-						</div>
+								</ul>
+								</div>
+							</c:if>						
 						</div>
 						
 
@@ -282,19 +275,8 @@ padding-top:40%;
 			</div>
 		</div>
 		 
-
-
 		<script type="text/javascript">
-			function validateDate() {
-
-				var date = document.getElementById("form1").elements
-						.namedItem("datepicker").value;
-				var dateToday = new Date();
-				if (date < dateToday)
-					return "false"
-				else
-					return "true"
-			}
+			
 			function submitAppointment() {
 
 				var myForm = document.getElementById("form1");
@@ -310,7 +292,7 @@ padding-top:40%;
 				myForm.submit();
 			}
 		</script>
-		</div>
+		
 	</section>
 
 

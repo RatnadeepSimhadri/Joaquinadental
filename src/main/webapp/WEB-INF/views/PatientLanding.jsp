@@ -4,7 +4,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,16 +11,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <!-- Fonts used -->
-
 <link rel="stylesheet" type="text/css"	href="//fonts.googleapis.com/css?family=Crimson+Text" />
 <link rel="stylesheet" type="text/css"	href="//fonts.googleapis.com/css?family=Fjord+One" />
-
 <!-- End of Fonts used -->
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>  
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
 <!-- Jquery Libraries for ticker -->
-
 <!-- End of Jquery Libraries for ticker -->
 <title>JoaQuinaDental</title>
 
@@ -104,13 +99,12 @@ padding-top:40%;
 </style>
 <script>
 	/* Script for ticker */
-	$(document).ready(function() {
-		$('.demo1').easyTicker({
-			interval : 1500,
-			speed : 'slow',
-			direction : 'up'
-		});
-	});
+	function ticker() {
+	    $('#ticker li:first').slideUp(function() {
+	        $(this).appendTo($('#ticker')).slideDown();
+	    });
+	}
+	setInterval(ticker, 3000);
 </script>
 </head>
 
@@ -162,21 +156,23 @@ padding-top:40%;
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"
 					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
-					<div class="demo1">
+					
 						<div>
 							<c:if test="${not empty notifications }">
+							<div class="ticker">
+							<ul id="ticker" style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
 								<c:forEach var="notification" items="${notifications}">
-									<div
-										style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
-										<p>${notification}
-										<p>
-									</div>
+																<li>${notification}</li>
+										
+									
 								</c:forEach>
+								</ul>
+								</div>
 							</c:if>
-
-
+							
 						</div>
-					</div>
+					
+					
 
 				</div>
 
@@ -248,8 +244,7 @@ padding-top:40%;
 				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
-						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
-							<br> CO 95064
+						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,	<br> CO 95064
 						</i>
 					</h4>
 					</p>
@@ -260,10 +255,10 @@ padding-top:40%;
 						<h4>
 							<i>
 								<li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-								<li><i class="fa fa-envelope-o fa-fw"></i> <a
-									href="mailto:name@example.com">questions@jqd.com</a></li>
+								<li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">questions@jqd.com</a></li>
 							</i>
 						</h4>
+						
 					</ul>
 
 					<br>

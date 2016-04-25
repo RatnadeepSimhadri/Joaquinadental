@@ -49,15 +49,7 @@
 	}
 	setInterval(ticker, 3000);
 	
-	
-	/* /* Script for ticker 
-	$(document).ready(function() {
-		$('.demo1').easyTicker({
-			interval : 1500,
-			speed : 'slow',
-			direction : 'up'
-		});
-	}); */
+
 </script>
 
 <script>
@@ -133,7 +125,7 @@ padding-top:40%;
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"
 					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
-				<!--  	<div class="demo1"> -->
+				
 						<div>
 							<c:if test="${not empty notifications }">
 							<div class="ticker">
@@ -148,7 +140,7 @@ padding-top:40%;
 							</c:if>
 							
 						</div>
-					<!-- </div> -->
+					
 				</div>
 
 				<div class="col-sm-8">
