@@ -10,17 +10,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+<!-- Fonts used -->
+<link rel="stylesheet" type="text/css"
+	href="//fonts.googleapis.com/css?family=Crimson+Text" />
+<link rel="stylesheet" type="text/css"
+	href="//fonts.googleapis.com/css?family=Fjord+One" />
+<!-- End of Fonts used -->
+
+<!-- Jquery Libraries for ticker -->
+
+<!-- End of Jquery Libraries for ticker -->
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script> 
 <!--  Sairams code for date picker -->
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>  --> 
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+<!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
 <script>
 	$(function() {
 		$("#datepicker").datepicker();
 		$("#datepicker").datepicker('setDate', new Date());
 	});
+	
+	
+	/* Script for ticker */
+	$(document).ready(function() {
+		$('.demo1').easyTicker({
+			interval : 1500,
+			speed : 'slow',
+			direction : 'up'
+		});
+	});
+
 </script>
 <style type="text/css">
 .form-control {
@@ -31,6 +55,7 @@
 	width: 80%;
 }
 </style>
+
 
 
 <title>JoaQuinaDental</title>
@@ -48,21 +73,32 @@
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <!-- Carousel related -->
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+<!--<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<!-- 
 <script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 <style>
+/* Styling for ticker */
+.demo1 {
+	/* border: 1px solid #ccc; */
+	margin-top: 10px;
+}
+
+.demo1 div div {
+	padding: 5px;
+	/*  border-bottom: 1px solid #ccc; */
+}
+
+.et-run {
+	background-color: #0cf;
+	color: white;
+	border: 1px solid black;
+}
+
+
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
 	width: 26%;
 	height: 26%
@@ -101,6 +137,13 @@
 	font: bold italic 3em Helvetica;
 	text-align: center;
 }
+
+#mainview
+{
+padding-top:40%;
+}
+
+
 </style>
 
 </head>
@@ -117,40 +160,55 @@
 
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
-				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="">LOGOUT</a></li>
-				<li><a href="">CONTACT US</a></li>
+				<li class="active"><a href="PatientLanding">HOME</a></li>
+				<li><a href="../aboutUs.html#intro">ABOUT US</a></li>
+				<li><a href="../index.jsp">LOGOUT</a></li>
+				<li><a href="#footer">CONTACT US</a></li>
 			</ul>
 		</div>
 
 	</header>
-	<section>
+	<section id="mainview">
 		<div class="container main-content">
-
-			<div class="row">
+		<div class="row">
 				<div class="col-sm-4 hidden-xs">
-					<h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4>
+					<h2
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">
+						Notifications
+						</h2>
 				</div>
-				<div class="col-sm-8">
-					<h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Book
-						Appointment</h4>
+				<div class="col-sm-8" style="font-family: 'Fjord One', sans-serif; font-size:1.8em"
+					align="center">
+					<h2
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">
+						Book Appointment
+						</h2>
 				</div>
-			</div>
-			<!-- Main content Div -->
+			
+
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"
-					style="font-family: Tahoma, 'Times New Roman', sans-serif;">
-					<c:if test="${not empty notifications }">
-						<c:forEach var="notification" items="${notifications}">
-							<div style="margin-left: 0px;" class="row">${notification}
-							</div>
-							<br>
-						</c:forEach>
-					</c:if>
-				</div>
+					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
+					<div class="demo1">
+						<div>
+							<c:if test="${not empty notifications }">
+								<c:forEach var="notification" items="${notifications}">
+									<div
+										style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
+										<p>${notification}
+										<p>
+									</div>
+								</c:forEach>
+							</c:if>
 
-				<div class="col-sm-8 col-md-8  " style="background-color: #EEE;">
+
+						</div>
+						</div>
+						</div>
+						
+
+				<div class="col-sm-8 col-md-8  " >
 					<!--  form for booking appointment starts -->
 
 					<form name="form1" id="form1" class="form-horizontal" action=""
@@ -160,7 +218,7 @@
 								id="patientemail" value="${user.email}">
 						</div>
 						<div class="form-group ">
-							<label class="control-label col-sm-2" for="docname">Doctor</label>
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="docname">Doctor:</label>
 							<div class="col-sm-10">
 								<select name="doctor_name" class="form-control" id="docname">
 									<option>Jeffrey Hill</option>
@@ -173,16 +231,16 @@
 						</div>
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2" for="dateRangePicker">Date</label>
-							<div class="col-sm-10" style="width: 40%">
-								<input type="text" id="datepicker" name="datepicker">
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="dateRangePicker">Date:</label>
+							<div class="col-sm-10" style="width: 40% font-family: 'Crimson text', sans-serif; font-size: 1.2em">
+								<input type="text"  style="font-family: 'Crimson text', sans-serif; font-size: .9em" id="datepicker" name="datepicker">
 							</div>
 						</div>
 
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2" for="hours">Time</label>
-							<div class="col-sm-10" style="width: 40%">
+							<label class="control-label col-sm-2" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em" for="hours">Time:</label>
+							<div class="col-sm-10" style="width: 40% font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 								<select name="hours" class="form-control" id="hours">
 									<option>8:00</option>
 									<option>9:00</option>
@@ -201,31 +259,29 @@
 						<div class="col-md-2 col-sm-2 hidden-xs"></div>
 						<div class="col-md-10 col-sm-10 col-xs-18">
 							<div class="row">
-								<div class="col-md-6 col-sm-3 col-xs-18">
+								<div class="col-md-5 col-sm-4 col-xs-18">
 									<div class="form-group ">
 										<button type="button" id="bookAppointment"
 											class="btn btn-primary btn-lg btn-block" onclick="cancel()">Cancel</button>
 									</div>
 								</div>
-
-
-
-								<div class="col-md-6 col-sm-3 col-xs-18">
+								<div class="col-md-1 col-sm-1 col-xs-18"></div>
+								<div class="col-md-5 col-sm-7 col-xs-18">
 									<div class="form-group ">
 										<button type="button" id="bookAppointment"
 											class="btn btn-primary btn-lg btn-block"
 											onclick="submitAppointment()">Submit Appointment</button>
 									</div>
 								</div>
-
-
 							</div>
 						</div>
 					</form>
+				
 				</div>
-
+</div>
 			</div>
 		</div>
+		 
 
 
 		<script type="text/javascript">
@@ -254,18 +310,20 @@
 				myForm.submit();
 			}
 		</script>
+		</div>
 	</section>
 
 
 
 	<!-- Footer -->
+
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-4 text-justified">
+				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
-						<i> Medical Care Group<br>1156 High Street<br>Englewood,
+						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
 					</h4>
@@ -302,13 +360,13 @@
 		</div>
 	</footer>
 
-	<%-- 
+	<!-- 
 	<!-- jQuery -
 		->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-	<script src="../js/bootstrap.min.js"></script>--%>
+	  <script src="../js/bootstrap.min.js"></script> 
 
 	<!-- Custom Theme JavaScript -->
 	<script>

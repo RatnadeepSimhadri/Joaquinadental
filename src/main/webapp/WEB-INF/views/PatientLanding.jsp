@@ -13,17 +13,15 @@
 <meta name="author" content="">
 <!-- Fonts used -->
 
-<link rel="stylesheet" type="text/css"
-	href="//fonts.googleapis.com/css?family=Crimson+Text" />
-<link rel="stylesheet" type="text/css"
-	href="//fonts.googleapis.com/css?family=Fjord+One" />
+<link rel="stylesheet" type="text/css"	href="//fonts.googleapis.com/css?family=Crimson+Text" />
+<link rel="stylesheet" type="text/css"	href="//fonts.googleapis.com/css?family=Fjord+One" />
 
 <!-- End of Fonts used -->
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>  
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <!-- Jquery Libraries for ticker -->
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
-<script
-	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+
 <!-- End of Jquery Libraries for ticker -->
 <title>JoaQuinaDental</title>
 
@@ -40,22 +38,14 @@
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 
-
-<!--<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
- <script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 <style>
 
+#mainview
+{
+padding-top:40%;
+}
 /* Styling for ticker */
 .demo1 {
 	/* border: 1px solid #ccc; */
@@ -134,61 +124,41 @@
 			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
 		</button>
-		
+
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
+				<li class="active"><a href="PatientLanding">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="">LOGOUT</a></li>
-				<li><a href="">CONTACT US</a></li>
+				<li><a href="../index.jsp">LOGOUT</a></li>
+				<li><a href="#footer">CONTACT US</a></li>
 			</ul>
 		</div>
 	</header>
 
-	<section id="mainContent">
+	<section id="mainview">
 		<div class="container main-content">
-			<%--  jd <div class="row">
-				<div class="col-sm-4 hidden-xs">
-					<h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Notifications</h4>
-				</div>
-				<div class="col-sm-8">
-					<h4 align="center" style="color: rgba(53, 144, 180, 0.64);">Upcoming
-						Appointments</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 hidden-xs"></div>
-				<div class="col-sm-8" align="center">
-					<label>${status}</label>
-				</div>
-			</div>
-
-			<div class="col-sm-4 hidden-xs"
-				style="font-family: Tahoma, 'Times New Roman', sans-serif;">
-				<c:if test="${not empty notifications }">
-					<c:forEach var="notification" items="${notifications}">
-						<div style="margin-left: 0px;" class="row">${notification}</div>
-						<br>
-					</c:forEach>
-				</c:if>
-			jd </div> --%>
+		
 			<div class="row">
 				<div class="col-sm-4 hidden-xs">
 					<h2
 						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
-						align="center">
-						Notifications
-						</h4>
+						align="center">Notifications</h2>
 				</div>
-				<div class="col-sm-8" style="font-family: 'Fjord One', sans-serif"
+				<div class="col-sm-8"
+					style="font-family: 'Fjord One', sans-serif; font-size: 1.8em"
 					align="center">
 					<h2
 						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">
-						Book Appointment
-						</h4>
+						Upcoming Appointment</h2>
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-sm-4 hidden-xs"></div>
+				<div class="col-sm-8" align="center" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
+					<label>${status}</label>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"
 					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
@@ -218,7 +188,7 @@
 					<c:if test="${not empty lists }">
 						<c:forEach var="appointment" items="${lists}">
 							<div class="row"
-								style="background-color: #EEE; margin-left: 0px;">
+								style="background-color: #EEE; margin-left: 0px; font-family: 'Crimson text', sans-serif; font-size: 1.2em">
 								${appointment}</div>
 							<br>
 						</c:forEach>
@@ -235,13 +205,13 @@
 						<div class="row">
 							<form role="form" action="siteapp/PatientLanding" id="form1"
 								method="post">
-								<div class="col-md-4 col-md-offset-1 col-sm-3 col-xs-18">
+								<div class="col-md-4  col-sm-3 col-xs-18">
 									<button type="button" id="bookAppointment"
 										class="btn btn-primary btn-lg btn-block"
 										onclick="redirectAppointment()">Book Appointment</button>
 								</div>
-								<div class="col-md-2  col-sm-2 col-xs-18">&nbsp;</div>
-								<div class="col-md-5 col-sm-3 col-xs-18">
+								<div class="col-md-2  col-sm-2 col-xs-18"></div>
+								<div class="col-md-4 col-sm-3 col-xs-18">
 									<button type="button" id="accountDetails"
 										class="btn btn-primary btn-lg btn-block"
 										onclick="redirectAccount()">Account Details</button>
@@ -251,33 +221,34 @@
 					</div>
 				</div>
 			</div>
-			<script type="text/javascript">
-				function redirectAccount() {
+		</div>
+		<script type="text/javascript">
+			function redirectAccount() {
 
-					var myForm = document.getElementById("form1");
-					myForm.action = "AccountDetails";
-					myForm.submit();
-				}
+				var myForm = document.getElementById("form1");
+				myForm.action = "AccountDetails";
+				myForm.submit();
+			}
 
-				function redirectAppointment() {
+			function redirectAppointment() {
 
-					var myForm = document.getElementById("form1");
-					myForm.action = "BookAppointment";
-					myForm.submit();
-				}
-			</script>
+				var myForm = document.getElementById("form1");
+				myForm.action = "BookAppointment";
+				myForm.submit();
+			}
+		</script>
 	</section>
-
+&nbsp;
 
 
 	<!-- Footer -->
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-4 text-justified">
+				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
-						<i> JoQuina Dental Group<br>1156 High Street<br>Englewood,
+						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
 					</h4>

@@ -40,11 +40,19 @@ public class SiteAppService {
 	
 	private static List<String> formatAppointmentDetails(List<ViewAppointment> list){
 		List<String> formattedAppointments = new ArrayList<String>();
+		if (list.isEmpty())
+		{
+			System.out.println("INside format appointment details");
+			String formattedAppointment = "<b>You dont have any scheduled appointments for today</b>";
+			formattedAppointments.add(formattedAppointment);
+		}
+		else{
 		for (Iterator iterator = list.iterator(); iterator
 				.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
-			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time : "+va.getAppointment_time().toString();
+			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time: "+va.getAppointment_time().toString();
 			formattedAppointments.add(formattedAppointment);
+		}
 		}
 		//System.out.println("Formatted String" + formattedAppointments.get(0));
 		return formattedAppointments;
@@ -63,8 +71,8 @@ public class SiteAppService {
 		{
 		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
-			String formattedAppointment = "<b> Appointment Date: </b>"+va.getAppointmentDate()+" <b> Time </b>"+va.getAppointment_time().toString()+"<br>"+
-				     "<b>Doctor </b>"+va.getDentistFirstName()+" "+va.getDentistLastName();
+			String formattedAppointment = "<b> Appointment Date: </b>"+va.getAppointmentDate()+" <b> Time: </b>"+va.getAppointment_time().toString()+"<br>"+
+				     "<b>Doctor: </b>"+va.getDentistFirstName()+" "+va.getDentistLastName();
 			formattedAppointments.add(formattedAppointment);
 		}
 		System.out.println("Formatted String" + formattedAppointments.get(0));
@@ -296,14 +304,15 @@ public class SiteAppService {
 			}
 		 else
 		 {
-			 String serviceFormatted = "<b>Service Description&nbsp&nbsp&nbspService Cost($)</b>";
+			 String serviceFormatted = "Service Description<ul>";
 		 for(Iterator iterator = serviceList.iterator(); iterator
 					.hasNext();)
 		 {
 			 Service s = (Service) iterator.next();
-			 serviceFormatted=serviceFormatted+"</br>"+s.getServiceDesc()+"           $"+s.getServiceCost();
+			 serviceFormatted=serviceFormatted+"<li>"+s.getServiceDesc()+"- $"+s.getServiceCost()+"</li>";
 		 }
 		 System.out.println(serviceFormatted);
+	// serviceFormatted="</ul>";
 		 return serviceFormatted;
 		 }
 	 }
@@ -326,7 +335,7 @@ public class SiteAppService {
 			//	String formattedVisitHistory = "<b> Visit Date: </b>"+p.getVisitDate()+" <b> Time </b>"+p.getVisitTime().toString()+"<br>"+
 				//	     "<b>Doctor </b>"+p.getPatientDentist();
 				String serviceFormattedString = getServiceFormattedString(p.getVisit_service());
-				String formattedVisitHistory = "<h3 style=\"background-color:#EEE; margin-left: 0px;\"><b> Visit Date: </b>"+p.getVisitDate()+" <b>Time </b>"+p.getVisitTime().toString()+" "+"<b>Doctor </b>"+p.getPatientDentist()+"</h3><div><p>Your Visit Details are</br>"+serviceFormattedString+"</p></div>";
+				String formattedVisitHistory = "<h3 style=\"font-family: 'Fjord One', sans-serif; margin-left: 0px;\"><b> Visit Date: </b>"+p.getVisitDate()+" <b>Time: </b>"+p.getVisitTime().toString()+" "+"<b>Doctor: </b>"+p.getPatientDentist()+"</h3><div><p>Your Visit Details are</br>"+serviceFormattedString+"</ul></p></div>";
 				visitHistory.add(formattedVisitHistory);
 				System.out.println(formattedVisitHistory);
 			}

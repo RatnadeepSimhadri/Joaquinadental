@@ -1,7 +1,5 @@
 package com.joaquinadental.siteapp.DAO;
 
-import static com.joaquinadental.siteapp.util.DBConstants._GET_GENERAL_NOTIFICATION;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -23,19 +21,27 @@ public class CreateAccountDAO {
 	static final String USER = "bc0e2f97ace092";
 	static final String PASS = "02272043";
 
-	public static boolean saveProfile(Patient patient) {
+	public static boolean saveProfile(Patient patient) throws Exception {
 
 		Connection conn = null;
 		Statement stmt = null;
 		boolean result = false;
 		PreparedStatement prestmt = null;
 		PreparedStatement prestmt2 = null;
+		PreparedStatement checkUser = null;
 		List<String>list = new ArrayList<String>();
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
 			
 			String createAccount;
+			
+			String checkEmailId = "select User_emailID from users where upper(User_emailID) = ?";
+			checkUser = conn.prepareStatement(checkEmailId);
+			checkUser.setString(1,patient.getEmail().toUpperCase());
+			ResultSet rscu = checkUser.executeQuery();
+			
+			
 			createAccount = "insert into account(account_balance) values (0)";
 			stmt.executeUpdate(createAccount);
 			ResultSet rs = stmt.executeQuery("select last_insert_id() as last_id from account limit 1");
@@ -90,8 +96,10 @@ public class CreateAccountDAO {
 			
 		}catch(SQLException se){
 			se.printStackTrace();
+			throw(se);
 		}catch(Exception e){
 			e.printStackTrace();
+			throw(e);
 		}finally{
 			try{
 				if(prestmt!=null)
@@ -101,6 +109,7 @@ public class CreateAccountDAO {
 				if(stmt!=null)
 					stmt.close();
 			}catch(SQLException se2){
+				throw (se2);
 			}
 			try{
 				if(conn!=null){
@@ -108,6 +117,7 @@ public class CreateAccountDAO {
 				}
 			}catch(SQLException se){
 				se.printStackTrace();
+				throw(se);
 			}
 		}
 		return result;

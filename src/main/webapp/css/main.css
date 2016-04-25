@@ -1,6 +1,7 @@
 body{
 	height:100%;
 }
+
 p{
 word-wrap: break-word;
 text-align: justify;
@@ -9,6 +10,7 @@ text-align: justify;
 #jdNavBar{
 	position: relative;
 	margin-top: 0%;
+	text-align: right;
 } 
 
 
@@ -47,15 +49,18 @@ text-align: justify;
 }
 
 #jdNavBar > ul > li > a:hover {
-    background-color: rgba(192,192,192,0);
+    
+	background-color: #99ccff;
 }
 
 #jdNavBar > ul > li > a:active {
-    background-color: rgba(192,192,192,0);
+    
+	background-color: #99ccff;
 }
 
 #jdNavBar > ul > li > a:visited {
-    background-color: rgba(192,192,192,0);
+    
+	background-color: #99ccff;
 }
 
 /* code for login popup */
@@ -114,12 +119,9 @@ h4{
     font-family: Tahoma, "Times New Roman", sans-serif;
 }
 
-<<<<<<< Upstream, based on RatnadeepSimhadri/master
 .form-horizontal .form-group {
 	margin-left:0px;
 }
-=======
->>>>>>> 3395c5c *
 
 .popup button:hover{
 	background-color: #06D85F;

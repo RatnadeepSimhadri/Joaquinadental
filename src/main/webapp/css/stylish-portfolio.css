@@ -199,7 +199,7 @@ hr.small {
 /* Services */
 
 .services {
-    padding: 50px 0;
+    padding: 30% 0 0 0;
 }
 
 .service-item {
@@ -265,7 +265,7 @@ hr.small {
 footer {
     padding: 1% 0 0 0;
     color: black;
-    background: #d6d6c2;
+    background:  #e6e6e6;
 }
 
 #mainContent{
