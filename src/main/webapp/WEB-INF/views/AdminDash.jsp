@@ -281,7 +281,7 @@ $(function() {
        <button id="cancelbutton" class="btn btn-danger btn-lg btn-block" style="background-color: #f44336">Cancel Appointment</button>
        <div id="dialog" title="Confirmation Required">
   			<span>Are you sure about this</span>
-		</div></div><div class="col-xs-18 col-sm-3 col-md-3"><button id="checkinbutton" class="btn btn-primary btn-lg btn-block">Appointment Check In</button></div>
+		</div></div><div class="col-xs-18 col-sm-3 col-md-3"><button id="checkinbutton" class="btn btn-primary btn-lg btn-block " disabled>Appointment Check In</button></div>
 		
 </form>
 </div>

@@ -338,7 +338,7 @@ public class SiteAppDAO {
 			stmt = conn.createStatement();
 			String sql;
 			System.out.println("executing the today appointment query");
-			sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and Appointment_Date = '2006-01-02'";
+			sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and Appointment_Date >= curdate();";
 			ResultSet rs = stmt.executeQuery(sql);
 			System.out.println("executed the today appointment query");
 			while(rs.next()){
