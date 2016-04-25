@@ -10,9 +10,9 @@
   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link href="http://code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
   <script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
   <script src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
   <link rel="stylesheet" type="text/css"
 	href="//fonts.googleapis.com/css?family=Crimson+Text" />
 <link rel="stylesheet" type="text/css"
@@ -25,17 +25,28 @@
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 <title>Joaquina Dental </title>
-<script>
-/* Script for ticker */	
-$(document).ready(function() {
-	$('.demo1').easyTicker({
-		interval : 1500,
-		speed : 'slow',
-		direction : 'up'
-	});
-	
-});
-</script>
+<style>
+.demo1 {
+	/* border: 1px solid #ccc; */
+	margin-top: 10px;
+}
+
+.demo1 div div {
+	padding: 5px;
+	/*  border-bottom: 1px solid #ccc; */
+}
+
+.et-run {
+	background-color: #0cf;
+	color: white;
+	border: 1px solid black;
+}
+
+#mainview
+{
+padding-top:40%
+}
+</style>
 <script type="text/javascript">
 function openContactDetails(){
 	document.getElementById("cdlink").parentNode.classList.add("active");
@@ -76,6 +87,16 @@ function openPersonalDetails(){
 $(function() {
     $( "#dob" ).datepicker();
   });
+  
+/* Script for ticker */
+$(document).ready(function() {
+	$('.demo1').easyTicker({
+		interval : 1500,
+		speed : 'slow',
+		direction : 'up'
+	});
+	
+});
 </script>
 </head>
 <body onload="openPersonalDetails()">
@@ -89,10 +110,10 @@ $(function() {
 		
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
+				<li class="active"><a href="index.jsp">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="#popup">Logout</a></li>
-				<li><a href="">CONTACT US</a></li>
+				<li><a href="#popup">LOGIN</a></li>
+				<li><a href="#footer">CONTACT US</a></li>
 				
 			</ul>
 			
@@ -120,24 +141,29 @@ $(function() {
 			</div>
 		</div>
 	</header>
-	<section>
+<section id="mainview">
 <div class="container main-content" >
 <div class="row">
-    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
-    <div class="col-sm-8"><h4>Patient Registration</h4></div>
+    <div class="col-sm-4 hidden-xs"><h4 style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">Notifications</h4></div>
+    <div class="col-sm-8"><h4 style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">Patient Registration</h4></div>
  </div>
  <!-- Main content Div -->
  <div class="row">
- <div class="col-sm-4 hidden-xs" style= "font-family: Tahoma, 'Times New Roman', sans-serif;">
- <c:if test="${not empty notifications }">
- <c:forEach var="notification" items="${notifications}">
- <div style="margin-left: 0px;" class="row">
- ${notification}
- </div>
- <br>
- </c:forEach>
- </c:if>
- </div>
+<div class="col-sm-4 hidden-xs" style="font-family: 'Crimson text', sans-serif; font-size: 1.8em">
+<div class="demo1">
+<div>
+<c:if test="${not empty notifications }">
+<c:forEach var="notification" items="${notifications}">
+<div style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
+${notification}
+</div>
+</c:forEach>
+</c:if>
+</div>
+</div>
+</div>
  <div class="col-sm-8">
  Your Account has been created <a id="loginLink" href="#popup">Click Here</a> to login.
  

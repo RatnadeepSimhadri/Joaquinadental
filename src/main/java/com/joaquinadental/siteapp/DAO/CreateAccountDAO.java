@@ -1,7 +1,5 @@
 package com.joaquinadental.siteapp.DAO;
 
-import static com.joaquinadental.siteapp.util.DBConstants._GET_GENERAL_NOTIFICATION;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -30,12 +28,20 @@ public class CreateAccountDAO {
 		boolean result = false;
 		PreparedStatement prestmt = null;
 		PreparedStatement prestmt2 = null;
+		PreparedStatement checkUser = null;
 		List<String>list = new ArrayList<String>();
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();
 			
 			String createAccount;
+			
+			String checkEmailId = "select User_emailID from users where upper(User_emailID) = ?";
+			checkUser = conn.prepareStatement(checkEmailId);
+			checkUser.setString(1,patient.getEmail().toUpperCase());
+			ResultSet rscu = checkUser.executeQuery();
+			
+			
 			createAccount = "insert into account(account_balance) values (0)";
 			stmt.executeUpdate(createAccount);
 			ResultSet rs = stmt.executeQuery("select last_insert_id() as last_id from account limit 1");

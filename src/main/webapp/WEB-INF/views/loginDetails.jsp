@@ -10,9 +10,9 @@
   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <link href="http://code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
   <script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
   <script src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
   <link rel="stylesheet" type="text/css"
 	href="//fonts.googleapis.com/css?family=Crimson+Text" />
 <link rel="stylesheet" type="text/css"
@@ -42,6 +42,10 @@
 	border: 1px solid black;
 }
 
+#mainview
+{
+padding-top:40%
+}
 </style>
 <script type="text/javascript">
 function openContactDetails(){
@@ -107,11 +111,10 @@ $(document).ready(function() {
 		
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
+				<li class="active"><a href="../index.jsp">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="#popup">LOGIN</a></li>
-				<li><a href="">CONTACT US</a></li>
-				<li><a href="homeEsp.html"><i>Español</i></a></li>
+				<li><a href="#footer">CONTACT US</a></li>
+				
 			</ul>
 			
 
@@ -123,7 +126,7 @@ $(document).ready(function() {
 				<h3>Login</h3>
 				<a class="close" href="#">&times;</a>
 				<div class="content">
-					<form role="form" action="siteapp/Login" method="post">
+					<form role="form" action="Login" method="post">
 						<div class="form-group">
 							<input placeholder="Email" name="email" type="email"
 								class="form-control" id="email">
@@ -138,11 +141,13 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</header>
-<section>
+<section id="mainview">
 <div class="container main-content" >
 <div class="row">
-    <div class="col-sm-4 hidden-xs"><h4>Notifications</h4></div>
-    <div class="col-sm-8"><h4>Patient Registration</h4></div>
+    <div class="col-sm-4 hidden-xs"><h4 style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">Notifications</h4></div>
+    <div class="col-sm-8"><h4 style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">Patient Registration</h4></div>
  </div>
  <!-- Main content Div -->
  <div class="row">
@@ -192,11 +197,8 @@ ${notification}
 			
 			
 			<div class="row">
-				<div class="form-group col-sm-6">
-				<button type="button" onclick =getContactDetails() class="btn btn-primary btn-sm btn-block">Back</button>
-				</div>
-				<div class="form-group col-sm-6">
-				<button type="button" onclick =createAccount() class="btn btn-primary btn-sm btn-block">Continue</button>
+				<div class="form-group col-md-4 col-sm-3 col-xs-18">
+				<button type="button" onclick =createAccount() class="btn btn-primary btn-sm btn-block">Create Account</button>
 				</div>
 		   </div>
 				
@@ -213,7 +215,7 @@ ${notification}
 
 <footer>
 			<div class="row">
-				<div class="col-xs-4 text-justified">
+				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,

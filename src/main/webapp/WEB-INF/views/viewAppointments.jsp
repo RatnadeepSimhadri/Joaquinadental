@@ -51,7 +51,7 @@ $(document).ready(function() {
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="DocDash">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="#popup">LOGOUT</a></li>
+				<li><a href="../index.jsp">LOGOUT</a></li>
 				<li><a href="#footer">CONTACT US</a></li>
 				
 			</ul>
@@ -65,7 +65,7 @@ $(document).ready(function() {
 				<h3>Login</h3>
 				<a class="close" href="#">&times;</a>
 				<div class="content">
-					<form role="form" action="siteapp/Login" method="post">
+					<form role="form" action="Login" method="post">
 						<div class="form-group">
 							<input placeholder="Email" name="email" type="email"
 								class="form-control" id="email">
