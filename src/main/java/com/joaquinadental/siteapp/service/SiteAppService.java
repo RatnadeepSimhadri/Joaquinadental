@@ -50,7 +50,7 @@ public class SiteAppService {
 		for (Iterator iterator = list.iterator(); iterator
 				.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
-			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time : "+va.getAppointment_time().toString();
+			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time: "+va.getAppointment_time().toString();
 			formattedAppointments.add(formattedAppointment);
 		}
 		}
@@ -176,6 +176,7 @@ public class SiteAppService {
 		
 		String firstname="";
 		String lastname="";
+		System.out.println(hours);
 		if(doctor_name!="")
 		{
 		String[] docnames = doctor_name.split(" ");
@@ -186,7 +187,7 @@ public class SiteAppService {
 			return " Hey there , please mention the dentist name";
 		}
 		
-		String appoint_time= hours + ":" + "00" + ":" + "00";
+		String appoint_time= hours + ":" + "00";
 		SimpleDateFormat fromUser = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
         String reformattedStr="";
@@ -354,4 +355,6 @@ public class SiteAppService {
 				
 			
 	 }
+
+	
 }
