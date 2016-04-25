@@ -169,9 +169,9 @@ ${notification}
  <div class="row">
  <ul class="nav nav-pills">
  
-  <li class="col-xs-3" ><a id="pdlink"  onClick="openPersonalDetails()" >Personal Details</a></li>
-  <li class="col-xs-3" ><a id="cdlink"  onclick="openContactDetails()" >Contact Details</a></li>
-  <li class="col-xs-3" ><a id="lilink"  onclick="openLoginDetails()" >Login Information</a></li>
+  <li class="col-xs-4" ><a id="pdlink"  onClick="openPersonalDetails()" >Personal Details</a></li>
+  <li class="col-xs-4" ><a id="cdlink"  onclick="openContactDetails()" >Contact Details</a></li>
+  <li class="col-xs-4" ><a id="lilink"  onclick="openLoginDetails()" >Login Information</a></li>
 
 </ul>
   </div>
