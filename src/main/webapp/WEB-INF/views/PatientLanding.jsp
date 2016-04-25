@@ -41,16 +41,6 @@
 {
 padding-top:40%;
 }
-/* Styling for ticker */
-.demo1 {
-	/* border: 1px solid #ccc; */
-	margin-top: 10px;
-}
-
-.demo1 div div {
-	padding: 5px;
-	/*  border-bottom: 1px solid #ccc; */
-}
 
 .et-run {
 	background-color: #0cf;
@@ -99,12 +89,13 @@ padding-top:40%;
 </style>
 <script>
 	/* Script for ticker */
-	function ticker() {
+	/*function ticker() {
 	    $('#ticker li:first').slideUp(function() {
 	        $(this).appendTo($('#ticker')).slideDown();
 	    });
 	}
 	setInterval(ticker, 3000);
+	*/
 </script>
 </head>
 

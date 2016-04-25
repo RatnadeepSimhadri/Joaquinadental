@@ -42,14 +42,14 @@
 
 <!-- End of Jquery Libraries for ticker -->
 	<script>
-	function ticker() {
+	/* function ticker() {
 	    $('#ticker li:first').slideUp(function() {
 	        $(this).appendTo($('#ticker')).slideDown();
 	    });
 	}
 	setInterval(ticker, 3000);
 	
-
+ */
 </script>
 
 <script>
