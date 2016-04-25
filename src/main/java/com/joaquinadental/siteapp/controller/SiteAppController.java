@@ -89,6 +89,7 @@ public class SiteAppController {
 	@RequestMapping("/DocDash")
 	public ModelAndView docLanding(HttpSession session)
 	{ 
+	try{
 		User user =  (User) session.getAttribute("user");
 		
 		List<String> list = SiteAppService.viewAppointments(user.getEmail());
@@ -97,6 +98,11 @@ public class SiteAppController {
 		mv.addObject("lists", list);
 		mv.addObject("notifications",notifications);
 		return mv;
+	}
+	catch(Exception e){
+		ModelAndView mv = new ModelAndView("error");
+		return mv;
+	}
 		
 	}
 	
