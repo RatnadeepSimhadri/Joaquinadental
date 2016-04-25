@@ -407,7 +407,7 @@ public class SiteAppDAO {
 			String firstname="";
 			String lastname="";
 			System.out.println(docdropdown);
-			if(docdropdown!="")
+			if( docdropdown!=NULL && !docdropdown.equals(""))
 			{
 			String[] docnames = docdropdown.split(" ");
 			firstname=docnames[0];
@@ -415,11 +415,11 @@ public class SiteAppDAO {
 			}	
 			
 			System.out.println("executing the updated appointment query");
-			if(patientid=="")
+			if(patientid=="" || patientid==NULL)
 			   {
-				 if(docdropdown=="")
+				 if(docdropdown=="" || docdropdown==NULL)
 				   {
-					if(reformattedStr=="")
+					if(reformattedStr=="" || reformattedStr==NULL)
 					{
 						return null;
 					}
@@ -429,7 +429,7 @@ public class SiteAppDAO {
 						sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and a.Appointment_Date= '" + reformattedStr + "'";
 				    }
 				   }
-				 else if(reformattedStr=="")
+				 else if(reformattedStr=="" || reformattedStr==NULL)
 				   {
 					 System.out.println("Testing testing testing 4");
 					 sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and d.dentist_first_name='" + firstname+ "'" + "and d.dentist_Last_name='" + lastname + "'";
@@ -439,9 +439,9 @@ public class SiteAppDAO {
 					 sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and d.dentist_first_name='" + firstname+ "'" + "and d.dentist_Last_name='" + lastname + "'" + "and a.Appointment_Date= '" + reformattedStr + "'";
 				  }
 			   }
-			else if(docdropdown=="")
+			else if(docdropdown=="" || docdropdown==NULL)
 			 {
-				if(reformattedStr=="")
+				if(reformattedStr=="" || reformattedStr==NULL)
 				 {
 					System.out.println("Testing testing testing 6");
 					sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and p.Patient_ID=" + patientid + "";
@@ -454,7 +454,7 @@ public class SiteAppDAO {
 			   }
 			else
 			{
-				if(reformattedStr=="")
+				if(reformattedStr=="" || reformattedStr==NULL)
 				{
 					System.out.println("Testing testing testing 7");
 					sql = "select  p.patient_first_name,  p.Patient_Last_Name, a.Appointment_ID, a.Appointment_Time ,a.appointment_date, d.dentist_first_name , d.dentist_Last_name from patient p , appointment a , dentist d where p.Patient_ID=a.Patient_ID and a.dentist_id = d.dentist_id and p.Patient_ID=" + patientid + " and d.dentist_first_name='" + firstname+ "' and d.dentist_Last_name='" + lastname + "'";	
@@ -578,6 +578,8 @@ public class SiteAppDAO {
 		String status=" <B> Appointment Changed - We're looking forward to serving you </B>";
 		Connection conn = null;
 		Statement stmt = null;
+		System.out.println(reformattedStr);
+		System.out.println(hours);
 		try{
 			conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			stmt = conn.createStatement();

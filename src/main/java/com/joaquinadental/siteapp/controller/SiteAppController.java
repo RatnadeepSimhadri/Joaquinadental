@@ -82,24 +82,40 @@ public class SiteAppController {
 		}
 	}
 	@RequestMapping("/AdminDash")
-	// merge this code with the login method sairam
-	public ModelAndView admindashboard( ) {
+    public ModelAndView admindashboard() 
+   			{
 		ModelAndView mv = null;
-		System.out.println("In Admin Dash");
 		String AdminAppt = SiteAppService.admindashappointment();
-		List<String> notifications = NotificationService.getGeneralNotifications();
-		mv = new ModelAndView("AdminDash");
-		System.out.println("Hello");
-		mv.addObject("jsondata", AdminAppt);
-		mv.addObject("notifications",notifications);
-		
-			return mv;
-		
-	}
+	List<String> notifications = NotificationService.getGeneralNotifications();
+	mv = new ModelAndView("AdminDash");
+	System.out.println("Hello");
+	mv.addObject("jsondata", AdminAppt);
+	mv.addObject("notifications",notifications);
+	return mv;
+   			}
 
 	
-
-	    @RequestMapping("/admappt")
+	  @RequestMapping("/admappt")
+	    public ModelAndView filterappointment(HttpServletRequest request) throws Exception 
+	   			{
+				ModelAndView mv = null;
+				System.out.println("In Admin Dash through admappt");
+				String patientid= request.getParameter("patientid");
+				String docdropdown= request.getParameter("docdropdown");
+				String val_date_picker= request.getParameter("val_date_picker");
+				String AdminAppt = SiteAppService.searchappointment(patientid,docdropdown,val_date_picker);
+				List<String> notifications = NotificationService.getGeneralNotifications();
+				mv = new ModelAndView("AdminDash");
+				System.out.println("Going to call admin dash with new json");
+				mv.addObject("jsondata", AdminAppt);
+				mv.addObject("notifications",notifications);
+				return mv;
+	
+		}
+	    
+	  
+	  
+	    /*@RequestMapping("/admappt")
 	    public ModelAndView filterappointment(@RequestParam String docdropdown,@RequestParam String patientid, @RequestParam String val_date_picker ) throws Exception 
 	   			{
 				ModelAndView mv = null;
@@ -112,7 +128,7 @@ public class SiteAppController {
 				mv.addObject("notifications",notifications);
 				return mv;
 	
-		}
+		}*/
 	    
 	    @RequestMapping("/BookAppointmentAdmin")
 	    public ModelAndView addappt( ) {
@@ -294,7 +310,21 @@ public class SiteAppController {
 		
 	}
 	
-	  
+	@RequestMapping("/AdminDash1")
+	// merge this code with the login method sairam
+	public ModelAndView newadmin( ) {
+		ModelAndView mv = null;
+		System.out.println("In Admin Dash");
+		String AdminAppt = SiteAppService.admindashappointment();
+		List<String> notifications = NotificationService.getGeneralNotifications();
+		mv = new ModelAndView("AdminDashboard_New");
+		System.out.println("Hello");
+		mv.addObject("jsondata", AdminAppt);
+		mv.addObject("notifications",notifications);
+		
+			return mv;
+		
+	}
 	  
 	  
 }
