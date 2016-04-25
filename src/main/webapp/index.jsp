@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>JoaQuinaDental</title>
+<title>JoaquinaDental</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -201,6 +201,7 @@ padding-right: 30%;
 				<!-- /.col-lg-10 -->
 			</div>
 			<!-- /.row -->
+		</div>
 		</div>
 		<!-- /.container -->
 	</section>
