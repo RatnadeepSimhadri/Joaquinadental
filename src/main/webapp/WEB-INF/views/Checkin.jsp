@@ -6,17 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-<link href="css/stylish-portfolio.css" rel="stylesheet">
+<link href="../css/stylish-portfolio.css" rel="stylesheet">
 
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
 
 <script src="../js/jquery.js"></script>
 
@@ -32,13 +32,17 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
-<script
-	src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
-	
-	
 
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+	function ticker() {
+	    $('#ticker li:first').slideUp(function() {
+	        $(this).appendTo($('#ticker')).slideDown();
+	    });
+	}
+	setInterval(ticker, 3000);
+</script>
 
 <script>
 	$(document)
@@ -161,16 +165,12 @@
 					});
 </script>
 <style>
-#mncontent{
-padding: 2%;
+#mncontent {
+	padding: 2%;
 }
 </style>
 </head>
 <body>
-
-<audio controls autoplay hidden="true">
-  <source src="calm.ogg" type="audio/ogg">
-</audio>
 
 	<!-- Header -->
 	<header id="top" class="header">
@@ -195,26 +195,69 @@ padding: 2%;
 	<section id='mncontent'>
 		<div class="container">
 			<div class="row clearfix">
-				<div class="col-md-4 column">Content</div>
+
+				<div class="col-sm-4 hidden-xs">
+					<h2
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">Notifications</h2>
+				</div>
+				<div class="col-sm-8" style="font-family: 'Fjord One', sans-serif"
+					align="center">
+					<h2
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">Account
+						Details</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4 hidden-xs"></div>
+				<div class="col-sm-8" align="center"
+					style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
+					<h4>Your account balance amount due is $ ${balance}</h4>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4 hidden-xs"
+					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
+					<!--  	<div class="demo1"> -->
+					<div>
+						<c:if test="${not empty notifications }">
+							<div class="ticker" style="font-family: 'Crimson text', sans-serif;">
+								<ul id="ticker"
+									style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
+									<c:forEach var="notification" items="${notifications}">
+										<li>${notification}</li>
+
+
+									</c:forEach>
+								</ul>
+							</div>
+						</c:if>
+
+					</div>
+					<!-- </div> -->
+				</div>
+
 				<div class="col-md-8 column">
-					<span class = "lead">Appointment ID: &nbsp;&nbsp;</span>
-					<span class = "lead">Doctor's Name: &nbsp;&nbsp;</span>
-					<span class = "lead">Patient Name: &nbsp;&nbsp;</span>
-					<br><br>
+					<span class="lead">Appointment ID: &nbsp;&nbsp;</span> <span
+						class="lead">Doctor's Name: &nbsp;&nbsp;</span> <span class="lead">Patient
+						Name: &nbsp;&nbsp;</span> <br>
+					<br>
 
 					<form class="form-inline">
 						<div class="col-sm-6 form-group">
-						<label>Visit Date</label>
-							<input id ="" placeholder="" type="text" class = "form-control"></input>
+							<label>Visit Date</label> <input id="" placeholder="" type="text"
+								class="form-control"></input>
 						</div>
 						<div class="col-sm-6 form-group">
-						<label>Visit Time</label>
-							<input id ="" placeholder="" type="text" class = "form-control"></input>
+							<label>Visit Time</label> <input id="" placeholder="" type="text"
+								class="form-control"></input>
 						</div>
-						
+
 					</form>
+					<br> <br>
 					<br>
-					<br><br>
 					<table class="table table-bordered table-hover" id="tab_logic">
 						<thead>
 							<tr>
@@ -470,15 +513,15 @@ padding: 2%;
 							<tr id='addr1'></tr>
 						</tbody>
 					</table>
-					<div class ="row">
-					<a id="add_row" class="btn btn-default pull-left">Add Row</a><a
-						id='delete_row' class="pull-right btn btn-default">Delete Row</a>
-						</div>
+					<div class="row">
+						<a id="add_row" class="btn btn-default pull-left">Add Row</a><a
+							id='delete_row' class="pull-right btn btn-default">Delete Row</a>
+					</div>
 					&nbsp;
-					<div class="row">	
-					<a id="calc" class="btn btn-primary pull-left">Calculate</a><a
-						id='sub' class="pull-right btn btn-success">Submit</a>
-						</div>
+					<div class="row">
+						<a id="calc" class="btn btn-primary pull-left">Calculate</a><a
+							id='sub' class="pull-right btn btn-success">Submit</a>
+					</div>
 				</div>
 			</div>
 

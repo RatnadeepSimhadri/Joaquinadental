@@ -7,10 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link href="http://code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-   <script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
+  <script src="http://www.aakashweb.com/resources/js/jquery.easing.js"></script>
   <script src="http://www.aakashweb.com/resources/js/jquery.easy-ticker.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
   <link rel="stylesheet" type="text/css"
 	href="//fonts.googleapis.com/css?family=Crimson+Text" />
 <link rel="stylesheet" type="text/css"
@@ -49,10 +51,10 @@ $(document).ready(function() {
 		
 		<div class="collapse navbar-collapse" id="jdNavBar">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="home.html">HOME</a></li>
+				<li class="active"><a href="index.jsp">HOME</a></li>
 				<li><a href="aboutUs.html#intro">ABOUT US</a></li>
-				<li><a href="#popup">Logout</a></li>
-				<li><a href="">CONTACT US</a></li>
+				<li><a href="#popup">LOGIN</a></li>
+				<li><a href="#footer">CONTACT US</a></li>
 				
 			</ul>
 			
@@ -65,7 +67,7 @@ $(document).ready(function() {
 				<h3>Login</h3>
 				<a class="close" href="#">&times;</a>
 				<div class="content">
-					<form role="form" action="siteapp/Login" method="post">
+					<form role="form" action="Login" method="post">
 						<div class="form-group">
 							<input placeholder="Email" name="email" type="email"
 								class="form-control" id="email">
@@ -80,11 +82,11 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</header>
-<section>
+<section id="mainview">
 <div class="container main-content" >
 <div class="row">
     <div class="col-sm-5"><h4 align="center"><img alt="Something Went Wrong" src="../images/oops-header.png"></h4></div>
-    <div class="col-sm-5"><h4 align="center"><iframe width="420" height="315" src="https://www.youtube.com/embed/EDmwojH5uRA"></iframe></h4></div>
+    <div class="col-sm-5"><h4 align="center"><iframe width="400" height="300" src="https://www.youtube.com/embed/EDmwojH5uRA"></iframe></h4></div>
  </div>
  <div class="row">
    
@@ -95,7 +97,7 @@ $(document).ready(function() {
 </section>
 <footer>
 			<div class="row">
-				<div class="col-xs-4 text-justified">
+				<div class="col-xs-4 text-justified" id="footer">
 					<p>
 					<h4>
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,

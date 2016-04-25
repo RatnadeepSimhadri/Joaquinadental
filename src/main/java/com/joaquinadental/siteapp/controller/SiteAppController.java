@@ -89,6 +89,7 @@ public class SiteAppController {
 	@RequestMapping("/DocDash")
 	public ModelAndView docLanding(HttpSession session) throws Exception
 	{ 
+	try{
 		User user =  (User) session.getAttribute("user");
 		
 		List<String> list = SiteAppService.viewAppointments(user.getEmail());
@@ -97,9 +98,22 @@ public class SiteAppController {
 		mv.addObject("lists", list);
 		mv.addObject("notifications",notifications);
 		return mv;
+	}
+	catch(Exception e){
+		ModelAndView mv = new ModelAndView("error");
+		return mv;
+	}
 		
 	}
 	
+	@RequestMapping("/CheckIn")
+	public ModelAndView checkIn() throws Exception{
+		ModelAndView mv = null;
+		mv = new ModelAndView("Checkin");
+		List<String>list = NotificationService.getGeneralNotifications();
+		mv.addObject("notifications", list);
+		return mv;
+	}
 	
 	@RequestMapping("/AdminDash")
 	// merge this code with the login method sairam
