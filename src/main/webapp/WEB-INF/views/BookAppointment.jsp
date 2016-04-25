@@ -30,6 +30,8 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
   <script src="../js/Dateminmax.js"></script>
+  
+  
   <style type="text/css">
 .form-control{
 				width:80%;
@@ -44,6 +46,18 @@ padding-top:40%;
        
 </style>
 
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+	function ticker() {
+	    $('#ticker li:first').slideUp(function() {
+	        $(this).appendTo($('#ticker')).slideDown();
+	    });
+	}
+	setInterval(ticker, 3000);
+</script>
 
 <script>
 
@@ -85,37 +99,45 @@ function goBack() {
 <div class="container main-content" >
 
 <div class="row">
-    <div class="col-sm-4 hidden-xs"><h2 style="font-family: 'Fjord One' , sans-serif;color:rgba(53, 144, 180, 0.64)" align="center">Notifications</h2></div>
-    <div class="col-sm-8" style="font-family: 'Fjord One' , sans-serif" align="center"><h2 style="font-family: 'Fjord One' , sans-serif;color:rgba(53, 144, 180, 0.64)">Book Appointment</h2></div>
- </div>
- 
- <div class="row"> 
- 		<div class="col-md-4 hidden-xs"></div>
- 		<div class="col-md-8">
-  	 	<h3 style="font-family: 'Crimson text', sans-serif;font-size:1.5em;color:rgba(53, 144, 180, 0.64)" align="center">${statusmsg}</h3>
-   		</div>
-  		 </div>
-  		 
-  		 
- <div class="row">
- <div class="col-sm-4 hidden-xs"  style= "font-family: 'Crimson text', sans-serif; margin-left: 0px;font-size:1.8em">
- <div class="demo1">
-    <div>
-        <c:if test="${not empty notifications }">
- 		<c:forEach var="notification" items="${notifications}">
- 		<div style= "font-family: 'Crimson text', sans-serif;font-size:0.7em">
-		<p>${notification}<p>
- 		</div>
- 		</c:forEach>
- 		</c:if> 
- 
-        
-    </div>
-</div>
- 
+   <div class="col-sm-4 hidden-xs">
+					<h2
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)"
+						align="center">Notifications</h2>
+				</div>
+				<div class="col-sm-8" style="font-family: 'Fjord One', sans-serif"
+					align="center">
+					<h2
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">Account Details</h2>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-4 hidden-xs"></div>
+				<div class="col-sm-8" align="center" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
+					<h4>Your account balance amount due is $ ${balance}</h4>
+				</div>
+			</div>
 
- </div>
- 
+			<div class="row">
+				<div class="col-sm-4 hidden-xs"
+					style="font-family: 'Crimson text', sans-serif; margin-left: 0px; font-size: 1.8em">
+				<!--  	<div class="demo1"> -->
+						<div>
+							<c:if test="${not empty notifications }">
+							<div class="ticker">
+							<ul id="ticker" style="font-family: 'Crimson text', sans-serif; font-size: 0.7em">
+								<c:forEach var="notification" items="${notifications}">
+																<li>	${notification}				</li>
+										
+									
+								</c:forEach>
+								</ul>
+								</div>
+							</c:if>
+							
+						</div>
+					<!-- </div> -->
+				</div>
  
   <div class="col-sm-8" align="center">
 <div class="Appointment form">
