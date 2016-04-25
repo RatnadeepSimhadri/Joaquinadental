@@ -29,9 +29,11 @@
 	rel="stylesheet" type="text/css">
 	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  
+
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
- 
+
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script>
   $(function() {
@@ -40,9 +42,7 @@
   
   </script>
 
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  
 <script>
 	function ticker() {
 	    $('#ticker li:first').slideUp(function() {
@@ -78,7 +78,12 @@ padding-top:40%;
 
 <script>
 function goBack() {
-    window.history.back();
+ //   window.history.back();
+    
+    var myForm = document.getElementById("updateappt");
+	myForm.action = "AdminDash";
+	myForm.submit();
+    
 }
 </script>
 
@@ -219,13 +224,14 @@ function goBack() {
 
 </div>
 </section>
+&nbsp;
 <!-- Footer -->
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-4 text-justified">
 					<p>
-					<h4>
+					<h4 style="color:black;">
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
@@ -235,7 +241,7 @@ function goBack() {
 
 				<div class="col-xs-8 text-right">
 					<ul class="list-unstyled">
-						<h4>
+						<h4 style="color:black;">
 							<i>
 								<li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
 								<li><i class="fa fa-envelope-o fa-fw"></i> <a

@@ -56,6 +56,11 @@ padding-top:40%;
         
 </style>
 
+
+<link href="css/stylish-portfolio.css" rel="stylesheet">
+
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
 <script>
       
 $(function() {
@@ -275,7 +280,7 @@ $(function() {
               <button type="submit" name="addbutton" id="addbutton" class="btn btn-primary btn-lg btn-block" formmethod="post" formaction="/siteapp/BookAppointmentAdmin">Add Appointment</button>
               </div>
        <div class="col-xs-18 col-sm-3 col-md-3">
-       <button type="submit" name="editbutton" id="editbutton" class="btn btn-primary btn-lg btn-block"  formmethod="post" formaction="/siteapp/EditAppointment">EditAppointment</button> 
+       <button type="submit" name="editbutton" id="editbutton" class="btn btn-primary btn-lg btn-block"  formmethod="post" formaction="/siteapp/EditAppointment">Edit Appointment</button> 
        </div>
        <div class="col-xs-18 col-sm-3 col-md-3">
        <button id="cancelbutton" class="btn btn-danger btn-lg btn-block" style="background-color: #f44336">Cancel Appointment</button>
@@ -318,13 +323,13 @@ $(function() {
 </div>
 
 </section>
-<!-- Footer -->
+	<!-- Footer -->
 	<footer>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-4 text-justified" id="footer">
 					<p>
-					<h4>
+					<h4 style="color:black;">
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
@@ -332,9 +337,10 @@ $(function() {
 					</p>
 				</div>
 
+
 				<div class="col-xs-8 text-right">
 					<ul class="list-unstyled">
-						<h4>
+						<h4 style="color:black;">
 							<i>
 								<li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
 								<li><i class="fa fa-envelope-o fa-fw"></i> <a

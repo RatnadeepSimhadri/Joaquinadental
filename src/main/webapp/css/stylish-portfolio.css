@@ -251,7 +251,7 @@ hr.small {
 /* Map */
 
 .map {
-    height: 500px;
+    height: 80%;
 }
 
 @media(max-width:768px) {
@@ -261,7 +261,9 @@ hr.small {
 }
 
 /* Footer */
-
+footer{
+	background-color: #a6a6a6;
+}
 
 #mainContent{
 	margin: 0 0 5% 0;

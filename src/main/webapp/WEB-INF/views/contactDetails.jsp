@@ -237,7 +237,7 @@ ${notification}
 			<div class="row">
 				<div class="col-xs-4 text-justified" id="footer">
 					<p>
-					<h4>
+					<h4 style="color:black;">
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
@@ -247,7 +247,7 @@ ${notification}
 
 				<div class="col-xs-8 text-right">
 					<ul class="list-unstyled">
-						<h4>
+						<h4 style="color:black;">
 							<i>
 								<li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
 								<li><i class="fa fa-envelope-o fa-fw"></i> <a

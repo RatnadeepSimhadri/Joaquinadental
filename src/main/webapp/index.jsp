@@ -330,7 +330,7 @@ padding-right: 30%;
 
 	<!-- Map AIzaSyCHmqeurcN1kYAdahELWoc8zkFK5Q82KoM-->
 	<section id="contact" class="map">
-		<iframe width="100%" height="80%" frameborder="0" style="border: 0"
+		<iframe width="100%" height="100%" frameborder="0" style="border: 0"
 			src="https://www.google.com/maps/embed/v1/place?q=place_id:EiUxMTU2IFMgSGlnaCBTdCwgRGVudmVyLCBDTyA4MDIxMCwgVVNB&key=AIzaSyCHmqeurcN1kYAdahELWoc8zkFK5Q82KoM"
 			allowfullscreen></iframe>
 	</section>

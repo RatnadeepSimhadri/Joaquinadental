@@ -21,6 +21,11 @@
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
+	
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
  <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
 
@@ -46,10 +51,6 @@ padding-top:40%;
        
 </style>
 
-
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script>
 	function ticker() {
 	    $('#ticker li:first').slideUp(function() {
@@ -63,8 +64,14 @@ padding-top:40%;
 
 /* Script for Back button */
 
+
 function goBack() {
-    window.history.back();
+ //   window.history.back();
+    
+    var myForm = document.getElementById("bookappt");
+	myForm.action = "AdminDash";
+	myForm.submit();
+    
 }
 </script>
 
@@ -142,7 +149,7 @@ function goBack() {
   <div class="col-sm-8" align="center">
 <div class="Appointment form">
  
-  <form name="bookappt" action="/siteapp/bookappt" method="post" role="form">
+  <form id="bookappt" name="bookappt" action="/siteapp/bookappt" method="post" role="form">
     <div class="form-group">
       <input type="text" name="patientid" class="form-control" id="patid" placeholder="Patient ID" required>
     </div>
@@ -213,7 +220,7 @@ function goBack() {
 			<div class="row">
 				<div class="col-xs-4 text-justified">
 					<p>
-					<h4>
+					<h4 style="color:black;">
 						<i> Joaquina Dental Group<br>1156 High Street<br>Englewood,
 							<br> CO 95064
 						</i>
@@ -223,7 +230,7 @@ function goBack() {
 
 				<div class="col-xs-8 text-right">
 					<ul class="list-unstyled">
-						<h4>
+						<h4 style="color:black;">
 							<i>
 								<li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
 								<li><i class="fa fa-envelope-o fa-fw"></i> <a
