@@ -107,14 +107,14 @@ function goBack() {
 				<div class="col-sm-8" style="font-family: 'Fjord One', sans-serif"
 					align="center">
 					<h2
-						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">Account Details</h2>
+						style="font-family: 'Fjord One', sans-serif; color: rgba(53, 144, 180, 0.64)">Book Appointment</h2>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-sm-4 hidden-xs"></div>
 				<div class="col-sm-8" align="center" style="font-family: 'Crimson text', sans-serif; font-size: 1.2em">
-					<h4>Your account balance amount due is $ ${balance}</h4>
+					<h4>${statusmsg}</h4>
 				</div>
 			</div>
 
