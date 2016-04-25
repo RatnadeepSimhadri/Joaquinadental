@@ -87,7 +87,7 @@ public class SiteAppController {
 		}
 	}
 	@RequestMapping("/DocDash")
-	public ModelAndView docLanding(HttpSession session)
+	public ModelAndView docLanding(HttpSession session) throws Exception
 	{ 
 		User user =  (User) session.getAttribute("user");
 		
@@ -100,6 +100,14 @@ public class SiteAppController {
 		
 	}
 	
+	@RequestMapping("/CheckIn")
+	public ModelAndView checkIn() throws Exception{
+		ModelAndView mv = null;
+		mv = new ModelAndView("Checkin");
+		List<String>list = NotificationService.getGeneralNotifications();
+		mv.addObject("notifications", list);
+		return mv;
+	}
 	
 	@RequestMapping("/AdminDash")
 	// merge this code with the login method sairam
