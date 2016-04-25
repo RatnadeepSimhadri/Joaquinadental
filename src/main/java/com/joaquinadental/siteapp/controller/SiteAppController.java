@@ -87,7 +87,7 @@ public class SiteAppController {
 		}
 	}
 	@RequestMapping("/DocDash")
-	public ModelAndView docLanding(HttpSession session)
+	public ModelAndView docLanding(HttpSession session) throws Exception
 	{ 
 		User user =  (User) session.getAttribute("user");
 		

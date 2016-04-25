@@ -50,7 +50,7 @@ public class SiteAppService {
 		for (Iterator iterator = list.iterator(); iterator
 				.hasNext();) {
 			ViewAppointment va = (ViewAppointment) iterator.next();
-			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time : "+va.getAppointment_time().toString();
+			String formattedAppointment = "<b>"+va.getPatientFirstName()+" "+va.getPatientLastName()+"</b><br>"+"Time: "+va.getAppointment_time().toString();
 			formattedAppointments.add(formattedAppointment);
 		}
 		}
